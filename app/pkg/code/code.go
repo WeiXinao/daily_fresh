@@ -54,9 +54,10 @@ func register(code int, httpStatus int, message string, refs ...string) {
 	var ref string
 	if len(refs) <= 0 {
 		ref = "reference not provided"
+	} else {
+		ref = refs[0]
 	}
 
-	ref = refs[0]
 
 	coder := ErrCode {
 		C: code,

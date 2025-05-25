@@ -1,5 +1,7 @@
 package code
 
+//go:generate codegen -type=int -doc -output ./error_code_generated.md
+
 // Common: basic errors.
 // Code must start with 1xxxxx.
 const (

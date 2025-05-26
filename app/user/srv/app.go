@@ -1,11 +1,13 @@
 package user
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/user/config"
+	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
 	"github.com/WeiXinao/daily_your_go/pkg/app"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 )
 
+
+// controller（参数校验） -> service（具体的业务逻辑） -> data（数据库的接口）
 func NewApp(name string) *app.App {
 	cfg := config.New()
 	return app.NewApp(

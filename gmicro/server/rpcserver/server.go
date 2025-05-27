@@ -3,6 +3,7 @@ package rpcserver
 import (
 	"net"
 	"net/url"
+	"time"
 
 	apimd "github.com/WeiXinao/daily_your_go/gmicro/api/metadata"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/serverinterceptors"
@@ -14,7 +15,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-type ServerOption func(o *Server)
+type ServerOption func(s *Server)
 
 type Server struct {
 	*grpc.Server
@@ -24,19 +25,21 @@ type Server struct {
 	streamInterceptors []grpc.StreamServerInterceptor
 	grpcOpts           []grpc.ServerOption
 	lis                net.Listener
+	timeout            time.Duration
 
-	health *health.Server
+	health   *health.Server
 	metadata apimd.MetadataServer
 	endpoint *url.URL
 }
 
 func NewServer(opts ...ServerOption) *Server {
 	srv := &Server{
-		address: ":0",
-		health: health.NewServer(),
-		unaryInterceptors: []grpc.UnaryServerInterceptor{},
+		address:            ":0",
+		health:             health.NewServer(),
+		// timeout:            1 * time.Second,
+		unaryInterceptors:  []grpc.UnaryServerInterceptor{},
 		streamInterceptors: []grpc.StreamServerInterceptor{},
-		grpcOpts: []grpc.ServerOption{},
+		grpcOpts:           []grpc.ServerOption{},
 	}
 
 	for _, opt := range opts {
@@ -45,17 +48,25 @@ func NewServer(opts ...ServerOption) *Server {
 
 	// TODO 我们现在希望用户不设置拦截器的情况下，我们都会默认加上一些必须的拦截器，crash，tracing
 	srv.unaryInterceptors = append(
-		srv.unaryInterceptors, 
+		srv.unaryInterceptors,
 		serverinterceptors.UnaryCrashInterceptor,
 	)
+	
 	srv.streamInterceptors = append(
-		srv.streamInterceptors, 
+		srv.streamInterceptors,
 		serverinterceptors.StreamCrashInterceptor,
 	)
 
+	if srv.timeout > 0 {
+		srv.unaryInterceptors = append(
+			srv.unaryInterceptors, 
+			serverinterceptors.UnaryTimeoutInterceptor(srv.timeout),
+		)
+	}
+
 	// 把我们传入的拦截器转换成 grpc 的 ServerOption
 	srv.grpcOpts = append(
-		srv.grpcOpts, 
+		srv.grpcOpts,
 		grpc.ChainUnaryInterceptor(srv.unaryInterceptors...),
 		grpc.ChainStreamInterceptor(srv.streamInterceptors...),
 	)
@@ -66,7 +77,7 @@ func NewServer(opts ...ServerOption) *Server {
 	if srv.metadata == nil {
 		srv.metadata = apimd.NewServer(srv.Server)
 	}
-	
+
 	// 解析 address
 	err := srv.listenAndEndpoint()
 	if err != nil {
@@ -83,12 +94,17 @@ func NewServer(opts ...ServerOption) *Server {
 	return srv
 }
 
+func WithTimeout(timeout time.Duration) ServerOption {
+	return func(s *Server) {
+		s.timeout = timeout
+	}
+}
+
 func WithAddress(address string) ServerOption {
 	return func(s *Server) {
 		s.address = address
 	}
 }
-
 
 func WithListener(lis net.Listener) ServerOption {
 	return func(s *Server) {
@@ -130,7 +146,7 @@ func (s *Server) listenAndEndpoint() error {
 		return err
 	}
 	s.endpoint = &url.URL{Scheme: "grpc", Host: addr}
-	return nil	
+	return nil
 }
 
 // 启动 grpc 的服务

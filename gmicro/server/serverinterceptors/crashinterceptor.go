@@ -19,7 +19,7 @@ func StreamCrashInterceptor(srv any, ss grpc.ServerStream, info *grpc.StreamServ
 func UnaryCrashInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInfo,
 	handler grpc.UnaryHandler) (resp any, err error) {
 	defer handleCrash(func(a any) {
-		log.Errorf("%+v\n\t%s", a, debug.Stack())
+		log.Errorf("%+v\n\n%s", a, debug.Stack())
 	})
 
 	return handler(ctx, req)

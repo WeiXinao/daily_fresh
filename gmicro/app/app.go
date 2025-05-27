@@ -52,6 +52,14 @@ func (a *App) Run() error {
 	a.instance = instance
 	a.lk.Unlock()
 
+	// 重点，写的很简单，http 服务要启动
+	if a.opts.rpcServer != nil {
+		err := a.opts.rpcServer.Start()
+		if err != nil {
+			return err
+		}
+	}
+
 	// 注册服务
 	if a.opts.registrar != nil {
 		rctx, rconcel := context.WithTimeout(context.Background(), a.opts.registerTimeout)

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 )
 
 type Option func(o *options)
@@ -22,6 +23,13 @@ type options struct {
 	registerTimeout time.Duration
 	stopTimeout     time.Duration
 
+	rpcServer *rpcserver.Server
+}
+
+func WithRPCServer(server *rpcserver.Server) Option {
+	return func(o *options) {
+		o.rpcServer = server
+	}
 }
 
 func WithEndpoints(endpoints []*url.URL) Option {

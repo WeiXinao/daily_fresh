@@ -6,7 +6,7 @@ import (
 	"time"
 
 	apimd "github.com/WeiXinao/daily_your_go/gmicro/api/metadata"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/serverinterceptors"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors"
 	"github.com/WeiXinao/daily_your_go/pkg/host"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"google.golang.org/grpc"

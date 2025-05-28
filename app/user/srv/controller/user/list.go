@@ -2,9 +2,10 @@ package user
 
 import (
 	"context"
+
 	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
 	srvv1 "github.com/WeiXinao/daily_your_go/app/user/srv/service/v1"
+	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
 )
 
 func DTOToResponse(userdto srvv1.UserDTO) *upbv1.UserInfoResponse {

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/clientinterceptors"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -103,6 +104,10 @@ func dial(ctx context.Context, isSecure bool, opts ...ClientOption)  (*grpc.Clie
 	}
 
 	// TODO 客户端默认拦截器
+	options.unaryInterceptors = append(
+		options.unaryInterceptors, 
+		clientinterceptors.TimeoutInterceptor(options.timeout),
+	)
 
 	options.grpcOpts = append(
 		options.grpcOpts, 
@@ -114,7 +119,7 @@ func dial(ctx context.Context, isSecure bool, opts ...ClientOption)  (*grpc.Clie
 	) 
 	
 	// TODO 服务发现的选项
-	
+
 	if isSecure {
 		options.grpcOpts = append(
 			options.grpcOpts, 

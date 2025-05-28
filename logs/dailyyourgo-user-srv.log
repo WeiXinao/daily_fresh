@@ -17,3 +17,4 @@
 2025-05-28 16:45:05.094	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
 2025-05-28 18:10:40.309	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
 2025-05-28 18:14:55.691	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
+2025-05-28 20:28:41.148	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078

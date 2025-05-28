@@ -1,0 +1,16 @@
+2025-05-28 00:21:14.611	[34mINFO[0m	srv/app.go:41	cfg: &options.RegisteryOptions{Address:"127.0.0.1:8501", Scheme:"http"}
+2025-05-28 00:21:14.611	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 12:50:01.652	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:30:54.080	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:37:27.425	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:38:41.851	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:38:41.874	[31mERROR[0m	app/app.go:71	register service error: Unexpected response code: 400 (Missing service name)
+2025-05-28 14:38:41.874	[31mERROR[0m	srv/app.go:67	run user app error: Unexpected response code: 400 (Missing service name)
+2025-05-28 14:46:43.888	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:47:06.372	[31mERROR[0m	app/app.go:71	register service error: Put "http://192.168.5.52:8500/v1/agent/service/register": context deadline exceeded
+2025-05-28 14:47:06.372	[31mERROR[0m	srv/app.go:68	run user app error: Put "http://192.168.5.52:8500/v1/agent/service/register": context deadline exceeded
+2025-05-28 14:47:27.101	[34mINFO[0m	rpcserver/server.go:154	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 14:58:30.548	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 15:00:00.602	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 15:02:26.706	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 127.0.0.1:8078
+2025-05-28 15:12:09.586	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078

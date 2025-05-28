@@ -32,11 +32,17 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserClient interface {
+	// 用户列表
 	GetUserList(ctx context.Context, in *PageInfo, opts ...grpc.CallOption) (*UserListResponse, error)
+	// 通过 mobile 查询用户
 	GetUserByMobile(ctx context.Context, in *MobileRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	// 通过 id 查询用户
 	GetUserById(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	// 添加用户
 	CreateUser(ctx context.Context, in *CreateUserInfo, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	// 更新用户
 	UpdateUser(ctx context.Context, in *UpdateUserInfo, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 检查密码
 	CheckPassword(ctx context.Context, in *PasswordCheckInfo, opts ...grpc.CallOption) (*CheckResponse, error)
 }
 
@@ -112,11 +118,17 @@ func (c *userClient) CheckPassword(ctx context.Context, in *PasswordCheckInfo, o
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility.
 type UserServer interface {
+	// 用户列表
 	GetUserList(context.Context, *PageInfo) (*UserListResponse, error)
+	// 通过 mobile 查询用户
 	GetUserByMobile(context.Context, *MobileRequest) (*UserInfoResponse, error)
+	// 通过 id 查询用户
 	GetUserById(context.Context, *IdRequest) (*UserInfoResponse, error)
+	// 添加用户
 	CreateUser(context.Context, *CreateUserInfo) (*UserInfoResponse, error)
+	// 更新用户
 	UpdateUser(context.Context, *UpdateUserInfo) (*emptypb.Empty, error)
+	// 检查密码
 	CheckPassword(context.Context, *PasswordCheckInfo) (*CheckResponse, error)
 	mustEmbedUnimplementedUserServer()
 }

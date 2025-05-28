@@ -8,7 +8,7 @@ import (
 )
 
 func DTOToResponse(userdto srvv1.UserDTO) *upbv1.UserInfoResponse {
-	return &upbv1.UserInfoResponse{}
+	return &upbv1.UserInfoResponse{NickName: userdto.Name}
 }
 
 /*

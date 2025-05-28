@@ -4,7 +4,7 @@ import "github.com/spf13/pflag"
 
 type ServerOptions struct {
 	// 是否开启 pprof
-	EnableProfiling   bool   `json:"profiling" mapstructure:"profiling"`
+	EnableProfiling   bool   `json:"enable-profiling" mapstructure:"enable-profiling"`
 
 	// 是否开启 metrics 
 	EnableMetrics     bool   `json:"enable-metrics" mapstructure:"enable-metrics"`

@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"net/url"
 	"os"
 	"os/signal"
 	"sync"
@@ -54,10 +55,12 @@ func (a *App) Run() error {
 
 	// 重点，写的很简单，http 服务要启动
 	if a.opts.rpcServer != nil {
-		err := a.opts.rpcServer.Start()
-		if err != nil {
-			return err
-		}
+		go func() {
+			err := a.opts.rpcServer.Start()
+			if err != nil {
+				panic(err)
+			}
+		}()
 	}
 
 	// 注册服务
@@ -102,6 +105,16 @@ func (a *App) buildInstance() (*registry.ServiceInstance, error) {
 	for _, e := range a.opts.endpoints {
 		endpoints = append(endpoints, e.String())
 	}
+
+	// 从 rpcserver，restserver 去主动获取这些信息
+	if a.opts.rpcServer != nil {
+		u := &url.URL{
+			Scheme: "grpc",
+			Path: a.opts.rpcServer.Address(),
+		}
+		endpoints = append(endpoints, u.String())
+	}
+
 	return &registry.ServiceInstance{
 		ID:        a.opts.id,
 		Name:      a.opts.name,

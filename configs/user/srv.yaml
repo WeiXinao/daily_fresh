@@ -8,3 +8,14 @@ log:
   disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
   output-paths: logs/dailyyourgo-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
   error-output-paths: logs/dailyyourgo-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  host: "192.168.5.52"
+  port: 8078
+  http-port: 8079
+  name: "daily-your-go-user-srv" 

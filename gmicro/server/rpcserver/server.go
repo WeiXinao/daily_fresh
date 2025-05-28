@@ -32,6 +32,10 @@ type Server struct {
 	endpoint *url.URL
 }
 
+func (s *Server) Address() string {
+	return s.address 
+}
+
 func NewServer(opts ...ServerOption) *Server {
 	srv := &Server{
 		address:            ":0",
@@ -81,7 +85,7 @@ func NewServer(opts ...ServerOption) *Server {
 	// 解析 address
 	err := srv.listenAndEndpoint()
 	if err != nil {
-		return nil
+		panic(err)
 	}
 
 	// 注册 health

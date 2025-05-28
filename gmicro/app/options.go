@@ -26,6 +26,12 @@ type options struct {
 	rpcServer *rpcserver.Server
 }
 
+func WithRegistrar(registrar registry.Registrar) Option {
+	return func(o *options) {
+		o.registrar = registrar
+	}
+}
+
 func WithRPCServer(server *rpcserver.Server) Option {
 	return func(o *options) {
 		o.rpcServer = server

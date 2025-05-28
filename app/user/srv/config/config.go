@@ -10,14 +10,16 @@ import (
 var _ app.CliOptions = (*Config)(nil)
 
 type Config struct {
-	Log *log.Options `json:"log" mapstructure:"log"`
-	Server *options.ServerOptions `json:"server" mapstructure:"server"`
+	Log      *log.Options              `json:"log" mapstructure:"log"`
+	Server   *options.ServerOptions    `json:"server" mapstructure:"server"`
+	Registry *options.RegisteryOptions `json:"registry" mapstructure:"registry"`
 }
 
 func New() *Config {
 	return &Config{
-		Log: log.NewOptions(),
-		Server: options.NewServerOptions(),
+		Log:      log.NewOptions(),
+		Server:   options.NewServerOptions(),
+		Registry: options.NewRegistryOptions(),
 	}
 }
 
@@ -25,6 +27,7 @@ func New() *Config {
 func (c *Config) Flags() (fss flag.NamedFlagSets) {
 	c.Log.AddFlags(fss.FlagSet("logs"))
 	c.Server.AddFlags(fss.FlagSet("server"))
+	c.Registry.AddFlags(*fss.FlagSet("registry"))
 	return fss
 }
 
@@ -33,6 +36,6 @@ func (c *Config) Validate() []error {
 	errs := make([]error, 0)
 	errs = append(errs, c.Log.Validate()...)
 	errs = append(errs, c.Server.Validate()...)
+	errs = append(errs, c.Registry.Validate()...)
 	return errs
 }
-

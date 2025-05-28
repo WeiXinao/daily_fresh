@@ -20,6 +20,12 @@ func NewUserRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 
 	rpcAddr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
 	urpcServer := rpcserver.NewServer(rpcserver.WithAddress(rpcAddr))	
+
 	upb.RegisterUserServer(urpcServer.Server, usrv)
-	return nil, nil
+	
+	// r := gin.Default()
+	// upb.RegisterUserServerHTTPServer(usrv, r)
+	// r.Run(":8075")
+
+	return urpcServer, nil
 }

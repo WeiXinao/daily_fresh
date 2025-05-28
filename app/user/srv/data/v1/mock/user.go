@@ -16,9 +16,12 @@ func NewUsers() *users {
 }
 
 func (u *users) List(ctx context.Context, opts metav1.ListMeta) (*udv1.UserDOList, error) {
+	usrs := []*udv1.UserDO{
+		{Name: "xiaoxin"},
+	}
 	return &udv1.UserDOList{
 		TotalCount: 1,
-		Items: u.users,	
+		Items: usrs,	
 	}, nil
 }
 

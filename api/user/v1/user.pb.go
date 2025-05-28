@@ -7,6 +7,7 @@
 package v1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -535,7 +536,7 @@ var File_user_proto protoreflect.FileDescriptor
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x1a\x1bgoogle/protobuf/empty.proto\")\n" +
+	"user.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cgoogle/api/annotations.proto\")\n" +
 	"\rCheckResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"]\n" +
 	"\x11PasswordCheckInfo\x12\x1a\n" +
@@ -567,17 +568,17 @@ const file_user_proto_rawDesc = "" +
 	"\x04role\x18\a \x01(\x05R\x04role\"O\n" +
 	"\x10UserListResponse\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x05R\x05total\x12%\n" +
-	"\x04data\x18\x02 \x03(\v2\x11.UserInfoResponseR\x04data2\xb5\x02\n" +
-	"\x04User\x12+\n" +
-	"\vGetUserList\x12\t.PageInfo\x1a\x11.UserListResponse\x124\n" +
-	"\x0fGetUserByMobile\x12\x0e.MobileRequest\x1a\x11.UserInfoResponse\x12,\n" +
+	"\x04data\x18\x02 \x03(\v2\x11.UserInfoResponseR\x04data2\xd5\x03\n" +
+	"\x04User\x12A\n" +
+	"\vGetUserList\x12\t.PageInfo\x1a\x11.UserListResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\x12\t/v1/users\x12P\n" +
+	"\x0fGetUserByMobile\x12\x0e.MobileRequest\x1a\x11.UserInfoResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\x12\x0f/v1/user/mobile\x12D\n" +
 	"\vGetUserById\x12\n" +
-	".IdRequest\x1a\x11.UserInfoResponse\x120\n" +
+	".IdRequest\x1a\x11.UserInfoResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\x12\v/v1/user/id\x12L\n" +
 	"\n" +
-	"CreateUser\x12\x0f.CreateUserInfo\x1a\x11.UserInfoResponse\x125\n" +
+	"CreateUser\x12\x0f.CreateUserInfo\x1a\x11.UserInfoResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/v1/user/create\x12Q\n" +
 	"\n" +
-	"UpdateUser\x12\x0f.UpdateUserInfo\x1a\x16.google.protobuf.Empty\x123\n" +
-	"\rCheckPassword\x12\x12.PasswordCheckInfo\x1a\x0e.CheckResponseB\aZ\x05./;v1b\x06proto3"
+	"UpdateUser\x12\x0f.UpdateUserInfo\x1a\x16.google.protobuf.Empty\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\x1a\x0f/v1/user/update\x12Q\n" +
+	"\rCheckPassword\x12\x12.PasswordCheckInfo\x1a\x0e.CheckResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x12\x11/v1/user/passwordB\aZ\x05./;v1b\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once

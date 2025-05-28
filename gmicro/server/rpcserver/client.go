@@ -1,11 +1,14 @@
 package rpcserver
 
 import (
+	"context"
+	"fmt"
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 type ClientOption func(o *clientOptions)
@@ -79,4 +82,45 @@ func WithLogger(log log.LogHelper) ClientOption {
 	return func(o *clientOptions) {
 		o.logger = log
 	}
+}
+
+func DialInsecure(ctx context.Context, opts ...ClientOption) (*grpc.ClientConn, error) {
+	return dial(ctx, true, opts...)
+}
+
+func Dial(ctx context.Context, opts ...ClientOption) (*grpc.ClientConn, error) {
+	return dial(ctx, false, opts...)
+}
+
+func dial(ctx context.Context, isSecure bool, opts ...ClientOption)  (*grpc.ClientConn, error) {
+	options := clientOptions{
+		timeout: 2 * time.Second,
+		balancerName: "round_robin",
+	}
+
+	for _, o := range opts {
+		o(&options)	
+	}
+
+	// TODO 客户端默认拦截器
+
+	options.grpcOpts = append(
+		options.grpcOpts, 
+		grpc.WithDefaultServiceConfig(
+			fmt.Sprintf(`{"loadBalancingPolicy": "%s"}`, options.balancerName),
+		),
+		grpc.WithChainUnaryInterceptor(options.unaryInterceptors...),
+		grpc.WithChainStreamInterceptor(options.streamInterceptors...),
+	) 
+	
+	// TODO 服务发现的选项
+	
+	if isSecure {
+		options.grpcOpts = append(
+			options.grpcOpts, 
+			grpc.WithTransportCredentials(insecure.NewCredentials()),
+		)
+	}
+
+	return grpc.DialContext(ctx, options.endpoint, options.grpcOpts...)
 }

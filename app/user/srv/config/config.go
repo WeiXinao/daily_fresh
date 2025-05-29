@@ -27,7 +27,7 @@ func New() *Config {
 func (c *Config) Flags() (fss flag.NamedFlagSets) {
 	c.Log.AddFlags(fss.FlagSet("logs"))
 	c.Server.AddFlags(fss.FlagSet("server"))
-	c.Registry.AddFlags(*fss.FlagSet("registry"))
+	c.Registry.AddFlags(fss.FlagSet("registry"))
 	return fss
 }
 

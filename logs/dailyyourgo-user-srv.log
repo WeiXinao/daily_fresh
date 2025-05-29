@@ -19,3 +19,42 @@
 2025-05-28 18:14:55.691	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
 2025-05-28 20:28:41.148	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
 2025-05-29 16:48:31.369	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
+2025-05-29 23:08:15.388	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
+2025-05-29 23:48:49.022	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8078
+2025-05-29 23:49:26.381	[34mINFO[0m	rpcserver/server.go:158	[grpc] server listening on: 192.168.5.52:8079
+2025-05-29 23:52:50.072	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:52:55.389	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:53:00.396	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:07.045	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:12.051	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:17.055	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:22.058	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:27.063	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:32.067	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:37.072	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:42.074	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:47.081	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:52.082	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:55:57.084	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:56:02.085	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:00.508	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:05.514	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:10.517	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:15.523	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:20.525	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:25.531	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:30.533	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:35.538	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:40.544	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:45.549	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:50.556	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:58:55.559	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:00.562	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:05.565	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:10.572	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:15.574	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:20.579	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:25.580	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:30.583	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:35.589	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-05-29 23:59:40.593	[34mINFO[0m	user/list.go:22	GetUserList is called

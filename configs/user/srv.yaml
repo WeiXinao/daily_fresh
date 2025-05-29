@@ -16,6 +16,6 @@ server:
   enable-profiling: true
   enable-metrics: true
   host: "192.168.5.52"
-  port: 8078
-  http-port: 8079
+  port: 8079
+  http-port: 8080
   name: "daily-your-go-user-srv" 

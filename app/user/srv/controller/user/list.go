@@ -6,6 +6,7 @@ import (
 	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
 	srvv1 "github.com/WeiXinao/daily_your_go/app/user/srv/service/v1"
 	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_your_go/pkg/log"
 )
 
 func DTOToResponse(userdto srvv1.UserDTO) *upbv1.UserInfoResponse {
@@ -18,6 +19,7 @@ controller 层依赖了 service，service 层依赖了 data 层：
 controller 依赖 service 并不是直接依赖了具体的 struct，而是依赖了 interface
 */
 func (u *userServer) GetUserList(ctx context.Context, req *upbv1.PageInfo) (*upbv1.UserListResponse, error) {
+	log.Infof("GetUserList is called")
 	srvOpts := metav1.ListMeta{
 		Page: int(req.Pn),
 		PageSize: int(req.PSize),

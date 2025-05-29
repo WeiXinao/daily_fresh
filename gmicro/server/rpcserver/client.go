@@ -7,9 +7,10 @@ import (
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/clientinterceptors"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/resolver/discovery"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+	gis "google.golang.org/grpc/credentials/insecure"
 )
 
 type ClientOption func(o *clientOptions)
@@ -93,7 +94,7 @@ func Dial(ctx context.Context, opts ...ClientOption) (*grpc.ClientConn, error) {
 	return dial(ctx, false, opts...)
 }
 
-func dial(ctx context.Context, isSecure bool, opts ...ClientOption)  (*grpc.ClientConn, error) {
+func dial(ctx context.Context, insecure bool, opts ...ClientOption)  (*grpc.ClientConn, error) {
 	options := clientOptions{
 		timeout: 2 * time.Second,
 		balancerName: "round_robin",
@@ -119,11 +120,21 @@ func dial(ctx context.Context, isSecure bool, opts ...ClientOption)  (*grpc.Clie
 	) 
 	
 	// TODO 服务发现的选项
+	if options.discovery != nil {
+			options.grpcOpts = append(
+				options.grpcOpts, grpc.WithResolvers(
+					discovery.NewBuilder(
+						options.discovery,
+						discovery.WithInsecure(insecure),
+					),
+				),
+			)
+	}
 
-	if isSecure {
+	if insecure {
 		options.grpcOpts = append(
 			options.grpcOpts, 
-			grpc.WithTransportCredentials(insecure.NewCredentials()),
+			grpc.WithTransportCredentials(gis.NewCredentials()),
 		)
 	}
 

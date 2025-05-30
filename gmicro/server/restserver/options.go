@@ -47,3 +47,9 @@ func WithJwt(jwt *JwtInfo) ServerOption {
 		s.jwt = jwt
 	}
 }
+
+func WithTransName(transName string) ServerOption {
+	return func(s *Server) {
+		s.transName = transName
+	}
+}

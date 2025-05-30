@@ -53,6 +53,8 @@ type Server struct {
 	// 翻译器
 	transName string
 	trans     ut.Translator
+
+	server *http.Server
 }
 
 // debug 模式和 release 模式的区别主要是打印的日志不同
@@ -70,6 +72,7 @@ func NewServer(opts ...ServerOption) *Server {
 			7 * 24 * time.Hour,
 			7 * 24 * time.Hour,
 		},
+		transName: "zh",
 	}
 
 	for _, opt := range opts {
@@ -121,7 +124,12 @@ func (s *Server) Start(ctx context.Context) error {
 
 	log.Infof("rest server is running on port: %d", s.port)
 	_ = s.SetTrustedProxies(nil)
-	err := s.Run(fmt.Sprintf(":%d", s.port))
+	address := fmt.Sprintf(":%d", s.port)
+	s.server = &http.Server{
+		Addr: address,
+		Handler: s.Engine,
+	}
+	err := s.server.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		log.Errorf("fail to start rest server")
 		return err
@@ -129,7 +137,12 @@ func (s *Server) Start(ctx context.Context) error {
 	return nil
 }
 
-func (s *Server) Stop(ctx context.Context) {
+func (s *Server) Stop(ctx context.Context) error {
 	log.Infof("rest server is stopping")
-	
+	if err := s.server.Shutdown(ctx); err != nil {
+		log.Errorf("rest server shutdown error: %s", err.Error())
+		return err
+	}
+	log.Info("rest server stopped")
+	return nil
 }

@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_your_go/gmicro/server"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"github.com/google/uuid"
+	"golang.org/x/sync/errgroup"
 )
 
 type App struct {
@@ -54,14 +56,52 @@ func (a *App) Run() error {
 	a.lk.Unlock()
 
 	// 重点，写的很简单，http 服务要启动
-	if a.opts.rpcServer != nil {
-		go func() {
-			err := a.opts.rpcServer.Start()
-			if err != nil {
-				panic(err)
-			}
-		}()
+	// 现在启动了两个 server，一个是 restserver，一个是 rpcserver
+	/*
+		1. 这两个 server 是否必须同时启动成功
+		2. 如果有一个启动失败，那么我们应该停止另外一个 server
+		3. 如果启动了多个，如果其中一个启动失败，其他的应该被取消
+			如果剩余的server的状态
+			1. 还没有开始调用 start  不进行就行了，stop 也行
+			2. start 进行中  调用进行中的 cancel
+			3. start 已经完成 调用 stop
+		如果我们的服务启动了然后这个时候用户立马进行了访问
+	*/
+
+	servers := []server.Server{}
+	if a.opts.restServer != nil {
+		servers = append(servers, a.opts.restServer)
 	}
+
+	if a.opts.rpcServer != nil {
+		servers = append(servers, a.opts.rpcServer)
+	}
+
+	bgCtxWithCancel, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	eg, ctx := errgroup.WithContext(bgCtxWithCancel)
+	wg := sync.WaitGroup{}
+	for _, srv := range servers {
+		// 启动 server
+		// 在启动一个 goroutine 去监听是否有 err 产生
+		eg.Go(func() error {
+			<-ctx.Done() // wait for stop signal
+
+			// 不可能无休止的等待 stop
+			sctx, cancel := context.WithTimeout(context.Background(), a.opts.stopTimeout)
+			defer cancel()
+			return srv.Stop(sctx)
+		})
+
+		wg.Add(1)
+		eg.Go(func () error {
+			wg.Done()
+			log.Info("start server")
+			return srv.Start(ctx)
+		})
+	}
+
+	wg.Wait()
 
 	// 注册服务
 	if a.opts.registrar != nil {
@@ -78,8 +118,8 @@ func (a *App) Run() error {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, a.opts.sigs...)
 	<-quit
-
-	return nil
+	ctx.Done()
+	return a.Stop()
 }
 
 // 停止服务

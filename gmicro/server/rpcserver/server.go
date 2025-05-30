@@ -1,6 +1,7 @@
 package rpcserver
 
 import (
+	"context"
 	"net"
 	"net/url"
 	"time"
@@ -50,7 +51,7 @@ func NewServer(opts ...ServerOption) *Server {
 		opt(srv)
 	}
 
-	// TODO 我们现在希望用户不设置拦截器的情况下，我们都会默认加上一些必须的拦截器，crash，tracing
+	// 我们现在希望用户不设置拦截器的情况下，我们都会默认加上一些必须的拦截器，crash，tracing
 	srv.unaryInterceptors = append(
 		srv.unaryInterceptors,
 		serverinterceptors.UnaryCrashInterceptor,
@@ -154,13 +155,13 @@ func (s *Server) listenAndEndpoint() error {
 }
 
 // 启动 grpc 的服务
-func (s *Server) Start() error {
+func (s *Server) Start(ctx context.Context) error {
 	log.Infof("[grpc] server listening on: %s", s.lis.Addr().String())
 	s.health.Resume()
 	return s.Serve(s.lis)
 }
 
-func (s *Server) Stop() error {
+func (s *Server) Stop(ctx context.Context) error {
 	// 设置服务的状态为 not_serving，防止接收新的请求过来
 	s.health.Shutdown()
 	s.GracefulStop()

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 )
 
@@ -21,8 +22,11 @@ type options struct {
 	// 允许用户传入自己的实现
 	registrar       registry.Registrar
 	registerTimeout time.Duration
+	
+	// stop 超时时间
 	stopTimeout     time.Duration
 
+	restServer *restserver.Server
 	rpcServer *rpcserver.Server
 }
 
@@ -35,6 +39,12 @@ func WithRegistrar(registrar registry.Registrar) Option {
 func WithRPCServer(server *rpcserver.Server) Option {
 	return func(o *options) {
 		o.rpcServer = server
+	}
+}
+
+func WithRestServer(server *restserver.Server) Option {
+	return func(o *options) {
+		o.restServer = server
 	}
 }
 

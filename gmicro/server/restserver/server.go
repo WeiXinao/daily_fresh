@@ -50,7 +50,7 @@ type Server struct {
 	// jwt 信息
 	jwt *JwtInfo
 
-	// 翻译器
+	// 翻译器，默认 zh
 	transName string
 	trans     ut.Translator
 
@@ -73,6 +73,7 @@ func NewServer(opts ...ServerOption) *Server {
 			7 * 24 * time.Hour,
 		},
 		transName: "zh",
+		Engine: gin.New(),
 	}
 
 	for _, opt := range opts {
@@ -90,7 +91,9 @@ func NewServer(opts ...ServerOption) *Server {
 		s.Use(mw)
 	}
 
-	s.Use(s.customMiddlewares...)
+	if len(s.customMiddlewares) > 0 {
+		s.Use(s.customMiddlewares...)
+	}
 
 	return s
 }

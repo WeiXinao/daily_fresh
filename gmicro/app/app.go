@@ -22,6 +22,7 @@ type App struct {
 	lk sync.RWMutex
 
 	instance *registry.ServiceInstance
+	cancel func()
 }
 
 func New(opts ...Option) *App {
@@ -78,7 +79,8 @@ func (a *App) Run() error {
 	}
 
 	bgCtxWithCancel, cancel := context.WithCancel(context.Background())
-	defer cancel()
+	a.cancel = cancel
+
 	eg, ctx := errgroup.WithContext(bgCtxWithCancel)
 	wg := sync.WaitGroup{}
 	for _, srv := range servers {
@@ -117,9 +119,21 @@ func (a *App) Run() error {
 	// 监听退出信号
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, a.opts.sigs...)
-	<-quit
-	ctx.Done()
-	return a.Stop()
+	eg.Go(func() error {
+		for {
+			select {
+			case <-ctx.Done():
+				return ctx.Err()
+			case <-quit:
+				return a.Stop()
+			}
+		}
+	})
+	if err := eg.Wait(); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // 停止服务
@@ -128,6 +142,7 @@ func (a *App) Stop() error {
 	insecure := a.instance
 	a.lk.RUnlock()
 
+	log.Info("start deregister service")
 	if a.instance != nil && a.opts.registrar != nil {
 		rctx, rcancel := context.WithTimeout(context.Background(), a.opts.stopTimeout)
 		defer rcancel()
@@ -136,6 +151,12 @@ func (a *App) Stop() error {
 			return err
 		}
 	}
+
+	if a.cancel!= nil {
+		log.Info("start cancel context")
+		a.cancel()
+	}
+
 	return nil
 }
 

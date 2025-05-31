@@ -25,3 +25,61 @@
 
 2025-05-31 01:23:06.341	[34mINFO[0m	restserver/server.go:128	rest server is running on port: 8017
 2025-05-31 01:40:19.863	[34mINFO[0m	controller/list.go:9	GetUserList is called
+2025-05-31 12:58:07.166	[34mINFO[0m	app/app.go:101	start server
+2025-05-31 12:58:07.167	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (1 handlers)
+
+2025-05-31 12:58:07.167	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (1 handlers)
+
+2025-05-31 12:58:07.167	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (1 handlers)
+
+2025-05-31 12:58:07.167	[34mINFO[0m	restserver/server.go:111	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (1 handlers)
+
+2025-05-31 12:58:07.167	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (1 handlers)
+
+2025-05-31 12:58:07.168	[34mINFO[0m	restserver/server.go:128	rest server is running on port: 8017
+2025-05-31 12:58:09.205	[31mERROR[0m	app/app.go:114	register service error: Unexpected response code: 502 ()
+2025-05-31 12:58:09.206	[31mERROR[0m	admin/app.go:68	run user app error: Unexpected response code: 502 ()
+2025-05-31 13:02:18.614	[34mINFO[0m	app/app.go:101	start server
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:111	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (1 handlers)
+
+2025-05-31 13:02:18.615	[34mINFO[0m	restserver/server.go:128	rest server is running on port: 8017
+2025-05-31 13:02:22.931	[34mINFO[0m	app/app.go:145	start deregister service
+2025-05-31 13:02:22.946	[34mINFO[0m	app/app.go:156	start cancel context
+2025-05-31 13:02:22.946	[34mINFO[0m	restserver/server.go:144	rest server is stopping
+2025-05-31 13:02:22.947	[34mINFO[0m	restserver/server.go:149	rest server stopped

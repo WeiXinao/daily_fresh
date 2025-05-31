@@ -9,6 +9,7 @@ import (
 func NewUserHTTPServer(cfg *config.Config) (*restserver.Server, error) {
 	urestServer := restserver.NewServer(
 		restserver.WithPort(cfg.Server.HttpPort),
+		restserver.WithMiddewares(cfg.Server.Middlewares),
 	)	
 
 	// 配置好路由

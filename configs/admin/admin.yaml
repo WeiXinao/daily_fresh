@@ -19,3 +19,7 @@ server:
   enable-health-check: true # 是否开启健康检查，如果开启会安装 /healthz 路由，默认 true
   enable-profiling: true # 开启 metrics，router: /metrics
   enable-metrics: true # 开启性能分析，可以通过 <host>:<port>/debug/pprof 地址查看程序栈、线程等信息
+  middlewares: # 中间件配置
+    - cors # 跨域
+    - logger # 日志
+    - recovery # 恢复

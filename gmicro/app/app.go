@@ -136,6 +136,10 @@ func (a *App) Run() error {
 	return nil
 }
 
+/*
+http basic 认证
+cache：1. redis 2. memcache 3. local cache
+*/
 // 停止服务
 func (a *App) Stop() error {
 	a.lk.RLock()

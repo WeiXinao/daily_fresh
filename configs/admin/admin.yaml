@@ -23,3 +23,4 @@ server:
     - cors # 跨域
     - logger # 日志
     - recovery # 恢复
+    - context

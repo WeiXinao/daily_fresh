@@ -14,6 +14,7 @@ import (
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
 
 type ServerOption func(s *Server)
@@ -55,11 +56,13 @@ func NewServer(opts ...ServerOption) *Server {
 	srv.unaryInterceptors = append(
 		srv.unaryInterceptors,
 		serverinterceptors.UnaryCrashInterceptor,
+		otelgrpc.UnaryServerInterceptor(),
 	)
 	
 	srv.streamInterceptors = append(
 		srv.streamInterceptors,
 		serverinterceptors.StreamCrashInterceptor,
+		otelgrpc.StreamServerInterceptor(),
 	)
 
 	if srv.timeout > 0 {

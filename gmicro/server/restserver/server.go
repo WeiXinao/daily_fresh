@@ -55,6 +55,8 @@ type Server struct {
 	trans     ut.Translator
 
 	server *http.Server
+
+	serviceName string
 }
 
 // debug 模式和 release 模式的区别主要是打印的日志不同
@@ -74,6 +76,7 @@ func NewServer(opts ...ServerOption) *Server {
 		},
 		transName: "zh",
 		Engine: gin.New(),
+		serviceName: "gmicro",
 	}
 
 	for _, opt := range opts {
@@ -128,6 +131,10 @@ func (s *Server) Start(ctx context.Context) error {
 	log.Infof("rest server is running on port: %d", s.port)
 	_ = s.SetTrustedProxies(nil)
 	address := fmt.Sprintf(":%d", s.port)
+
+	// 因为 tracing 的 middleware 要使用 addr 故在此初始化
+	s.Use(middlewares.TracingHandler(address))	
+
 	s.server = &http.Server{
 		Addr: address,
 		Handler: s.Engine,

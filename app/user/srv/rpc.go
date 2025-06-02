@@ -8,10 +8,19 @@ import (
 	"github.com/WeiXinao/daily_your_go/app/user/srv/controller/user"
 	"github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/mock"
 	svcv1 "github.com/WeiXinao/daily_your_go/app/user/srv/service/v1"
+	"github.com/WeiXinao/daily_your_go/gmicro/core/trace"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 )
 
 func NewUserRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
+	// 初始化 opentelemetry 的 exporter
+	trace.InitAgent(trace.Options{
+		Name: cfg.Telemtry.Name,
+		Endpoint: cfg.Telemtry.Endpoint,
+		Batcher: cfg.Telemtry.Batcher,
+		Sampler: cfg.Telemtry.Sampler,
+	})
+
 	// 有点繁琐 wire, ioc-golang
 	data := mock.NewUsers()
 	svc := svcv1.NewUserService(data)

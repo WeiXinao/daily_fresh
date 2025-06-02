@@ -6,6 +6,12 @@ import (
 
 type ServerOption func (s *Server)
 
+func WithServiceName(srvName string) ServerOption {
+	return func(s *Server) {
+		s.serviceName = srvName
+	}
+}
+
 func WithEnableProfiling(profiling bool) ServerOption {
 	return func(s *Server) {
 		s.enableProfiling = profiling

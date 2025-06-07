@@ -32,6 +32,8 @@ type Server struct {
 	health   *health.Server
 	metadata apimd.MetadataServer
 	endpoint *url.URL
+
+	enableMetrics bool
 }
 
 func (s *Server) Address() string {
@@ -72,6 +74,13 @@ func NewServer(opts ...ServerOption) *Server {
 		)
 	}
 
+	if srv.enableMetrics {
+		srv.unaryInterceptors = append(
+			srv.unaryInterceptors, 
+			serverinterceptors.UnaryPrometheusInterceptor,
+		)
+	}
+
 	// 把我们传入的拦截器转换成 grpc 的 ServerOption
 	srv.grpcOpts = append(
 		srv.grpcOpts,
@@ -100,6 +109,12 @@ func NewServer(opts ...ServerOption) *Server {
 	reflection.Register(srv.Server)
 
 	return srv
+}
+
+func WithMetrics(enableMetrics bool) ServerOption {
+	return func(s *Server) {
+		s.enableMetrics = enableMetrics
+	}
 }
 
 func WithTimeout(timeout time.Duration) ServerOption {

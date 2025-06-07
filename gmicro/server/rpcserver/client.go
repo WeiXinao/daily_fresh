@@ -30,9 +30,16 @@ type clientOptions struct {
 
 	logger log.LogHelper
 	enableTracing bool
+	enableMetrics bool
 }
 
 // 是否开启链路追踪
+func WithEnableMetrics(enableMetrics bool) ClientOption {
+	return func(o *clientOptions) {
+		o.enableMetrics = enableMetrics
+	}
+}
+
 func WithEnableTracing(enableTracing bool) ClientOption {
 	return func(o *clientOptions) {
 		o.enableTracing = enableTracing
@@ -130,6 +137,14 @@ func dial(ctx context.Context, insecure bool, opts ...ClientOption)  (*grpc.Clie
 		options.streamInterceptors = append(
 			options.streamInterceptors, 
 			otelgrpc.StreamClientInterceptor(),
+		)
+	}
+
+	// metrics 中间件
+	if options.enableMetrics {
+		options.unaryInterceptors = append(
+			options.unaryInterceptors, 
+			clientinterceptors.UnaryPrometheusInterceptor,
 		)
 	}
 

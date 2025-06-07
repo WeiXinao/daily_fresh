@@ -12,6 +12,12 @@ func WithServiceName(srvName string) ServerOption {
 	}
 }
 
+func WithEnableMetrics(enableMetrics bool) ServerOption {
+	return func(o *Server) {
+		o.enableMetrics = enableMetrics
+	}
+}
+
 func WithEnableProfiling(profiling bool) ServerOption {
 	return func(s *Server) {
 		s.enableProfiling = profiling

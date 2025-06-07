@@ -255,3 +255,26 @@ services:
   #     - /root/nginx/conf/conf.d:/etc/nginx/conf.d 
   #     - /root/nginx/log:/var/log/nginx 
   #     - /root/nginx/html:/usr/share/nginx/html 
+  prometheus-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    ports:
+      - "9100:9100" 
+  prometheus:
+    image: "prom/prometheus:v2.47.2"
+    volumes:
+      - ../prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - prometheus-exporter
+  grafana:
+    image: "grafana/grafana:10.2.0"
+    container_name: "grafana"
+    ports:
+      - "3000:3000"
+    volumes:
+      - /root/grafana:/var/lib/grafana

@@ -14,6 +14,7 @@ import (
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"github.com/gin-gonic/gin"
 	ut "github.com/go-playground/universal-translator"
+	"github.com/penglongli/gin-metrics/ginmetrics"
 )
 
 type JwtInfo struct {
@@ -42,6 +43,9 @@ type Server struct {
 
 	// 是否开启 pprof 接口，默认开启，如果开启会自动添加 /debug/pprof 接口
 	enableProfiling bool
+
+	// 是否开启 metrics 接口，默认开启，如果开启会自动添加 /metrics 接口
+	enableMetrics bool
 
 	// 中间件
 	middleware        []string
@@ -126,6 +130,19 @@ func (s *Server) Start(ctx context.Context) error {
 	// 根据配置初始化 pprof 路由
 	if s.enableProfiling {
 		pprof.Register(s.Engine)
+	}
+
+	if s.enableMetrics {
+		m := ginmetrics.GetMonitor()
+
+		// +optional set metric path, default /debug/metrics
+		m.SetMetricPath("/metrics")
+		// +optional set request duration, default {0.1, 0.3, 1.2, 5, 10}
+		// used to p95, p99
+		m.SetDuration([]float64{0.1, 0.3, 1.2, 5, 10})
+
+		// set middleware for gin
+		m.Use(s.Engine)
 	}
 
 	log.Infof("rest server is running on port: %d", s.port)

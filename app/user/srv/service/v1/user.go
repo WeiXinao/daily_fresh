@@ -2,10 +2,15 @@ package v1
 
 import (
 	"context"
+	"crypto/sha512"
+	"fmt"
 
+	"github.com/WeiXinao/daily_your_go/app/pkg/code"
 	dv1 "github.com/WeiXinao/daily_your_go/app/user/srv/data/v1"
 	v1 "github.com/WeiXinao/daily_your_go/app/user/srv/data/v1"
 	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/anaskhan96/go-password-encoder"
 )
 
 type UserSrv interface {
@@ -24,6 +29,20 @@ type userService struct {
 
 // Create implements UserSrv.
 func (u *userService) Create(ctx context.Context, user *UserDTO) error {
+	// 先判断用户是否存在
+	_, err := u.userStore.GetByMobile(ctx, user.Mobile)
+	if err == nil {
+		return errors.WithCode(code.ErrUserAlreadyExists, "手机号重复，用户已存在")
+	}
+	if !errors.IsCode(err, code.ErrUserNotFound) {
+		return err
+	}
+
+	// 密码加密
+	options := &password.Options{16, 100, 32, sha512.New}
+	salt, encodedPwd := password.Encode(user.Password, options)
+	user.Password = fmt.Sprintf("$pbkdf2-sha512$%s$%s", salt, encodedPwd)
+
 	return u.userStore.Create(ctx, &user.UserDO)
 }
 
@@ -49,6 +68,11 @@ func (u *userService) GetByMobile(ctx context.Context, mobile string) (*UserDTO,
 
 // Update implements UserSrv.
 func (u *userService) Update(ctx context.Context, user *UserDTO) error {
+	// 先查询用户是否存在
+	_, err := u.userStore.GetByID(ctx, uint64(user.ID))
+	if err != nil {
+		return err
+	}
 	return u.userStore.Update(ctx, &user.UserDO)
 }
 

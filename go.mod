@@ -3,6 +3,7 @@ module github.com/WeiXinao/daily_your_go
 go 1.23.9
 
 require (
+	github.com/anaskhan96/go-password-encoder v0.0.0-20201010210601-c765b799fd72
 	github.com/appleboy/gin-jwt/v2 v2.10.3
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/bitly/go-simplejson v0.5.1
@@ -18,6 +19,7 @@ require (
 	github.com/gosuri/uitable v0.0.4
 	github.com/h2non/filetype v1.1.3
 	github.com/hashicorp/consul/api v1.32.1
+	github.com/jinzhu/copier v0.4.0
 	github.com/json-iterator/go v1.1.12
 	github.com/moby/term v0.5.2
 	github.com/novalagung/gubrak v1.0.0

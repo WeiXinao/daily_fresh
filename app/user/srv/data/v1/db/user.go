@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"strings"
+	"time"
 
 	"github.com/WeiXinao/daily_your_go/app/pkg/code"
 	udv1 "github.com/WeiXinao/daily_your_go/app/user/srv/data/v1"
@@ -24,6 +25,8 @@ type users struct {
 //	@param user 
 //	@return error 
 func (u *users) Create(ctx context.Context, user *udv1.UserDO) error {
+	user.CreatedAt = time.Now()
+	user.UpdatedAt = time.Now()
 	err := u.db.Create(user).Error
 	if err != nil {
 		return errors.WithCode(baseCode.ErrDatabase, err.Error())
@@ -75,6 +78,7 @@ func (u *users) GetByMobile(ctx context.Context, mobile string) (*udv1.UserDO, e
 //	@param user 
 //	@return error 
 func (u *users) Update(ctx context.Context, user *udv1.UserDO) error {
+	user.UpdatedAt = time.Now()
 	err := u.db.Model(&udv1.UserDO{}).Updates(user).Error
 	if err != nil {
 		return errors.WithCode(baseCode.ErrDatabase, err.Error())
@@ -105,8 +109,14 @@ func (u *users) List(ctx context.Context, orderBy []string, opts metav1.ListMeta
 	order := strings.Join(orderBy, ",")
 
 	// 查询
-	err := u.db.Model(&udv1.UserDO{}).Count(&ret.TotalCount).
-		Order(order).Limit(limit).Offset(offset).Find(&ret.Items).Error
+	var err error
+	if len(strings.TrimSpace(order)) == 0 {
+		err = u.db.Model(&udv1.UserDO{}).Count(&ret.TotalCount).
+			Limit(limit).Offset(offset).Find(&ret.Items).Error
+	} else {
+		err = u.db.Model(&udv1.UserDO{}).Count(&ret.TotalCount).
+			Order(order).Limit(limit).Offset(offset).Find(&ret.Items).Error
+	}
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(code.ErrUserNotFound, err.Error())

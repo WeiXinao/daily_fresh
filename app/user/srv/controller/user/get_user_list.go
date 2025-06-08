@@ -4,14 +4,9 @@ import (
 	"context"
 
 	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
-	srvv1 "github.com/WeiXinao/daily_your_go/app/user/srv/service/v1"
 	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 )
-
-func DTOToResponse(userdto srvv1.UserDTO) *upbv1.UserInfoResponse {
-	return &upbv1.UserInfoResponse{NickName: userdto.Name}
-}
 
 /*
 controller 层依赖了 service，service 层依赖了 data 层：
@@ -24,7 +19,7 @@ func (u *userServer) GetUserList(ctx context.Context, req *upbv1.PageInfo) (*upb
 		Page: int(req.Pn),
 		PageSize: int(req.PSize),
 	}
-	dtoList, err := u.srv.List(ctx, srvOpts) 
+	dtoList, err := u.srv.List(ctx, []string{}, srvOpts) 
 	if err != nil {
 		return nil, err
 	}

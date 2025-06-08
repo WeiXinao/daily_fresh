@@ -132,30 +132,28 @@ func (s *Server) Start(ctx context.Context) error {
 		pprof.Register(s.Engine)
 	}
 
+	address := fmt.Sprintf(":%d", s.port)
+	// 因为 tracing 的 middleware 要使用 addr 故在此use
+	s.Use(middlewares.TracingHandler(address))	
+
 	if s.enableMetrics {
 		m := ginmetrics.GetMonitor()
-
 		// +optional set metric path, default /debug/metrics
 		m.SetMetricPath("/metrics")
 		// +optional set request duration, default {0.1, 0.3, 1.2, 5, 10}
 		// used to p95, p99
 		m.SetDuration([]float64{0.1, 0.3, 1.2, 5, 10})
-
 		// set middleware for gin
-		m.Use(s.Engine)
+		m.Use(s)
 	}
 
-	log.Infof("rest server is running on port: %d", s.port)
 	_ = s.SetTrustedProxies(nil)
-	address := fmt.Sprintf(":%d", s.port)
-
-	// 因为 tracing 的 middleware 要使用 addr 故在此初始化
-	s.Use(middlewares.TracingHandler(address))	
-
 	s.server = &http.Server{
 		Addr: address,
 		Handler: s.Engine,
 	}
+
+	log.Infof("rest server is running on port: %d", s.port)
 	err := s.server.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		log.Errorf("fail to start rest server")

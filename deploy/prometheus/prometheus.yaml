@@ -9,14 +9,14 @@ scrape_configs:
         labels:
           instance: prometheus
 
-  - job_name: linux
-    static_configs:
-      - targets: ['192.168.5.52:9100']
-        labels:
-          instance: localhost
+  # - job_name: linux
+  #   static_configs:
+  #     - targets: ['192.168.5.52:9100']
+  #       labels:
+  #         instance: localhost
 
-  - job_name: daily-your-go
+  - job_name: daily_your_go
     static_configs:
-      - targets: ["192.168.5.52:8050"]
+      - targets: ['192.168.5.52:8050']
         labels:
-          instance: daily_your_go_test
+          instance: daily_your_go

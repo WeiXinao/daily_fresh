@@ -2,7 +2,7 @@ package srv
 
 import (
 	"fmt"
-
+	"github.com/WeiXinao/daily_your_go/pkg/log"
 	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
 	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
 	"github.com/WeiXinao/daily_your_go/app/user/srv/controller/user"
@@ -22,7 +22,11 @@ func NewUserRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 	})
 
 	// 有点繁琐 wire, ioc-golang
-	data := db.NewUsers()
+	gdb, err := db.GetDBFactoryOr(cfg.MySQL)
+	if err!= nil {
+		log.Fatal(err.Error())
+	}
+	data := db.NewUsers(gdb)
 	svc := svcv1.NewUserService(data)
 	usrv := user.NewUserServer(svc)
 	
@@ -32,9 +36,5 @@ func NewUserRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 
 	upb.RegisterUserServer(urpcServer.Server, usrv)
 	
-	// r := gin.Default()
-	// upb.RegisterUserServerHTTPServer(usrv, r)
-	// r.Run(":8075")
-
 	return urpcServer, nil
 }

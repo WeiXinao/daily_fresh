@@ -7,6 +7,7 @@ package code
 // init register error codes defines in this source code to `imooc/mxshop/pkg/errors`
 func init() {
 	register(ErrDatabase, 500, "Database error")
+	register(ErrConnectDB, 500, "Init db error")
 	register(ErrEncrypt, 401, "Error occurred while encrypting the user password")
 	register(ErrSignatureInvalid, 401, "Signature is invalid")
 	register(ErrExpired, 401, "Token expired")

@@ -28,6 +28,9 @@ const (
 const (
 	// ErrDatabase - 500: Database error.
 	ErrDatabase int = iota + 100101
+
+	// ErrConnectDB - 500: Init db error.
+	ErrConnectDB
 )
 
 // common: authorization and authentication errors.

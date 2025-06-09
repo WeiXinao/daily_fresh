@@ -22,6 +22,7 @@
 | Identifier | Code | HTTP Code | Description |
 | ---------- | ---- | --------- | ----------- |
 | ErrDatabase | 100101 | 500 | Database error |
+| ErrConnectDB | 100102 | 500 | Init db error |
 | ErrEncrypt | 100201 | 401 | Error occurred while encrypting the user password |
 | ErrSignatureInvalid | 100202 | 401 | Signature is invalid |
 | ErrExpired | 100203 | 401 | Token expired |

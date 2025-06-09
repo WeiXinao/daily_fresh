@@ -30,6 +30,7 @@
 | ErrMissingHeader | 100205 | 401 | The `Authorization` header was empty |
 | ErrPasswordIncorrect | 100206 | 401 | Password was incorrect |
 | ErrPermissionDenied | 100207 | 403 | Permission denied |
+| ErrGenerateTokenFailed | 100208 | 500 | Generate token failed |
 | ErrEncodingFailed | 100301 | 500 | Encoding failed due to an error with the data |
 | ErrDecodingFailed | 100302 | 500 | Decoding failed due to an error with the data |
 | ErrInvalidJSON | 100303 | 500 | Data is not valid JSON |

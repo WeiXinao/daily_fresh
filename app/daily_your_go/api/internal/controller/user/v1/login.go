@@ -1,7 +1,12 @@
 package user
 
 import (
+	"net/http"
+
+	"github.com/WeiXinao/daily_your_go/app/pkg/code"
 	"github.com/WeiXinao/daily_your_go/app/pkg/translator/ginx"
+	"github.com/WeiXinao/daily_your_go/pkg/common/core"
+	"github.com/WeiXinao/daily_your_go/pkg/errors"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"github.com/gin-gonic/gin"
 )
@@ -23,5 +28,21 @@ func (us *userServer) Login(ctx *gin.Context) {
 		ginx.HandleValidatorError(ctx, us.translator, err) 
 	}
 
-	// 密码验证
+	// 验证码验证
+	if !store.Verify(form.CaptchaId, form.Captcha, true) {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"captcha": "验证码错误",
+		})
+	}
+
+	userDTO, err := us.svc.MobileLogin(ctx, form.Mobile, form.Password)
+	if err != nil {
+		core.WriteResponse(ctx, errors.WithCode(code.ErrLoginFailed, "登录失败"), nil)	
+	}
+	ctx.JSON(http.StatusOK, gin.H{
+		"id": userDTO.ID,
+		"nick_name": userDTO.NickName,
+		"token": userDTO.Token,
+		"expired_at": userDTO.ExpiresAt,
+	})
 }

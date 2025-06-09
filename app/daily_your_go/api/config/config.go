@@ -13,6 +13,7 @@ type Config struct {
 	Log      *log.Options              `json:"log" mapstructure:"log"`
 	Server   *options.ServerOptions    `json:"server" mapstructure:"server"`
 	Registry *options.RegisteryOptions `json:"registry" mapstructure:"registry"`
+	Jwt      *options.JwtOptions       `json:"jwt" mapstructure:"jwt"`
 }
 
 func New() *Config {
@@ -20,6 +21,7 @@ func New() *Config {
 		Log:      log.NewOptions(),
 		Server:   options.NewServerOptions(),
 		Registry: options.NewRegistryOptions(),
+		Jwt:      options.NewJwtOptions(),
 	}
 }
 
@@ -28,6 +30,7 @@ func (c *Config) Flags() (fss flag.NamedFlagSets) {
 	c.Log.AddFlags(fss.FlagSet("logs"))
 	c.Server.AddFlags(fss.FlagSet("server"))
 	c.Registry.AddFlags(fss.FlagSet("registry"))
+	c.Jwt.AddFlags(fss.FlagSet("jwt"))
 	return fss
 }
 
@@ -37,5 +40,6 @@ func (c *Config) Validate() []error {
 	errs = append(errs, c.Log.Validate()...)
 	errs = append(errs, c.Server.Validate()...)
 	errs = append(errs, c.Registry.Validate()...)
+	errs = append(errs, c.Jwt.Validate()...)
 	return errs
 }

@@ -55,6 +55,9 @@ const (
 
 	// PermissionDenied - 403: Permission denied.
 	ErrPermissionDenied
+
+	// ErrGenerateTokenFailed - 500: Generate token failed.
+	ErrGenerateTokenFailed
 )
 
 // common: encode/decode errors.

@@ -15,6 +15,7 @@ func init() {
 	register(ErrMissingHeader, 401, "The `Authorization` header was empty")
 	register(ErrPasswordIncorrect, 401, "Password was incorrect")
 	register(ErrPermissionDenied, 403, "Permission denied")
+	register(ErrGenerateTokenFailed, 500, "Generate token failed")
 	register(ErrEncodingFailed, 500, "Encoding failed due to an error with the data")
 	register(ErrDecodingFailed, 500, "Decoding failed due to an error with the data")
 	register(ErrInvalidJSON, 500, "Data is not valid JSON")

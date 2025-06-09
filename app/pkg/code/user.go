@@ -7,4 +7,7 @@ const (
 
 	// ErrUserAlreadyExists - 400: User already exists.
 	ErrUserAlreadyExists 
+
+	// ErrLoginFailed - 500: Login failed.
+	ErrLoginFailed
 )

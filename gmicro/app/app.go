@@ -86,6 +86,7 @@ func (a *App) Run() error {
 	for _, srv := range servers {
 		// 启动 server
 		// 在启动一个 goroutine 去监听是否有 err 产生
+		srv := srv
 		eg.Go(func() error {
 			<-ctx.Done() // wait for stop signal
 

@@ -58,3 +58,62 @@
 2025-05-29 23:59:30.583	[34mINFO[0m	user/list.go:22	GetUserList is called
 2025-05-29 23:59:35.589	[34mINFO[0m	user/list.go:22	GetUserList is called
 2025-05-29 23:59:40.593	[34mINFO[0m	user/list.go:22	GetUserList is called
+2025-06-09 17:26:31.135	[31mFATAL[0m	srv/rpc.go:27	Init db error
+github.com/WeiXinao/daily_your_go/app/user/srv.NewUserRPCServer
+	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/rpc.go:27
+github.com/WeiXinao/daily_your_go/app/user/srv.NewUserApp
+	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/app.go:44
+github.com/WeiXinao/daily_your_go/app/user/srv.run.func1
+	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/app.go:61
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).runCommand
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:276
+github.com/spf13/cobra.(*Command).execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1071
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).Run
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:231
+main.main
+	/root/repos/github.com/WeiXinao/daily_your_go/cmd/user/user.go:15
+runtime.main
+	/root/.g/go/src/runtime/proc.go:272
+2025-06-09 17:29:02.721	[34mINFO[0m	app/app.go:101	start server
+2025-06-09 17:29:02.721	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-09 17:29:04.758	[31mERROR[0m	app/app.go:114	register service error: Unexpected response code: 502 ()
+2025-06-09 17:29:04.758	[31mERROR[0m	srv/app.go:68	run user app error: Unexpected response code: 502 ()
+2025-06-09 17:29:31.769	[34mINFO[0m	app/app.go:101	start server
+2025-06-09 17:29:31.769	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-09 17:42:01.528	[34mINFO[0m	app/app.go:102	start server
+2025-06-09 17:42:01.528	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-09 18:03:52.096	[34mINFO[0m	user/get_user_list.go:17	GetUserList is called
+2025-06-09 18:03:52.112	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:114
+[15.884ms] [rows:1] SELECT count(*) FROM `user` WHERE `user`.`deleted_at` IS NULL
+2025-06-09 18:03:52.116	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:115
+[3.380ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
+2025-06-09 18:03:57.121	[34mINFO[0m	user/get_user_list.go:17	GetUserList is called
+2025-06-09 18:03:57.122	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:114
+[0.912ms] [rows:1] SELECT count(*) FROM `user` WHERE `user`.`deleted_at` IS NULL
+2025-06-09 18:03:57.124	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:115
+[1.385ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
+2025-06-09 18:03:58.994	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-09 18:04:02.130	[34mINFO[0m	user/get_user_list.go:17	GetUserList is called
+2025-06-09 18:04:02.133	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:114
+[2.940ms] [rows:1] SELECT count(*) FROM `user` WHERE `user`.`deleted_at` IS NULL
+2025-06-09 18:04:02.135	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:115
+[1.194ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
+2025-06-09 18:04:04.003	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-09 18:04:07.139	[34mINFO[0m	user/get_user_list.go:17	GetUserList is called
+2025-06-09 18:04:07.140	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:114
+[0.957ms] [rows:1] SELECT count(*) FROM `user` WHERE `user`.`deleted_at` IS NULL
+2025-06-09 18:04:07.142	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:115
+[1.234ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
+2025-06-09 18:04:09.028	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-09 18:04:12.144	[34mINFO[0m	user/get_user_list.go:17	GetUserList is called
+2025-06-09 18:04:12.147	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:114
+[2.768ms] [rows:1] SELECT count(*) FROM `user` WHERE `user`.`deleted_at` IS NULL
+2025-06-09 18:04:12.149	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db/user.go:115
+[1.891ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
+2025-06-09 18:04:13.998	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-09 18:04:19.033	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502

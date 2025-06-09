@@ -5,9 +5,9 @@ import (
 	"github.com/WeiXinao/daily_your_go/pkg/log"
 	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
 	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/controller/user"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/data/v1/db"
-	svcv1 "github.com/WeiXinao/daily_your_go/app/user/srv/service/v1"
+	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/controller/user"
+	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db"
+	svcv1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/service/v1"
 	"github.com/WeiXinao/daily_your_go/gmicro/core/trace"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 )

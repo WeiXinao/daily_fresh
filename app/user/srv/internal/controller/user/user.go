@@ -16,7 +16,7 @@ type userServer struct {
 
 // java 中的 ioc，@Autowire 控制反转 ioc
 // 代码分层，第三方服务，rpc，redis 等等，带来了一定的复杂度
-func NewUserServer(srv srvv1.UserSrv) *userServer {
+func NewUserServer(srv srvv1.UserSrv) upb.UserServer {
 	return &userServer{srv: srv}
 }
 

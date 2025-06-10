@@ -116,6 +116,6 @@ func NewUserServiceClient(r registry.Discovery) upbv1.UserClient {
 	return v1.NewUserClient(conn)
 }
 
-func NewUsers(uc upbv1.UserClient) *users {
+func NewUsers(uc upbv1.UserClient) data.UserData {
 	return &users{uc: uc}
 }

@@ -10,4 +10,7 @@ const (
 
 	// ErrLoginFailed - 500: Login failed.
 	ErrLoginFailed
+
+	// ErrSmsSend - 500: Send sms error.
+	ErrSmsSend
 )

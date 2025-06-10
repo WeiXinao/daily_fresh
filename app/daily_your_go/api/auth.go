@@ -31,6 +31,6 @@ func newJWTAuth(opts *options.JwtOptions) (middlewares.AuthStrategy, error) {
 
 func claimHandlerFunc(ctx *gin.Context) interface{} {
 	claims := ginjwt.ExtractClaims(ctx)
-	ctx.Set(middlewares.KeyUserID, claims[middlewares.KeyUserID])
+	ctx.Set(middlewares.KeyUserID, claims["ID"])
 	return claims[ginjwt.IdentityKey]
 }

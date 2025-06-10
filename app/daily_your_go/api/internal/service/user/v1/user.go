@@ -19,7 +19,7 @@ type UserSrv interface {
 	MobileLogin(ctx context.Context, mobile, pwd string) (*UserDTO, error)
 	Register(ctx context.Context, mobile, pwd, codes string) (*UserDTO, error)
 	Update(ctx context.Context, userDTO *UserDTO) error
-	Get(ctx context.Context, id int64) (*UserDTO, error)
+	Get(ctx context.Context, id uint64) (*UserDTO, error)
 	GetByMobile(ctx context.Context, mobile string) (*UserDTO, error)
 	CheckPassword(ctx context.Context, pwd, encryptedPwd string) (bool, error)
 }
@@ -38,8 +38,12 @@ func (u *UserService) CheckPassword(ctx context.Context, pwd string, encryptedPw
 }
 
 // Get implements UserSrv.
-func (u *UserService) Get(ctx context.Context, id int64) (*UserDTO, error) {
-	panic("unimplemented")
+func (u *UserService) Get(ctx context.Context, id uint64) (*UserDTO, error) {
+	user, err := u.ud.Get(ctx, id)
+	if err != nil {
+		return nil, err	
+	}
+	return &UserDTO{User: user}, nil
 }
 
 // GetByMobile implements UserSrv.

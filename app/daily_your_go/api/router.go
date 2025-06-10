@@ -36,5 +36,6 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 		userGroup.POST("/pwd_login", uc.Login)
 		userGroup.POST("/register", uc.Register)
 		userGroup.GET("/detail", jwtAuth.AuthFunc(), uc.GetUserDetail)
+		userGroup.PUT("/update", jwtAuth.AuthFunc(), uc.UpdateUser)
 	}
 }

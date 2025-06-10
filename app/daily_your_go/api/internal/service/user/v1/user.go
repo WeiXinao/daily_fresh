@@ -137,7 +137,14 @@ func (u *UserService) Register(ctx context.Context, mobile string, pwd, codes st
 
 // Update implements UserSrv.
 func (u *UserService) Update(ctx context.Context, userDTO *UserDTO) error {
-	panic("unimplemented")
+	return u.ud.Update(ctx, &data.User{
+		ID: userDTO.ID,
+		NickName: userDTO.NickName,
+		Password: userDTO.Password,
+		Birthday: userDTO.Birthday,
+		Gender:   userDTO.Gender,
+		Role:     userDTO.Role,
+	})
 }
 
 type UserDTO struct {

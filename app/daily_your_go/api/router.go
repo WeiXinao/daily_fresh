@@ -17,8 +17,14 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 	}
 	us := usersvc.NewUserService(userData, cfg.Jwt)
 	uc := user.NewUserController(g.Translator(), us)
-	ugroup := v1.Group("/user")
+
+	baseGroup := v1.Group("/base")
 	{
-		ugroup.GET("/pwd_login", uc.Login)
+		baseGroup.POST("/captcha", user.GetCaptcha)
+	}
+
+	userGroup := v1.Group("/user")
+	{
+		userGroup.POST("/pwd_login", uc.Login)
 	}
 }

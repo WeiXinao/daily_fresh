@@ -5,8 +5,12 @@ import (
 	"time"
 
 	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
+	v1 "github.com/WeiXinao/daily_your_go/api/user/v1"
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/internal/data"
 	"github.com/WeiXinao/daily_your_go/gmicro/code"
+	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/clientinterceptors"
 	timePkg "github.com/WeiXinao/daily_your_go/pkg/common/time"
 	"github.com/WeiXinao/daily_your_go/pkg/errors"
 	"github.com/jinzhu/copier"
@@ -92,4 +96,26 @@ func (u *users) Update(ctx context.Context, user *data.User) error {
 		return err
 	}
 	return nil
+}
+
+const serviceName = "discovery:///daily-your-go-user-srv"
+
+func NewUserServiceClient(r registry.Discovery) upbv1.UserClient {
+	conn, err := rpcserver.DialInsecure(
+		context.Background(), 
+		rpcserver.WithDiscovery(r),
+		rpcserver.WithClientTimeout(1 * time.Hour),
+		rpcserver.WithEndpoint(serviceName),
+		rpcserver.WithClientUnaryInterceptors(clientinterceptors.UnaryTracingInterceptor),
+	)
+	if err != nil {
+		panic(err)
+	}
+	// defer conn.Close()
+
+	return v1.NewUserClient(conn)
+}
+
+func NewUsers(uc upbv1.UserClient) *users {
+	return &users{uc: uc}
 }

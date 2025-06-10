@@ -7,10 +7,10 @@ import (
 
 type userServer struct {
 	translator ut.Translator
-	svc user.UserService
+	svc user.UserSrv
 }
 
-func NewUserController(trans ut.Translator, svc user.UserService) *userServer {
+func NewUserController(trans ut.Translator, svc user.UserSrv) *userServer {
 	return &userServer{
 		translator: trans,
 		svc: svc,

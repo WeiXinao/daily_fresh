@@ -64,13 +64,13 @@ func (u *UserService) MobileLogin(ctx context.Context, mobile string, pwd string
 	j := gjwt.NewJWT(u.jwtOpts.Key)
 	expiresAt := time.Now().Local().Add(u.jwtOpts.Timeout).Unix()
 	token, err := j.CreateToken(gjwt.CustomClaims{
-		ID: uint(user.ID),
-		NickName: user.NickName,
+		ID:          uint(user.ID),
+		NickName:    user.NickName,
 		AuthorityId: uint(user.Role),
 		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix(), // 签名的生效时间
-			ExpiresAt: expiresAt, 
-			Issuer: u.jwtOpts.Realm,
+			ExpiresAt: expiresAt,
+			Issuer:    u.jwtOpts.Realm,
 		},
 	})
 	if err != nil {
@@ -78,9 +78,9 @@ func (u *UserService) MobileLogin(ctx context.Context, mobile string, pwd string
 	}
 
 	return &UserDTO{
-		User: user,
-		Token: token,
-		ExpiresAt: int64(expiresAt),	
+		User:      user,
+		Token:     token,
+		ExpiresAt: int64(expiresAt),
 	}, nil
 }
 
@@ -97,6 +97,13 @@ func (u *UserService) Update(ctx context.Context, userDTO *UserDTO) error {
 type UserDTO struct {
 	data.User
 
-	Token string `json:"token"`
-	ExpiresAt int64 `json:"expires_at"`
+	Token     string `json:"token"`
+	ExpiresAt int64  `json:"expires_at"`
+}
+
+func NewUserService(ud data.UserData, jwtOpts *options.JwtOptions) *UserService {
+	return &UserService{
+		ud:      ud,
+		jwtOpts: jwtOpts,
+	}
 }

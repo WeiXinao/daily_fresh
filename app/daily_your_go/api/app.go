@@ -2,7 +2,7 @@ package admin
 
 import (
 	"github.com/WeiXinao/daily_your_go/app/pkg/options"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
+	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/config"
 	gapp "github.com/WeiXinao/daily_your_go/gmicro/app"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry/consul"

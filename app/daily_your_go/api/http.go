@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
+	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/config"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver"
 )
 
@@ -13,7 +13,7 @@ func NewAPIHTTPServer(cfg *config.Config) (*restserver.Server, error) {
 	)
 
 	// 配置好路由
-	initRouter(aRestServer)
+	initRouter(aRestServer, cfg)
 
 	return aRestServer, nil
 }

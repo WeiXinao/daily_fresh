@@ -171,3 +171,7 @@ func (s *Server) Stop(ctx context.Context) error {
 	log.Info("rest server stopped")
 	return nil
 }
+
+func (s *Server) Translator() ut.Translator {
+	return s.trans
+}

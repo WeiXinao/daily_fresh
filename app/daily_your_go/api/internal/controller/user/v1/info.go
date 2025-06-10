@@ -1,7 +1,6 @@
 package user
 
 import (
-	"net/http"
 	"time"
 
 	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver/middlewares"

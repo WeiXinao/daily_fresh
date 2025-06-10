@@ -117,3 +117,64 @@ runtime.main
 [1.891ms] [rows:10] SELECT * FROM `user` WHERE `user`.`deleted_at` IS NULL LIMIT 10
 2025-06-09 18:04:13.998	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
 2025-06-09 18:04:19.033	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-10 20:22:49.484	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:22:49.486	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-10 20:22:54.172	[34mINFO[0m	user/get_user_by_mobile.go:13	get user by mobile function called.
+2025-06-10 20:22:54.201	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db/user.go:65 record not found
+[28.110ms] [rows:0] SELECT * FROM `user` WHERE mobile = '13222223210' AND `user`.`deleted_at` IS NULL ORDER BY `user`.`id` LIMIT 1
+2025-06-10 20:22:54.201	[31mERROR[0m	user/get_user_by_mobile.go:16	get user by mobile: 132****3210, error: User not found
+2025-06-10 20:22:56.482	[31mERROR[0m	trace/agent.go:81	[otel] err failed to upload traces; HTTP status code: 502
+2025-06-10 20:27:06.386	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-10 20:27:06.397	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-10 20:27:06.399	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-10 20:27:10.021	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:27:10.021	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-10 20:29:10.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:14.049	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:20.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:20.043	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:30.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:34.043	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:40.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:41.048	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:50.038	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:52.042	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:00.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:02.044	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:10.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:10.571	[34mINFO[0m	user/get_user_by_mobile.go:13	get user by mobile function called.
+2025-06-10 20:30:10.583	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db/user.go:65 record not found
+[11.618ms] [rows:0] SELECT * FROM `user` WHERE mobile = '13222223210' AND `user`.`deleted_at` IS NULL ORDER BY `user`.`id` LIMIT 1
+2025-06-10 20:30:10.584	[31mERROR[0m	user/get_user_by_mobile.go:16	get user by mobile: 132****3210, error: User not found
+2025-06-10 20:30:13.046	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:20.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:24.044	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:30.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:30.042	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:40.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:43.044	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:50.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:50.043	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:00.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:01.043	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:10.038	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:13.043	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:20.040	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:23.046	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:30.039	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:32.045	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:40.038	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:42.042	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:47.233	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-10 20:31:47.238	[31mERROR[0m	app/app.go:155	deregister service error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:47.239	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-10 20:31:47.240	[31mERROR[0m	srv/app.go:68	run user app error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:54.112	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:31:54.112	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-10 20:31:54.117	[31mERROR[0m	app/app.go:115	register service error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:54.117	[31mERROR[0m	srv/app.go:68	run user app error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:33:42.989	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:33:42.989	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-10 20:35:28.622	[34mINFO[0m	user/get_user_by_mobile.go:13	get user by mobile function called.
+2025-06-10 20:35:28.629	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db/user.go:65
+[6.614ms] [rows:1] SELECT * FROM `user` WHERE mobile = '18971423540' AND `user`.`deleted_at` IS NULL ORDER BY `user`.`id` LIMIT 1

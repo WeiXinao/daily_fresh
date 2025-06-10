@@ -17,8 +17,8 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 	smsCtrlr := sms.NewSmsController(smsSvc, g.Translator())
 	baseGroup := v1.Group("/base")
 	{
-		baseGroup.GET("/send_sms", smsCtrlr.SendSms)
-		baseGroup.POST("/captcha", user.GetCaptcha)
+		baseGroup.POST("/send_sms", smsCtrlr.SendSms)
+		baseGroup.GET("/captcha", user.GetCaptcha)
 	}
 
 	userData, err := rpc.GetDataFactoryOr(cfg.Registry)
@@ -27,9 +27,14 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 	}
 	us := usersvc.NewUserService(userData, cfg.Jwt)
 	uc := user.NewUserController(g.Translator(), us)
+	jwtAuth, err := newJWTAuth(cfg.Jwt)
+	if err != nil {
+		panic(err)
+	}
 	userGroup := v1.Group("/user")
 	{
 		userGroup.POST("/pwd_login", uc.Login)
 		userGroup.POST("/register", uc.Register)
+		userGroup.GET("/detail", jwtAuth.AuthFunc(), uc.GetUserDetail)
 	}
 }

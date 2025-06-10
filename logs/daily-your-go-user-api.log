@@ -40,3 +40,375 @@
 2025-06-10 19:33:45.049	[34mINFO[0m	app/app.go:161	start cancel context
 2025-06-10 19:33:45.051	[34mINFO[0m	restserver/server.go:166	rest server is stopping
 2025-06-10 19:33:45.056	[34mINFO[0m	restserver/server.go:171	rest server stopped
+2025-06-10 19:39:27.405	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 19:39:27.405	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 19:39:27.405	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 19:39:27.405	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 19:39:27.405	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:39:27.405	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:39:27.405	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:39:27.415	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:39:27.415	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:39:27.415	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:39:27.430	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-06-10 19:39:27.430	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-06-10 19:39:27.431	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-06-10 19:39:27.431	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-06-10 19:39:27.431	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 19:39:27.432	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 19:42:10.109	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 19:44:32.685	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-10 19:44:32.693	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-10 19:44:32.693	[34mINFO[0m	restserver/server.go:166	rest server is stopping
+2025-06-10 19:44:32.694	[34mINFO[0m	restserver/server.go:171	rest server stopped
+2025-06-10 19:44:36.152	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 19:44:36.152	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 19:44:36.152	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 19:44:36.152	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 19:44:36.152	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:44:36.152	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:44:36.152	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:44:36.156	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:44:36.156	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:44:36.156	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:44:36.169	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-06-10 19:44:36.170	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-06-10 19:44:36.171	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-06-10 19:44:36.172	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 19:44:36.173	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 19:45:36.186	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:45:36.188	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:45:46.186	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:45:48.189	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:45:56.187	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:45:58.190	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:46:03.609	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-10 19:46:03.614	[31mERROR[0m	app/app.go:155	deregister service error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:46:03.614	[34mINFO[0m	restserver/server.go:166	rest server is stopping
+2025-06-10 19:46:03.614	[34mINFO[0m	restserver/server.go:171	rest server stopped
+2025-06-10 19:46:03.614	[31mERROR[0m	api/app.go:90	run api app error: Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 19:46:07.041	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 19:46:07.042	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 19:46:07.042	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 19:46:07.041	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:46:07.042	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:46:07.042	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:46:07.042	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 19:49:16.366	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 19:49:16.366	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 19:49:16.366	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 19:49:16.366	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 19:49:16.366	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:49:16.366	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:49:16.366	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:49:16.368	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:49:16.368	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:49:16.368	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:49:16.379	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 19:49:16.379	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-06-10 19:49:16.379	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-06-10 19:49:16.379	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-06-10 19:49:16.379	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-06-10 19:49:16.380	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-06-10 19:49:16.381	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 19:49:16.383	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 19:51:13.298	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 19:51:58.966	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 19:52:33.828	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-10 19:52:33.836	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-10 19:52:33.836	[34mINFO[0m	restserver/server.go:166	rest server is stopping
+2025-06-10 19:52:43.836	[31mERROR[0m	restserver/server.go:168	rest server shutdown error: context deadline exceeded
+2025-06-10 19:52:43.837	[31mERROR[0m	api/app.go:90	run api app error: context deadline exceeded
+2025-06-10 19:54:35.922	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 19:54:35.922	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 19:54:35.922	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 19:54:35.922	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 19:54:35.922	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:54:35.922	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:54:35.922	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:54:35.926	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 19:54:35.926	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 19:54:35.926	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 19:54:35.936	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.937	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 19:54:35.938	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 19:54:35.939	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 19:54:46.225	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 19:54:58.519	[33mWARN[0m	storage/redis_cluster.go:126	Error trying to get test key: redis: nil
+2025-06-10 19:54:59.913	[33mWARN[0m	storage/redis_cluster.go:126	Error trying to get test key: redis: nil
+2025-06-10 20:00:59.720	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 20:00:59.721	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 20:00:59.720	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:00:59.721	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:00:59.721	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:00:59.721	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 20:00:59.721	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 20:00:59.725	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:00:59.725	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:00:59.725	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:00:59.741	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.742	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:00:59.745	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 20:00:59.745	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 20:19:34.859	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 20:19:55.418	[33mWARN[0m	storage/redis_cluster.go:126	Error trying to get test key: redis: nil
+2025-06-10 20:22:54.166	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"9f8ec506-45f5-11f0-99c2-98fa9b935ca7","name":"daily-your-go-user-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8079"]}]
+2025-06-10 20:23:53.632	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 20:23:53.632	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 20:23:53.632	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 20:23:53.632	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 20:23:53.632	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:23:53.633	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:23:53.633	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:23:53.635	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:23:53.635	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:23:53.636	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:23:53.641	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"9f8ec506-45f5-11f0-99c2-98fa9b935ca7","name":"daily-your-go-user-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8079"]}]
+2025-06-10 20:23:53.646	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:23:53.646	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 20:23:53.647	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 20:27:19.771	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"3adaf79d-45f6-11f0-800d-98fa9b935ca7","name":"daily-your-go-user-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8079"]}]
+2025-06-10 20:27:32.080	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 20:27:32.081	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 20:27:32.081	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 20:27:32.081	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:27:32.081	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:27:32.081	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:27:32.081	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 20:27:32.097	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"3adaf79d-45f6-11f0-800d-98fa9b935ca7","name":"daily-your-go-user-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8079"]}]
+2025-06-10 20:27:32.107	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/gin-gonic/gin.WrapF.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.108	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.109	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.109	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.109	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/gin-gonic/gin.WrapH.func1 (5 handlers)
+
+2025-06-10 20:27:32.110	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 20:27:32.110	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 20:27:32.294	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:27:32.294	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:27:32.294	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:29:02.127	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:02.130	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:12.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:15.131	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:22.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:23.131	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 502 ()
+2025-06-10 20:29:32.129	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:35.133	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:42.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:42.131	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:52.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:52.131	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:29:54.592	[34mINFO[0m	v1/login.go:23	Login is called
+2025-06-10 20:30:05.857	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:07.807	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:09.444	[33mWARN[0m	storage/redis_cluster.go:126	Error trying to get test key: redis: nil
+2025-06-10 20:30:15.201	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:30:15.201	[33mWARN[0m	storage/redis_cluster.go:126	Error trying to get test key: redis: nil
+2025-06-10 20:31:24.323	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:24.326	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:24.330	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:32.129	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:34.134	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:42.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:46.132	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:52.128	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:31:52.130	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 429 (Your IP is issuing too many concurrent connections, please rate limit your calls)
+2025-06-10 20:33:48.832	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-06-10 20:33:48.832	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:33:48.833	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:33:48.833	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:33:48.832	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-06-10 20:33:48.833	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-06-10 20:33:48.833	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-06-10 20:33:48.837	[35mDEBUG[0m	storage/redis_cluster.go:97	Connecting to redis cluster
+2025-06-10 20:33:48.837	[35mDEBUG[0m	storage/redis_cluster.go:185	Creating new Redis connection pool
+2025-06-10 20:33:48.837	[34mINFO[0m	storage/redis_cluster.go:228	--> [REDIS] Creating single-node client
+2025-06-10 20:33:48.847	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"2513af1e-45f7-11f0-979d-98fa9b935ca7","name":"daily-your-go-user-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8079"]}]
+2025-06-10 20:33:48.854	[34mINFO[0m	app/app.go:102	start server
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-06-10 20:33:48.855	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-06-10 20:33:48.856	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_your_go/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-06-10 20:33:48.857	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-06-10 20:33:48.859	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8051
+2025-06-10 20:35:28.620	[34mINFO[0m	v1/login.go:23	Login is called

@@ -34,11 +34,13 @@ func (us *userServer) Login(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"captcha": "验证码错误",
 		})
+		return
 	}
 
 	userDTO, err := us.svc.MobileLogin(ctx, form.Mobile, form.Password)
 	if err != nil {
 		core.WriteResponse(ctx, errors.WithCode(code.ErrLoginFailed, "登录失败"), nil)	
+		return	
 	}
 	ctx.JSON(http.StatusOK, gin.H{
 		"id": userDTO.ID,

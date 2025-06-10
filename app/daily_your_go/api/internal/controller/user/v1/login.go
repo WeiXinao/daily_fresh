@@ -26,6 +26,7 @@ func (us *userServer) Login(ctx *gin.Context) {
 	var form PasswordLoginForm
 	if err := ctx.ShouldBind(&form); err != nil {
 		ginx.HandleValidatorError(ctx, us.translator, err) 
+		return
 	}
 
 	// 验证码验证

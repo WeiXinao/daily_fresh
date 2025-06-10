@@ -1,4 +1,4 @@
-package admin
+package api
 
 import (
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/config"
@@ -30,5 +30,6 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 	userGroup := v1.Group("/user")
 	{
 		userGroup.POST("/pwd_login", uc.Login)
+		userGroup.POST("/register", uc.Register)
 	}
 }

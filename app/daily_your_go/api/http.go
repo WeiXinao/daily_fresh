@@ -1,4 +1,4 @@
-package admin
+package api
 
 import (
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/config"

@@ -13,4 +13,10 @@ const (
 
 	// ErrSmsSend - 500: Send sms error.
 	ErrSmsSend
+
+	// ErrCodeNotExist - 400: Sms code not exist.
+	ErrCodeNotExist
+
+	// ErrCodeIncorrent - 400: Sms code incorrent.
+	ErrCodeIncorrent
 )

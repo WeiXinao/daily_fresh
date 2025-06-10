@@ -1,13 +1,16 @@
 package admin
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/pkg/options"
+	"context"
+
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/config"
+	"github.com/WeiXinao/daily_your_go/app/pkg/options"
 	gapp "github.com/WeiXinao/daily_your_go/gmicro/app"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry/consul"
 	"github.com/WeiXinao/daily_your_go/pkg/app"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_your_go/pkg/storage"
 	"github.com/hashicorp/consul/api"
 )
 
@@ -34,18 +37,38 @@ func NewRegistrar(registry *options.RegisteryOptions) registry.Registrar {
 	return r
 }
 
-func NewApiApp(cfg *config.Config) (*gapp.App, error) {
+func NewAPIApp(cfg *config.Config) (*gapp.App, error) {
 	// 初始化 log
 	log.Init(cfg.Log)
 	defer log.Flush()
 
-	// 实例化服务
+	// 连接 redis
+	redisOpt := cfg.Redis
+	redisConfig := &storage.Config{
+		Host:                  redisOpt.Host,
+		Port:                  redisOpt.Port,
+		Addrs:                 redisOpt.Addrs,
+		MasterName:            redisOpt.MasterName,
+		Username:              redisOpt.Username,
+		Password:              redisOpt.Password,
+		Database:              cfg.Redis.Database,
+		MaxIdle:               redisOpt.MaxIdle,
+		MaxActive:             redisOpt.MaxActive,
+		Timeout:               redisOpt.Timeout,
+		EnableCluster:         redisOpt.EnableCluster,
+		UseSSL:                redisOpt.UseSSL,
+		SSLInsecureSkipVerify: redisOpt.SSLInsecureSkipVerify,
+		EnableTracing:         redisOpt.EnableTracing,
+	}
+	go storage.ConnectToRedis(context.Background(), redisConfig)
+
+	// 实例化 HTTP 服务
 	restServer, err := NewAPIHTTPServer(cfg)
 	if err != nil {
 		return nil, err
 	}
 
-	// 服务注册
+	// 实例化服务注册中心
 	registry := NewRegistrar(cfg.Registry)
 
 	return gapp.New(
@@ -57,7 +80,7 @@ func NewApiApp(cfg *config.Config) (*gapp.App, error) {
 
 func run(cfg *config.Config) app.RunFunc {
 	return func(basename string) error {
-		apiApp, err := NewApiApp(cfg)
+		apiApp, err := NewAPIApp(cfg)
 		if err != nil {
 			return err
 		}

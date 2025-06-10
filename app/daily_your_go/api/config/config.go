@@ -15,6 +15,7 @@ type Config struct {
 	Registry *options.RegisteryOptions `json:"registry" mapstructure:"registry"`
 	Jwt      *options.JwtOptions       `json:"jwt" mapstructure:"jwt"`
 	Sms      *options.SmsOptions       `json:"sms" mapstructure:"sms"`
+	Redis    *options.RedisOptions     `json:"redis" mapstructure:"redis"`
 }
 
 func New() *Config {
@@ -23,6 +24,8 @@ func New() *Config {
 		Server:   options.NewServerOptions(),
 		Registry: options.NewRegistryOptions(),
 		Jwt:      options.NewJwtOptions(),
+		Sms:      options.NewSmsOptions(),
+		Redis:    options.NewRedisOptions(),
 	}
 }
 
@@ -33,6 +36,7 @@ func (c *Config) Flags() (fss flag.NamedFlagSets) {
 	c.Registry.AddFlags(fss.FlagSet("registry"))
 	c.Jwt.AddFlags(fss.FlagSet("jwt"))
 	c.Sms.AddFlags(fss.FlagSet("sms"))
+	c.Redis.AddFlags(fss.FlagSet("redis"))
 	return fss
 }
 
@@ -44,5 +48,6 @@ func (c *Config) Validate() []error {
 	errs = append(errs, c.Registry.Validate()...)
 	errs = append(errs, c.Jwt.Validate()...)
 	errs = append(errs, c.Sms.Validate()...)
+	errs = append(errs, c.Jwt.Validate()...)
 	return errs
 }

@@ -1,11 +1,15 @@
 package sms
 
 import (
+	"time"
+
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/internal/service/sms/v1"
 	"github.com/WeiXinao/daily_your_go/app/pkg/code"
+	baseCode "github.com/WeiXinao/daily_your_go/gmicro/code"
 	"github.com/WeiXinao/daily_your_go/app/pkg/translator/ginx"
 	"github.com/WeiXinao/daily_your_go/pkg/common/core"
 	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_your_go/pkg/storage"
 	"github.com/gin-gonic/gin"
 	ut "github.com/go-playground/universal-translator"
 )
@@ -45,5 +49,12 @@ func (sc *SmsController) SendSms(ctx *gin.Context) {
 	}
 
 	// 4. redis 将验证码保存起来
+	rstore := storage.RedisCluster{}
+	err = rstore.SetKey(ctx, sendSmsForm.Mobile, smsCode, 5*time.Minute)
+	if err != nil {
+		core.WriteResponse(ctx, errors.WithCode(code.ErrSmsSend, err.Error()), nil)
+		return
+	}
 
+	core.WriteResponse(ctx, errors.WithCode(baseCode.ErrSuccess, "发送成功"), nil)
 }

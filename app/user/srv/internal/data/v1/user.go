@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/WeiXinao/daily_your_go/app/pkg/gormx"
 	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
-	"gorm.io/gorm"
 )
 
 /*
@@ -29,13 +29,6 @@ type UserStore interface {
 	Update(ctx context.Context, user *UserDO) error
 }
 
-type BaseModel struct {
-	ID int32 `gorm:"primaryKey"`
-	CreatedAt time.Time `gorm:"column:add_time"`
-	UpdatedAt time.Time `gorm:"column:update_time"`
-	DeletedAt gorm.DeletedAt
-}
-
 /*
 1. 密文 2. 密文不可反解
 	1. 对称加密
@@ -44,7 +37,7 @@ type BaseModel struct {
 	密码如果不可以反解，用户找回密码
 */
 type UserDO struct {
-	BaseModel
+	gormx.BaseModel
 	Mobile string `gorm:"index:idx_mobile;unique;type:varchar(11);not null"`
 	Password string `gorm:"type:varchar(100);not null"`
 	NickName string `gorm:"type:varchar(20)"`

@@ -158,8 +158,14 @@ func (g *goods) Update(ctx context.Context, goods *do.GoodsDO) error {
 	return nil
 }
 
-func NewGoods(db *gorm.DB) data.GoodsStore {
+func newGoods(factory *mysqlFactory) data.GoodsStore {
 	return &goods{
-		db: db,
+		db: factory.db,
 	}
 }
+
+// func NewGoods(db *gorm.DB) data.GoodsStore {
+// 	return &goods{
+// 		db: db,
+// 	}
+// }

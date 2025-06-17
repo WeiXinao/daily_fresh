@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1"
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/domain/do"
 	v1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
@@ -32,4 +33,10 @@ func (b *banners) List(ctx context.Context, opts v1.ListMeta) (*do.BannerDOList,
 // Update implements data.BannerStore.
 func (b *banners) Update(ctx context.Context, txn *gorm.DB, bannner *do.BannerDO) error {
 	panic("unimplemented")
+}
+
+func newBanners(factory *mysqlFactory) data.BannerStore {
+	return &banners{
+		db: factory.db,
+	}
 }

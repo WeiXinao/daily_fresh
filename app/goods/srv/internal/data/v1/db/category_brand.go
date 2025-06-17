@@ -33,3 +33,9 @@ func (c *categoryBrands) List(ctx context.Context, opts v1.ListMeta, orderby []s
 func (c *categoryBrands) Update(ctx context.Context, txn *gorm.DB, gcb *do.GoodsCategoryBrandDO) error {
 	panic("unimplemented")
 }
+
+func newCategoryBrands(factory *mysqlFactory) data.GoodsCategoryBrandStore {
+	return &categoryBrands{
+		db: factory.db,
+	}
+}

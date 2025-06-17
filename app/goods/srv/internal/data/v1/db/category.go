@@ -83,8 +83,14 @@ func (c *categorys) Update(ctx context.Context, category *do.CategoryDO) error {
 	return nil
 }
 
-func NewCategory(db *gorm.DB) *categorys {
+// func NewCategory(db *gorm.DB) *categorys {
+// 	return &categorys{
+// 		db: db,
+// 	}
+// }
+
+func newCategory(factory *mysqlFactory) *categorys {
 	return &categorys{
-		db: db,
+		db: factory.db,
 	}
 }

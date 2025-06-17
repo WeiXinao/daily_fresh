@@ -25,7 +25,7 @@ func NewGoodsRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 
 	// 构建，繁琐 - 工厂模式
 	// 有点繁琐 wire, ioc-golang
-	gdb, err := db.GetDBFactoryOr(cfg.MySQL)
+	dataFactory, err := db.GetDBFactoryOr(cfg.MySQL)
 	if err!= nil {
 		log.Fatal(err.Error())
 	}
@@ -37,11 +37,8 @@ func NewGoodsRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 
 	// ioc 框架 wire，ioc-golang（处于早期，有坑）
 	// 基于工厂方法
-	data := db.NewGoods(gdb)
-	categoryData := db.NewCategory(gdb)
-	brandsData := db.NewBrands(gdb)
 	searchData := es.NewGoods(esClient)
-	svc := svcv1.NewGoodsService(data, categoryData, searchData ,brandsData)
+	svc := svcv1.NewGoodsService(dataFactory ,searchData)
 	gctrl := controller.NewGoodServer(svc)
 
 	rpcAddr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)

@@ -38,18 +38,18 @@ type GoodsSvc interface {
 var _ GoodsSvc = (*goodsService)(nil)
 
 type goodsService struct {
-	data         data.GoodsStore
-	categoryData data.CategoryStore
+	// 工厂
+	dataFactory data.DataFactory
+	// data         data.GoodsStore
+	// categoryData data.CategoryStore
 	searchData   search.GoodsStore
-	brandData    data.BrandsStore
+	// brandData    data.BrandsStore
 }
 
-func NewGoodsService(data data.GoodsStore, categoryData data.CategoryStore, searchData search.GoodsStore, brandData data.BrandsStore) GoodsSvc {
+func NewGoodsService(dataFactory data.DataFactory, searchData search.GoodsStore) GoodsSvc {
 	return &goodsService{
-		data:         data,
-		categoryData: categoryData,
 		searchData:   searchData,
-		brandData:    brandData,
+		dataFactory: dataFactory,
 	}
 }
 
@@ -92,12 +92,12 @@ func (g *goodsService) Create(ctx context.Context, goods *dto.GoodsDTO) error {
 	/*
 		数据写 mysql，然后写 es
 	*/
-	_, err := g.brandData.Get(ctx, uint64(goods.BrandsID))
+	_, err := g.dataFactory.Brands().Get(ctx, uint64(goods.BrandsID))
 	if err != nil {
 		return err
 	}
 
-	_, err = g.categoryData.Get(ctx, uint64(goods.CategoryID))
+	_, err = g.dataFactory.Categorys().Get(ctx, uint64(goods.CategoryID))
 	if err != nil {
 		return err
 	}
@@ -105,7 +105,7 @@ func (g *goodsService) Create(ctx context.Context, goods *dto.GoodsDTO) error {
 	// 之前的入 es 的方案是给 gorm 添加 aftercreate
 	// 分布式事务，异构数据库的事务，基于可靠消息最终一致性\
 	// 比较重的方案：每次都要发送一个事务消息
-	txn := g.data.Begin() // 非常小心
+	txn := g.dataFactory.Begin() // 非常小心
 	defer func() {        // 很重要
 		if err := recover(); err != nil {
 			txn.Rollback()
@@ -113,7 +113,7 @@ func (g *goodsService) Create(ctx context.Context, goods *dto.GoodsDTO) error {
 			return
 		}
 	}()
-	err = g.data.CreateInTxn(ctx, txn, &goods.GoodsDO)
+	err = g.dataFactory.Goods().CreateInTxn(ctx, txn, &goods.GoodsDO)
 	if err != nil {
 		log.Errorf("data.CreateInTxn err: %v", err)
 		txn.Rollback()
@@ -152,7 +152,7 @@ func (g *goodsService) Delete(ctx context.Context, id uint64) error {
 
 // Get implements GoodsSvc.
 func (g *goodsService) Get(ctx context.Context, id uint64) (*dto.GoodsDTO, error) {
-	goods, err := g.data.Get(ctx, id)
+	goods, err := g.dataFactory.Goods().Get(ctx, id)
 	if err != nil {
 		log.Errorf("data.Get err: %v", err)
 		return nil, err
@@ -178,7 +178,7 @@ func retrieveIDs(category *do.CategoryDO) []uint64 {
 func (g *goodsService) List(ctx context.Context, opts metav1.ListMeta, req *proto.GoodsFilterRequest, orderby []string) (*dto.GoodsDTOList, error) {
 	searchReq := search.GoodsFilterRequest{GoodsFilterRequest: req}
 	if req.TopCategory > 0 {
-		category, err := g.categoryData.Get(ctx, uint64(searchReq.TopCategory))
+		category, err := g.dataFactory.Categorys().Get(ctx, uint64(searchReq.TopCategory))
 		if err != nil {
 			log.Errorf("categoryData.Get err: %v", err)
 			return nil, err
@@ -196,7 +196,7 @@ func (g *goodsService) List(ctx context.Context, opts metav1.ListMeta, req *prot
 	goodsIds := slice.Map(goodsList.Items, func(idx int, src *do.GoodsSearchDO) uint64 {
 		return uint64(src.ID)
 	})
-	goods, err := g.data.ListByID(ctx, goodsIds, orderby)
+	goods, err := g.dataFactory.Goods().ListByID(ctx, goodsIds, orderby)
 	if err != nil {
 		return nil, err
 	}

@@ -39,8 +39,14 @@ func (b *brands) Update(ctx context.Context, txn *gorm.DB, brands *do.BrandsDO) 
 	panic("unimplemented")
 }
 
-func NewBrands(db *gorm.DB) *brands {
+func newBrands(factory *mysqlFactory) *brands {
 	return &brands{
-		db: db,
+		db: factory.db,
 	}
 }
+
+// func NewBrands(db *gorm.DB) *brands {
+// 	return &brands{
+// 		db: db,
+// 	}
+// }

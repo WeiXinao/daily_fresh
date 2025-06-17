@@ -7,4 +7,10 @@ const (
 
 	// ErrCategoryNotFound - 404: Category not found.
 	ErrCategoryNotFound 
+
+	// ErrEsUnmarshal - 500: ES unmarshal error.
+	ErrEsUnmarshal
+
+	// ErrElasticSearch - 500: ElasticSearch error.
+	ErrElasticsearch
 )

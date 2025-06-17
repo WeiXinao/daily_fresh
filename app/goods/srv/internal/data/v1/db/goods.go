@@ -11,13 +11,50 @@ import (
 	baseCode "github.com/WeiXinao/daily_your_go/gmicro/code"
 	v1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
 	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/olivere/elastic/v7"
 	"gorm.io/gorm"
 )
 
 var _ data.GoodsStore = (*goods)(nil)
 
 type goods struct {
-	db *gorm.DB
+	db       *gorm.DB
+	esClient *elastic.Client
+}
+
+// Begin implements data.GoodsStore.
+func (g *goods) Begin() *gorm.DB {
+	return g.db.Begin()
+}
+
+// CreateInTxn implements data.GoodsStore.
+func (g *goods) CreateInTxn(ctx context.Context, txn *gorm.DB, goods *do.GoodsDO) error {
+	goods.CreatedAt = time.Now()
+	goods.UpdatedAt = time.Now()
+	err := txn.Create(goods).Error
+	if err != nil {
+		return errors.WithCode(baseCode.ErrDatabase, err.Error())
+	}
+	return nil
+}
+
+// DeleteInTxn implements data.GoodsStore.
+func (g *goods) DeleteInTxn(ctx context.Context, txn *gorm.DB, id uint64) error {
+	err := txn.Where("id = ?", id).Delete(&do.GoodsDO{}).Error
+	if err != nil {
+		return errors.WithCode(baseCode.ErrDatabase, err.Error())
+	}
+	return nil
+}
+
+// UpdateInTxn implements data.GoodsStore.
+func (g *goods) UpdateInTxn(ctx context.Context, txn *gorm.DB, goods *do.GoodsDO) error {
+	goods.UpdatedAt = time.Now()
+	err := txn.Model(&do.GoodsDO{}).Updates(goods).Error
+	if err != nil {
+		return errors.WithCode(baseCode.ErrDatabase, err.Error())
+	}
+	return nil
 }
 
 // List implements data.GoodsStore.
@@ -28,7 +65,7 @@ func (g *goods) List(ctx context.Context, orderby []string, opts v1.ListMeta) (*
 	if opts.PageSize <= 0 {
 		limit = 10
 	}
-	
+
 	if opts.Page <= 0 {
 		opts.Page = 1
 	}
@@ -55,7 +92,7 @@ func (g *goods) List(ctx context.Context, orderby []string, opts v1.ListMeta) (*
 }
 
 // Create implements data.GoodsStore.
-func (g *goods) Create(ctx context.Context, txn *gorm.DB, goods *do.GoodsDO) error {
+func (g *goods) Create(ctx context.Context, goods *do.GoodsDO) error {
 	goods.CreatedAt = time.Now()
 	goods.UpdatedAt = time.Now()
 	err := g.db.Create(goods).Error
@@ -67,7 +104,7 @@ func (g *goods) Create(ctx context.Context, txn *gorm.DB, goods *do.GoodsDO) err
 
 // Delete implements data.GoodsStore.
 func (g *goods) Delete(ctx context.Context, id uint64) error {
-	err :=  g.db.Where("id = ?", id).Delete(&do.GoodsDO{}).Error
+	err := g.db.Where("id = ?", id).Delete(&do.GoodsDO{}).Error
 	if err != nil {
 		return errors.WithCode(baseCode.ErrDatabase, err.Error())
 	}
@@ -112,11 +149,17 @@ func (g *goods) ListByID(ctx context.Context, ids []uint64, orderby []string) (*
 }
 
 // Update implements data.GoodsStore.
-func (g *goods) Update(ctx context.Context, txn *gorm.DB, goods *do.GoodsDO) error {
+func (g *goods) Update(ctx context.Context, goods *do.GoodsDO) error {
 	goods.UpdatedAt = time.Now()
 	err := g.db.Model(&do.GoodsDO{}).Updates(goods).Error
 	if err != nil {
 		return errors.WithCode(baseCode.ErrDatabase, err.Error())
 	}
 	return nil
+}
+
+func NewGoods(db *gorm.DB) data.GoodsStore {
+	return &goods{
+		db: db,
+	}
 }

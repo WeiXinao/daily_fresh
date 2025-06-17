@@ -10,6 +10,7 @@ import (
 
 
 type	BrandsStore interface {
+	Get(ctx context.Context, id uint64) (*do.BrandsDO, error)
 	List(ctx context.Context, opts metav1.ListMeta, orderby []string) (*do.BrandsDOList, error)
 	Create(ctx context.Context, txn *gorm.DB, brands *do.BrandsDO) error
 	Update(ctx context.Context, txn *gorm.DB, brands *do.BrandsDO) error

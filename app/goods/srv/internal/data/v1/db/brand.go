@@ -14,6 +14,11 @@ type brands struct {
 	db *gorm.DB
 }
 
+// Get implements data.BrandsStore.
+func (b *brands) Get(ctx context.Context, id uint64) (*do.BrandsDO, error) {
+	panic("unimplemented")
+}
+
 // Create implements data.BrandsStore.
 func (b *brands) Create(ctx context.Context, txn *gorm.DB, brands *do.BrandsDO) error {
 	panic("unimplemented")

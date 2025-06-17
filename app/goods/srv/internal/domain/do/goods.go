@@ -2,6 +2,88 @@ package do
 
 import "github.com/WeiXinao/daily_your_go/app/pkg/gormx"
 
+type GoodsSearchDO struct {
+	ID         int32 `json:"id"`
+	CategoryID int32 `json:"category_id"`
+	BrandsID   int32 `json:"brand_id"`
+	OnSale     bool  `json:"on_sale"`
+	ShipFree   bool  `json:"ship_free"`
+	IsNew      bool  `json:"is_new"`
+	IsHot      bool  `json:"is_hot"`
+
+	Name        string  `json:"name"`
+	ClickNum    int32   `json:"click_num"`
+	SoldNum     int32   `json:"sold_num"`
+	FavNum      int32   `json:"fav_num"`
+	MarketPrice float32 `json:"market_price"`
+	ShopPrice   float32 `json:"shop_price"`
+	GoodsBrief  string  `json:"goods_brief"`
+}
+
+func (GoodsSearchDO) GetIndexName() string {
+	return "goods"	
+}
+
+func (GoodsSearchDO) GetMapping() string {
+	goodsMapping := `
+	{
+		"mappings" : {
+			"properties" : {
+				"brands_id" : {
+					"type" : "integer"
+				},
+				"category_id" : {
+					"type" : "integer"
+				},
+				"click_num" : {
+					"type" : "integer"
+				},
+				"fav_num" : {
+					"type" : "integer"
+				},
+				"id" : {
+					"type" : "integer"
+				},
+				"is_hot" : {
+					"type" : "boolean"
+				},
+				"is_new" : {
+					"type" : "boolean"
+				},
+				"market_price" : {
+					"type" : "float"
+				},
+				"name" : {
+					"type" : "text",
+					"analyzer":"ik_max_word"
+				},
+				"goods_brief" : {
+					"type" : "text",
+					"analyzer":"ik_max_word"
+				},
+				"on_sale" : {
+					"type" : "boolean"
+				},
+				"ship_free" : {
+					"type" : "boolean"
+				},
+				"shop_price" : {
+					"type" : "float"
+				},
+				"sold_num" : {
+					"type" : "long"
+				}
+			}
+		}
+	}`
+	return goodsMapping
+}
+
+type GoodsSearchDOList struct {
+	TotalCount int64 `json:"totalCount,omitempty"`
+	Items []*GoodsSearchDO `json:"items"`
+}
+
 type GoodsDO struct {
 	gormx.BaseModel
 

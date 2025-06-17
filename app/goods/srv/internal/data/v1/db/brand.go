@@ -38,3 +38,9 @@ func (b *brands) List(ctx context.Context, opts v1.ListMeta, orderby []string) (
 func (b *brands) Update(ctx context.Context, txn *gorm.DB, brands *do.BrandsDO) error {
 	panic("unimplemented")
 }
+
+func NewBrands(db *gorm.DB) *brands {
+	return &brands{
+		db: db,
+	}
+}

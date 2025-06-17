@@ -3,10 +3,11 @@ package srv
 import (
 	"fmt"
 
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data_search/v1/es"
+	gpb "github.com/WeiXinao/daily_your_go/api/goods/v1"
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/config"
+	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/controller/v1"
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db"
+	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data_search/v1/es"
 	svcv1 "github.com/WeiXinao/daily_your_go/app/goods/srv/internal/service/v1"
 	"github.com/WeiXinao/daily_your_go/gmicro/core/trace"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
@@ -22,26 +23,31 @@ func NewGoodsRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 		Sampler: cfg.Telemtry.Sampler,
 	})
 
+	// 构建，繁琐 - 工厂模式
 	// 有点繁琐 wire, ioc-golang
 	gdb, err := db.GetDBFactoryOr(cfg.MySQL)
 	if err!= nil {
 		log.Fatal(err.Error())
 	}
 
-	c, err := es.GetSearchFactoryOr(cfg.Es)
+	esClient, err := es.GetSearchFactoryOr(cfg.Es)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
+	// ioc 框架 wire，ioc-golang（处于早期，有坑）
+	// 基于工厂方法
 	data := db.NewGoods(gdb)
-	svc := svcv1.NewUserService(data)
-	usrv := user.NewUserServer(svc)
-	
+	categoryData := db.NewCategory(gdb)
+	brandsData := db.NewBrands(gdb)
+	searchData := es.NewGoods(esClient)
+	svc := svcv1.NewGoodsService(data, categoryData, searchData ,brandsData)
+	gctrl := controller.NewGoodServer(svc)
 
 	rpcAddr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
-	urpcServer := rpcserver.NewServer(rpcserver.WithAddress(rpcAddr))	
+	grpcServer := rpcserver.NewServer(rpcserver.WithAddress(rpcAddr))	
 
-	upb.RegisterUserServer(urpcServer.Server, usrv)
+	gpb.RegisterGoodsServer(grpcServer.Server, gctrl)
 	
-	return urpcServer, nil
+	return grpcServer, nil
 }

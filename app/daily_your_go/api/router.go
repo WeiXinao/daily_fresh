@@ -21,11 +21,11 @@ func initRouter(g *restserver.Server, cfg *config.Config) {
 		baseGroup.GET("/captcha", user.GetCaptcha)
 	}
 
-	userData, err := rpc.GetDataFactoryOr(cfg.Registry)
+	dataFactory, err := rpc.GetDataFactoryOr(cfg.Registry)
 	if err != nil {
 		panic(err)
 	}
-	us := usersvc.NewUserService(userData, cfg.Jwt)
+	us := usersvc.NewUserService(dataFactory.User(), cfg.Jwt)
 	uc := user.NewUserController(g.Translator(), us)
 	jwtAuth, err := newJWTAuth(cfg.Jwt)
 	if err != nil {

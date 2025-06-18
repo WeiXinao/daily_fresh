@@ -28,14 +28,17 @@ func GetDBFactoryOr(mysqlOpts *options.MysqlOptions) (data.DataFactory, error) {
 		return nil, errors.WithCode(code.ErrConnectDB, "failed to get mysql store factory")
 	}
 
-	var err error
+	var (
+		err error
+		db *gorm.DB
+	)
 	once.Do(func() {
 		logger := gormx.New( gormx.Config{
 			LogLevel: logger.LogLevel(mysqlOpts.LogLevel),
 		})
 
 		dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", mysqlOpts.Username, mysqlOpts.Password, mysqlOpts.Host, mysqlOpts.Port, mysqlOpts.Database)
-		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 			NamingStrategy: schema.NamingStrategy{
 				SingularTable: true,
 			},

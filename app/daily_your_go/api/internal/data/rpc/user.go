@@ -98,14 +98,14 @@ func (u *users) Update(ctx context.Context, user *data.User) error {
 	return nil
 }
 
-const serviceName = "discovery:///daily-your-go-user-srv"
+const userServiceName = "discovery:///daily-your-go-user-srv"
 
 func NewUserServiceClient(r registry.Discovery) upbv1.UserClient {
 	conn, err := rpcserver.DialInsecure(
 		context.Background(), 
 		rpcserver.WithDiscovery(r),
 		rpcserver.WithClientTimeout(1 * time.Hour),
-		rpcserver.WithEndpoint(serviceName),
+		rpcserver.WithEndpoint(userServiceName),
 		rpcserver.WithClientUnaryInterceptors(clientinterceptors.UnaryTracingInterceptor),
 	)
 	if err != nil {

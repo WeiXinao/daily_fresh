@@ -2,8 +2,14 @@ package controller
 
 import (
 	"context"
+
 	proto "github.com/WeiXinao/daily_your_go/api/goods/v1"
+	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/domain/dto"
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/service/v1"
+	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/xkit/slice"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 
@@ -104,9 +110,28 @@ func (g *goodServer) GetSubCategory(context.Context, *proto.CategoryListRequest)
 	panic("unimplemented")
 }
 
+
 // GoodsList implements proto.GoodsServer.
-func (g *goodServer) GoodsList(context.Context, *proto.GoodsFilterRequest) (*proto.GoodsListResponse, error) {
-	panic("unimplemented")
+func (g *goodServer) GoodsList(ctx context.Context, req *proto.GoodsFilterRequest) (*proto.GoodsListResponse, error) {
+	rsp, err := g.srv.Goods().List(
+		ctx,
+		metav1.ListMeta{ 
+			Page: int(req.Pages),
+			PageSize: int(req.PagePerNums),
+		},
+		req,
+		[]string{},
+	)
+	if err != nil {
+		log.Errorf("get goods list error: %v", err)
+		return nil, errors.ToGrpcError(err)
+	}
+	return &proto.GoodsListResponse{
+		Total: int32(rsp.TotalCount),
+		Data: slice.Map(rsp.Items, func(idx int, src *dto.GoodsDTO) *proto.GoodsInfoResponse {
+			return ModelToResponse(src)
+		}),
+	}, nil
 }
 
 // UpdateBanner implements proto.GoodsServer.
@@ -136,4 +161,35 @@ func (g *goodServer) UpdateGoods(context.Context, *proto.CreateGoodsInfo) (*empt
 
 func NewGoodServer(srv service.ServiceFactory) *goodServer {
 	return &goodServer{srv: srv}
+}
+
+func ModelToResponse(goods *dto.GoodsDTO) *proto.GoodsInfoResponse {
+	return &proto.GoodsInfoResponse{
+		Id:              goods.ID,
+		CategoryId:      goods.CategoryID,
+		Name:            goods.Name,
+		GoodsSn:         goods.GoodsSn,
+		ClickNum:        goods.ClickNum,
+		SoldNum:         goods.SoldNum,
+		FavNum:          goods.FavNum,
+		MarketPrice:     goods.MarketPrice,
+		ShopPrice:       goods.ShopPrice,
+		GoodsBrief:      goods.GoodsBrief,
+		ShipFree:        goods.ShipFree,
+		GoodsFrontImage: goods.GoodsFrontImage,
+		IsNew:           goods.IsNew,
+		IsHot:           goods.IsHot,
+		OnSale:          goods.OnSale,
+		DescImages:      goods.DescImages,
+		Images:          goods.Images,
+		Category: &proto.CategoryBriefInfoResponse{
+			Id:   goods.Category.ID,
+			Name: goods.Category.Name,
+		},
+		Brand: &proto.BrandInfoResponse{
+			Id:   goods.Brands.ID,
+			Name: goods.Brands.Name,
+			Logo: goods.Brands.Logo,
+		},
+	}
 }

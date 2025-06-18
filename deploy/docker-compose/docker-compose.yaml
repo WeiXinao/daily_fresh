@@ -138,35 +138,35 @@ services:
       - xpack.security.http.ssl.enabled=false
       - xpack.security.transport.ssl.enabled=false
     privileged: true
-  # kibana:
-  #   image: kibana:8.6.0
-  #   container_name: kibana
-  #   depends_on:
-  #     - es
-  #   environment:
-  #     SERVER_NAME: kibana
-  #     SERVER_HOST: "0.0.0.0"
-  #     ELASTICSEARCH_HOSTS: http://es:9200
-  #   ports:
-  #     - 5601:5601
-  # logstash:
-  #   image: logstash:8.6.0
-  #   container_name: logstash
-  #   volumes:
-  #     - ${LOGSTASH_DIR}/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-  #     - ${LOGSTASH_DIR}/logstash.yml:/usr/share/logstash/config/logstash.yml
-  #     - ${LOGSTASH_DIR}/log/:/home/public/
-  #   ports:
-  #     - '5044:5044'
-  #     - '50000:50000/tcp'
-  #     - '50000:50000/udp'
-  #     - '9600:9600'
-  #   environment:
-  #     LS_JAVA_OPTS: -Xms1024m -Xmx1024m
-  #     TZ: Asia/Shanghai
-  #     MONITORING_ENABLED: false
-  #   depends_on:
-  #     - es
+  kibana:
+    image: kibana:8.6.0
+    container_name: kibana
+    depends_on:
+      - es
+    environment:
+      SERVER_NAME: kibana
+      SERVER_HOST: "0.0.0.0"
+      ELASTICSEARCH_HOSTS: http://es:9200
+    ports:
+      - 5601:5601
+  logstash:
+    image: logstash:8.6.0
+    container_name: logstash
+    volumes:
+      - ${LOGSTASH_DIR}/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ${LOGSTASH_DIR}/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ${LOGSTASH_DIR}/log/:/home/public/
+    ports:
+      - '5044:5044'
+      - '50000:50000/tcp'
+      - '50000:50000/udp'
+      - '9600:9600'
+    environment:
+      LS_JAVA_OPTS: -Xms1024m -Xmx1024m
+      TZ: Asia/Shanghai
+      MONITORING_ENABLED: false
+    depends_on:
+      - es
   # mongodb:
   #   image: mongo:6.0
   #   container_name: mymongo

@@ -29,6 +29,9 @@ func NewEsClient(opts *EsOptions) (*elastic.Client, error) {
 		elastic.SetInfoLog(esLog(func(format string, v ...interface{}) {
 			log.Infof("ELASTIC " + format, v...)
 		})),
+		elastic.SetTraceLog(esLog(func(format string, v ...interface{}) {
+			log.Debugf("ELASTIC " + format, v...)
+		})),
 		elastic.SetURL(fmt.Sprintf("http://%s:%s", opts.Host, opts.Port)),
 		elastic.SetSniff(false),
 	)

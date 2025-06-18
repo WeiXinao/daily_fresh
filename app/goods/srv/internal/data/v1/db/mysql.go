@@ -5,10 +5,10 @@ import (
 	"sync"
 
 	"github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1"
+	"github.com/WeiXinao/daily_your_go/app/pkg/gormx"
 	"github.com/WeiXinao/daily_your_go/app/pkg/options"
 	"github.com/WeiXinao/daily_your_go/gmicro/code"
 	"github.com/WeiXinao/daily_your_go/pkg/errors"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -30,7 +30,7 @@ func GetDBFactoryOr(mysqlOpts *options.MysqlOptions) (data.DataFactory, error) {
 
 	var err error
 	once.Do(func() {
-		logger := logger.New(log.StdInfoLogger(), logger.Config{
+		logger := gormx.New( gormx.Config{
 			LogLevel: logger.LogLevel(mysqlOpts.LogLevel),
 		})
 

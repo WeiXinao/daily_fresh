@@ -50,7 +50,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// protoc -I . -I ../../../third_party --go_out=. --go-grpc_out=. --gin_out=. user.proto
+// protoc -I . -I ../../../third_party --go_out=. --go-grpc_out=. --gin_out=. goods.proto
 type GoodsClient interface {
 	// 商品接口
 	GoodsList(ctx context.Context, in *GoodsFilterRequest, opts ...grpc.CallOption) (*GoodsListResponse, error)
@@ -338,7 +338,7 @@ func (c *goodsClient) UpdateCategoryBrand(ctx context.Context, in *CategoryBrand
 // All implementations must embed UnimplementedGoodsServer
 // for forward compatibility.
 //
-// protoc -I . -I ../../../third_party --go_out=. --go-grpc_out=. --gin_out=. user.proto
+// protoc -I . -I ../../../third_party --go_out=. --go-grpc_out=. --gin_out=. goods.proto
 type GoodsServer interface {
 	// 商品接口
 	GoodsList(context.Context, *GoodsFilterRequest) (*GoodsListResponse, error)

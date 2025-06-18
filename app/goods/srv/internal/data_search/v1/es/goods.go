@@ -84,7 +84,7 @@ func (g *goods) Search(ctx context.Context, req *search.GoodsFilterRequest) (*do
 	switch {
 	case req.PagePerNums > 100:
 		req.PagePerNums = 100
-	case req.PagePerNums < 0:
+	case req.PagePerNums <= 0:
 		req.PagePerNums = 10
 	}
 
@@ -92,7 +92,7 @@ func (g *goods) Search(ctx context.Context, req *search.GoodsFilterRequest) (*do
 	res, err := g.esClient.Search().
 		Index(do.GoodsSearchDO{}.GetIndexName()).
 		Query(q).
-		From(int(req.Pages - 1  * req.PagePerNums)).
+		From(int((req.Pages - 1) * req.PagePerNums)).
 		Size(int(req.PagePerNums)).
 		Do(ctx)
 	if err != nil {

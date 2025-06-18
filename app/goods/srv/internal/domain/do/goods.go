@@ -110,6 +110,10 @@ type GoodsDO struct {
 	GoodsFrontImage string `gorm:"type:varchar(200);not null;comment:'商品封面图片'"`
 }
 
+func (GoodsDO) TableName() string {
+	return "goods"	
+}
+
 type GoodsDOList struct {
 	TotalCount int64 `json:"totalCount"`
 	Items []*GoodsDO `json:"items"`

@@ -5,3 +5,335 @@
 2025-06-18 15:16:42.372	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
 2025-06-18 15:16:46.730	[34mINFO[0m	app/app.go:102	start server
 2025-06-18 15:16:46.730	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 15:46:21.314	[31mERROR[0m	serverinterceptors/crashinterceptor.go:22	unimplemented
+
+goroutine 1132 [running]:
+runtime/debug.Stack()
+	/root/.g/go/src/runtime/debug/stack.go:26 +0x5e
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.UnaryCrashInterceptor.func1({0x1117360, 0x15402f0})
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:22 +0x1d
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.handleCrash(0x1401b68)
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:30 +0x34
+panic({0x1117360?, 0x15402f0?})
+	/root/.g/go/src/runtime/panic.go:791 +0x132
+go.opentelemetry.io/otel/sdk/trace.(*recordingSpan).End.deferwrap1()
+	/root/go/pkg/mod/go.opentelemetry.io/otel/sdk@v1.36.0/trace/span.go:467 +0x25
+go.opentelemetry.io/otel/sdk/trace.(*recordingSpan).End(0xc00023fc20, {0x0, 0x0, 0xc0004ad500?})
+	/root/go/pkg/mod/go.opentelemetry.io/otel/sdk@v1.36.0/trace/span.go:506 +0xb7b
+panic({0x1117360?, 0x15402f0?})
+	/root/.g/go/src/runtime/panic.go:791 +0x132
+github.com/WeiXinao/daily_your_go/app/goods/srv/internal/controller/v1.(*goodServer).GoodsList(0x1e64590?, {0x13270a0?, 0x0?}, 0xc0005f34d8?)
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/controller/v1/goods.go:109 +0x25
+github.com/WeiXinao/daily_your_go/api/goods/v1._Goods_GoodsList_Handler.func1({0x1551290?, 0xc000459320?}, {0x12ec0a0?, 0xc000592a80?})
+	/root/repos/github.com/WeiXinao/daily_your_go/api/goods/v1/goods_grpc.pb.go:491 +0xce
+go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc.UnaryServerInterceptor.func1({0x1551290, 0xc0001cc510}, {0x12ec0a0, 0xc000592a80}, 0xc000124460, 0xc0006865d0)
+	/root/go/pkg/mod/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.54.0/interceptor.go:316 +0x592
+google.golang.org/grpc.getChainUnaryHandler.func1({0x1551290, 0xc0001cc510}, {0x12ec0a0, 0xc000592a80})
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1217 +0xb2
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.UnaryCrashInterceptor({0x1551290?, 0xc0001cc510?}, {0x12ec0a0?, 0xc000592a80?}, 0xc000124460?, 0xc0006865d0?)
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:25 +0x73
+google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1({0x1551290, 0xc0001cc510}, {0x12ec0a0, 0xc000592a80}, 0xc000124460, 0x80?)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1208 +0x85
+github.com/WeiXinao/daily_your_go/api/goods/v1._Goods_GoodsList_Handler({0x13270a0, 0xc00051c140}, {0x1551290, 0xc0001cc510}, 0xc0002b0300, 0xc0005186e0)
+	/root/repos/github.com/WeiXinao/daily_your_go/api/goods/v1/goods_grpc.pb.go:493 +0x143
+google.golang.org/grpc.(*Server).processUnaryRPC(0xc00052e200, {0x1551290, 0xc00021de00}, 0xc000113680, 0xc0001ccd20, 0x1e83dc0, 0x0)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1405 +0x103b
+google.golang.org/grpc.(*Server).handleStream(0xc00052e200, {0x1551c68, 0xc0005fe340}, 0xc000113680)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1815 +0xbaa
+google.golang.org/grpc.(*Server).serveStreams.func2.1()
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1035 +0x7f
+created by google.golang.org/grpc.(*Server).serveStreams.func2 in goroutine 1131
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1046 +0x125
+
+2025-06-18 15:48:25.480	[31mERROR[0m	serverinterceptors/crashinterceptor.go:22	unimplemented
+
+goroutine 1200 [running]:
+runtime/debug.Stack()
+	/root/.g/go/src/runtime/debug/stack.go:26 +0x5e
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.UnaryCrashInterceptor.func1({0x1117360, 0x15402f0})
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:22 +0x1d
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.handleCrash(0x1401b68)
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:30 +0x34
+panic({0x1117360?, 0x15402f0?})
+	/root/.g/go/src/runtime/panic.go:791 +0x132
+go.opentelemetry.io/otel/sdk/trace.(*recordingSpan).End.deferwrap1()
+	/root/go/pkg/mod/go.opentelemetry.io/otel/sdk@v1.36.0/trace/span.go:467 +0x25
+go.opentelemetry.io/otel/sdk/trace.(*recordingSpan).End(0xc00023fc20, {0x0, 0x0, 0xc000320540?})
+	/root/go/pkg/mod/go.opentelemetry.io/otel/sdk@v1.36.0/trace/span.go:506 +0xb7b
+panic({0x1117360?, 0x15402f0?})
+	/root/.g/go/src/runtime/panic.go:791 +0x132
+github.com/WeiXinao/daily_your_go/app/goods/srv/internal/controller/v1.(*goodServer).GoodsList(0x1e64590?, {0x13270a0?, 0x0?}, 0xc00055f4d8?)
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/controller/v1/goods.go:109 +0x25
+github.com/WeiXinao/daily_your_go/api/goods/v1._Goods_GoodsList_Handler.func1({0x1551290?, 0xc00036aab0?}, {0x12ec0a0?, 0xc00024bc20?})
+	/root/repos/github.com/WeiXinao/daily_your_go/api/goods/v1/goods_grpc.pb.go:491 +0xce
+go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc.UnaryServerInterceptor.func1({0x1551290, 0xc00036a870}, {0x12ec0a0, 0xc00024bc20}, 0xc000518c40, 0xc000012cd8)
+	/root/go/pkg/mod/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.54.0/interceptor.go:316 +0x592
+google.golang.org/grpc.getChainUnaryHandler.func1({0x1551290, 0xc00036a870}, {0x12ec0a0, 0xc00024bc20})
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1217 +0xb2
+github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors.UnaryCrashInterceptor({0x1551290?, 0xc00036a870?}, {0x12ec0a0?, 0xc00024bc20?}, 0xc000518c40?, 0xc000012cd8?)
+	/root/repos/github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/serverinterceptors/crashinterceptor.go:25 +0x73
+google.golang.org/grpc.NewServer.chainUnaryServerInterceptors.chainUnaryInterceptors.func1({0x1551290, 0xc00036a870}, {0x12ec0a0, 0xc00024bc20}, 0xc000518c40, 0x80?)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1208 +0x85
+github.com/WeiXinao/daily_your_go/api/goods/v1._Goods_GoodsList_Handler({0x13270a0, 0xc00051c140}, {0x1551290, 0xc00036a870}, 0xc0001c3500, 0xc0005186e0)
+	/root/repos/github.com/WeiXinao/daily_your_go/api/goods/v1/goods_grpc.pb.go:493 +0x143
+google.golang.org/grpc.(*Server).processUnaryRPC(0xc00052e200, {0x1551290, 0xc00036a720}, 0xc00024bbc0, 0xc0001ccd20, 0x1e83dc0, 0x0)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1405 +0x103b
+google.golang.org/grpc.(*Server).handleStream(0xc00052e200, {0x1551c68, 0xc0004fc4e0}, 0xc00024bbc0)
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1815 +0xbaa
+google.golang.org/grpc.(*Server).serveStreams.func2.1()
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1035 +0x7f
+created by google.golang.org/grpc.(*Server).serveStreams.func2 in goroutine 1211
+	/root/go/pkg/mod/google.golang.org/grpc@v1.72.1/server.go:1046 +0x125
+
+2025-06-18 15:51:20.244	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 15:51:20.270	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 15:51:20.274	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 15:51:24.473	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 15:51:24.473	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 15:51:52.033	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 15:55:00.475	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 15:55:00.483	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 15:55:00.484	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 15:55:04.301	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 15:55:04.301	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 15:55:12.324	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 15:55:12.324	[31mERROR[0m	v1/goods.go:126	get goods list error: An internal server error occurred
+2025-06-18 15:58:38.775	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 15:58:38.784	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 15:58:38.784	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 15:58:42.403	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 15:58:42.403	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 15:59:09.641	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+73
+{"from":1,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":0}
+0
+
+
+
+2025-06-18 15:59:09.650	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 400 Bad Request
+Connection: close
+Content-Type: application/json;charset=utf-8
+X-Elastic-Product: Elasticsearch
+
+{"error":{"root_cause":[{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods"}],"type":"search_phase_execution_exception","reason":"all shards failed","phase":"query","grouped":true,"failed_shards":[{"shard":0,"index":"goods","node":"6BnO8UeXQ6KQaIzquoTjlg","reason":{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods","caused_by":{"type":"null_pointer_exception","reason":"Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null"}}}]},"status":400}
+
+2025-06-18 15:59:09.651	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 15:59:09.651	[31mERROR[0m	v1/goods.go:126	get goods list error: An internal server error occurred
+2025-06-18 16:02:50.897	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 16:02:50.904	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 16:02:50.904	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 16:02:53.806	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 16:02:53.806	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 16:04:34.002	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+75
+{"from":-9,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-18 16:04:34.012	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 400 Bad Request
+Connection: close
+Content-Type: application/json;charset=utf-8
+X-Elastic-Product: Elasticsearch
+
+{"error":{"root_cause":[{"type":"illegal_argument_exception","reason":"[from] parameter cannot be negative but was [-9]"}],"type":"illegal_argument_exception","reason":"[from] parameter cannot be negative but was [-9]"},"status":400}
+
+2025-06-18 16:04:34.013	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 16:04:34.013	[31mERROR[0m	v1/goods.go:126	get goods list error: An internal server error occurred
+2025-06-18 16:05:13.078	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 16:05:13.085	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 16:05:13.085	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 16:05:17.401	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 16:05:17.401	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 16:05:23.702	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+75
+{"from":10,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-18 16:05:23.711	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 400 Bad Request
+Connection: close
+Content-Type: application/json;charset=utf-8
+X-Elastic-Product: Elasticsearch
+
+{"error":{"root_cause":[{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods"}],"type":"search_phase_execution_exception","reason":"all shards failed","phase":"query","grouped":true,"failed_shards":[{"shard":0,"index":"goods","node":"6BnO8UeXQ6KQaIzquoTjlg","reason":{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods","caused_by":{"type":"null_pointer_exception","reason":"Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null"}}}]},"status":400}
+
+2025-06-18 16:05:23.711	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 16:05:23.711	[31mERROR[0m	v1/goods.go:126	get goods list error: An internal server error occurred
+2025-06-18 16:06:22.713	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 16:06:22.721	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 16:06:22.721	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 16:06:25.232	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 16:06:25.232	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 16:06:34.044	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+74
+{"from":0,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-18 16:06:34.051	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 400 Bad Request
+Connection: close
+Content-Type: application/json;charset=utf-8
+X-Elastic-Product: Elasticsearch
+
+{"error":{"root_cause":[{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods"}],"type":"search_phase_execution_exception","reason":"all shards failed","phase":"query","grouped":true,"failed_shards":[{"shard":0,"index":"goods","node":"6BnO8UeXQ6KQaIzquoTjlg","reason":{"type":"query_shard_exception","reason":"failed to create query: Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null","index_uuid":"ropfBbHIQCGeQiIu5ikxGg","index":"goods","caused_by":{"type":"null_pointer_exception","reason":"Cannot invoke \"org.wltea.analyzer.dic.DictSegment.match(char[], int, int)\" because \"org.wltea.analyzer.dic.Dictionary.singleton._StopWords\" is null"}}}]},"status":400}
+
+2025-06-18 16:06:34.051	[31mERROR[0m	v1/goods.go:193	searchData.Search err: An internal server error occurred
+2025-06-18 16:06:34.051	[31mERROR[0m	v1/goods.go:126	get goods list error: An internal server error occurred
+2025-06-18 16:12:26.219	[31mERROR[0m	db/es.go:27	ELASTIC elastic: http://192.168.5.52:9200 is dead
+2025-06-18 16:14:52.132	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+74
+{"from":0,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-18 16:14:52.204	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 200 OK
+Connection: close
+Content-Type: application/json
+X-Elastic-Product: Elasticsearch
+
+{"took":5,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":24,"relation":"eq"},"max_score":13.800074,"hits":[{"_index":"goods","_id":"451","_score":13.800074,"_source":{"id":451,"category_id":135492,"brand_id":622,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":180,"sold_num":493,"fav_num":314,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"470","_score":13.800074,"_source":{"id":470,"category_id":135492,"brand_id":760,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":468,"sold_num":558,"fav_num":1000,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"494","_score":13.800074,"_source":{"id":494,"category_id":135492,"brand_id":936,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":951,"sold_num":594,"fav_num":182,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"467","_score":10.906847,"_source":{"id":467,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果","click_num":788,"sold_num":418,"fav_num":89,"market_price":19.9,"shop_price":19.9,"goods_brief":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果"}},{"_index":"goods","_id":"482","_score":10.730337,"_source":{"id":482,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果","click_num":505,"sold_num":299,"fav_num":100,"market_price":44.9,"shop_price":44.9,"goods_brief":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果"}},{"_index":"goods","_id":"492","_score":10.55945,"_source":{"id":492,"category_id":130366,"brand_id":770,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果","click_num":467,"sold_num":157,"fav_num":411,"market_price":178,"shop_price":178,"goods_brief":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果"}},{"_index":"goods","_id":"441","_score":8.206867,"_source":{"id":441,"category_id":130366,"brand_id":628,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":71,"sold_num":123,"fav_num":239,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"452","_score":8.206867,"_source":{"id":452,"category_id":130366,"brand_id":658,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":58,"sold_num":292,"fav_num":301,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"481","_score":4.22369,"_source":{"id":481,"category_id":135475,"brand_id":984,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）","click_num":306,"sold_num":309,"fav_num":812,"market_price":19.9,"shop_price":19.9,"goods_brief":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）"}},{"_index":"goods","_id":"427","_score":4.02015,"_source":{"id":427,"category_id":135475,"brand_id":1056,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜","click_num":773,"sold_num":212,"fav_num":737,"market_price":29.8,"shop_price":29.8,"goods_brief":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜"}}]}}
+
+2025-06-18 16:14:52.206	[34mINFO[0m	db/es.go:30	ELASTIC POST http://192.168.5.52:9200/goods/_search [status:200, request:0.082s]
+2025-06-18 16:14:52.454	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:136 Error 1146 (42S02): Table 'mxshop_goods_srv.goods_do' doesn't exist
+[206.304ms] [rows:0] SELECT count(*) FROM `goods_do` WHERE `goods_do`.`deleted_at` IS NULL
+2025-06-18 16:14:52.457	[31mERROR[0m	v1/goods.go:126	get goods list error: Database error
+2025-06-18 16:17:12.847	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 16:17:12.870	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 16:17:12.872	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 16:17:17.660	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 16:17:17.660	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 16:17:24.457	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+74
+{"from":0,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-18 16:17:24.471	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 200 OK
+Connection: close
+Content-Type: application/json
+X-Elastic-Product: Elasticsearch
+
+{"took":6,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":24,"relation":"eq"},"max_score":13.800074,"hits":[{"_index":"goods","_id":"451","_score":13.800074,"_source":{"id":451,"category_id":135492,"brand_id":622,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":180,"sold_num":493,"fav_num":314,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"470","_score":13.800074,"_source":{"id":470,"category_id":135492,"brand_id":760,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":468,"sold_num":558,"fav_num":1000,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"494","_score":13.800074,"_source":{"id":494,"category_id":135492,"brand_id":936,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":951,"sold_num":594,"fav_num":182,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"467","_score":10.906847,"_source":{"id":467,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果","click_num":788,"sold_num":418,"fav_num":89,"market_price":19.9,"shop_price":19.9,"goods_brief":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果"}},{"_index":"goods","_id":"482","_score":10.730337,"_source":{"id":482,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果","click_num":505,"sold_num":299,"fav_num":100,"market_price":44.9,"shop_price":44.9,"goods_brief":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果"}},{"_index":"goods","_id":"492","_score":10.55945,"_source":{"id":492,"category_id":130366,"brand_id":770,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果","click_num":467,"sold_num":157,"fav_num":411,"market_price":178,"shop_price":178,"goods_brief":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果"}},{"_index":"goods","_id":"441","_score":8.206867,"_source":{"id":441,"category_id":130366,"brand_id":628,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":71,"sold_num":123,"fav_num":239,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"452","_score":8.206867,"_source":{"id":452,"category_id":130366,"brand_id":658,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":58,"sold_num":292,"fav_num":301,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"481","_score":4.22369,"_source":{"id":481,"category_id":135475,"brand_id":984,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）","click_num":306,"sold_num":309,"fav_num":812,"market_price":19.9,"shop_price":19.9,"goods_brief":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）"}},{"_index":"goods","_id":"427","_score":4.02015,"_source":{"id":427,"category_id":135475,"brand_id":1056,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜","click_num":773,"sold_num":212,"fav_num":737,"market_price":29.8,"shop_price":29.8,"goods_brief":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜"}}]}}
+
+2025-06-18 16:17:24.471	[34mINFO[0m	db/es.go:30	ELASTIC POST http://192.168.5.52:9200/goods/_search [status:200, request:0.014s]
+2025-06-18 16:17:24.534	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:136
+[61.419ms] [rows:1] SELECT count(*) FROM `goods` WHERE `goods`.`deleted_at` IS NULL
+2025-06-18 16:17:24.550	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[8.251ms] [rows:9] SELECT * FROM `brands` WHERE `brands`.`id` IN (1056,628,622,658,614,760,984,770,936) AND `brands`.`deleted_at` IS NULL
+2025-06-18 16:17:24.557	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[6.558ms] [rows:3] SELECT * FROM `category` WHERE `category`.`id` IN (135475,130366,135492) AND `category`.`deleted_at` IS NULL
+2025-06-18 16:17:24.557	[34mINFO[0m	gorm@v1.30.0/callbacks.go:134	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[23.339ms] [rows:10] SELECT * FROM `goods` WHERE `goods`.`deleted_at` IS NULL AND id in (451,470,494,467,482,492,441,452,481,427)
+2025-06-19 00:12:57.477	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-19 00:12:57.524	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-19 00:12:57.530	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-19 00:13:17.101	[34mINFO[0m	app/app.go:102	start server
+2025-06-19 00:13:17.102	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-19 00:13:27.971	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+74
+{"from":0,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-19 00:13:28.116	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 200 OK
+Connection: close
+Content-Type: application/json
+X-Elastic-Product: Elasticsearch
+
+{"took":60,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":24,"relation":"eq"},"max_score":13.800074,"hits":[{"_index":"goods","_id":"451","_score":13.800074,"_source":{"id":451,"category_id":135492,"brand_id":622,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":180,"sold_num":493,"fav_num":314,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"470","_score":13.800074,"_source":{"id":470,"category_id":135492,"brand_id":760,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":468,"sold_num":558,"fav_num":1000,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"494","_score":13.800074,"_source":{"id":494,"category_id":135492,"brand_id":936,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":951,"sold_num":594,"fav_num":182,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"467","_score":10.906847,"_source":{"id":467,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果","click_num":788,"sold_num":418,"fav_num":89,"market_price":19.9,"shop_price":19.9,"goods_brief":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果"}},{"_index":"goods","_id":"482","_score":10.730337,"_source":{"id":482,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果","click_num":505,"sold_num":299,"fav_num":100,"market_price":44.9,"shop_price":44.9,"goods_brief":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果"}},{"_index":"goods","_id":"492","_score":10.55945,"_source":{"id":492,"category_id":130366,"brand_id":770,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果","click_num":467,"sold_num":157,"fav_num":411,"market_price":178,"shop_price":178,"goods_brief":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果"}},{"_index":"goods","_id":"441","_score":8.206867,"_source":{"id":441,"category_id":130366,"brand_id":628,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":71,"sold_num":123,"fav_num":239,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"452","_score":8.206867,"_source":{"id":452,"category_id":130366,"brand_id":658,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":58,"sold_num":292,"fav_num":301,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"481","_score":4.22369,"_source":{"id":481,"category_id":135475,"brand_id":984,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）","click_num":306,"sold_num":309,"fav_num":812,"market_price":19.9,"shop_price":19.9,"goods_brief":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）"}},{"_index":"goods","_id":"427","_score":4.02015,"_source":{"id":427,"category_id":135475,"brand_id":1056,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜","click_num":773,"sold_num":212,"fav_num":737,"market_price":29.8,"shop_price":29.8,"goods_brief":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜"}}]}}
+
+2025-06-19 00:13:28.117	[34mINFO[0m	db/es.go:30	ELASTIC POST http://192.168.5.52:9200/goods/_search [status:200, request:0.147s]
+2025-06-19 00:13:28.182	[34mINFO[0m	gormx/gmicro_logger.go:100	[62.594ms] [rows:1] SELECT count(*) FROM `goods` WHERE `goods`.`deleted_at` IS NULL
+2025-06-19 00:13:28.202	[34mINFO[0m	gormx/gmicro_logger.go:100	[4.992ms] [rows:9] SELECT * FROM `brands` WHERE `brands`.`id` IN (1056,628,622,658,614,760,984,770,936) AND `brands`.`deleted_at` IS NULL
+2025-06-19 00:13:28.206	[34mINFO[0m	gormx/gmicro_logger.go:100	[3.502ms] [rows:3] SELECT * FROM `category` WHERE `category`.`id` IN (135475,130366,135492) AND `category`.`deleted_at` IS NULL
+2025-06-19 00:13:28.206	[34mINFO[0m	gormx/gmicro_logger.go:100	[24.413ms] [rows:10] SELECT * FROM `goods` WHERE `goods`.`deleted_at` IS NULL AND id in (451,470,494,467,482,492,441,452,481,427)
+2025-06-19 00:25:45.448	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-19 00:25:45.454	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-19 00:25:45.455	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-19 00:25:49.919	[34mINFO[0m	app/app.go:102	start server
+2025-06-19 00:25:49.919	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-19 00:26:00.396	[35mDEBUG[0m	db/es.go:33	ELASTIC POST /goods/_search HTTP/1.1
+Host: 192.168.5.52:9200
+User-Agent: elastic/7.0.32 (linux-amd64)
+Transfer-Encoding: chunked
+Accept: application/json
+Content-Type: application/json
+Accept-Encoding: gzip
+
+74
+{"from":0,"query":{"bool":{"must":{"multi_match":{"fields":["name","goods_brief"],"query":"猕猴桃"}}}},"size":10}
+0
+
+
+
+2025-06-19 00:26:00.420	[35mDEBUG[0m	db/es.go:33	ELASTIC HTTP/1.1 200 OK
+Connection: close
+Content-Type: application/json
+X-Elastic-Product: Elasticsearch
+
+{"took":11,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":24,"relation":"eq"},"max_score":13.800074,"hits":[{"_index":"goods","_id":"451","_score":13.800074,"_source":{"id":451,"category_id":135492,"brand_id":622,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":180,"sold_num":493,"fav_num":314,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"470","_score":13.800074,"_source":{"id":470,"category_id":135492,"brand_id":760,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":468,"sold_num":558,"fav_num":1000,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"494","_score":13.800074,"_source":{"id":494,"category_id":135492,"brand_id":936,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果","click_num":951,"sold_num":594,"fav_num":182,"market_price":17.9,"shop_price":17.9,"goods_brief":"绿美鲜城 陕西绿心猕猴桃奇异果大果 翠香时令猕猴桃 京东生鲜 新鲜水果 绿心 5斤大果"}},{"_index":"goods","_id":"467","_score":10.906847,"_source":{"id":467,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果","click_num":788,"sold_num":418,"fav_num":89,"market_price":19.9,"shop_price":19.9,"goods_brief":"四川蒲江 红心猕猴桃 12个装 精品中果 单果约70-90g 生鲜 新鲜水果"}},{"_index":"goods","_id":"482","_score":10.730337,"_source":{"id":482,"category_id":130366,"brand_id":614,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果","click_num":505,"sold_num":299,"fav_num":100,"market_price":44.9,"shop_price":44.9,"goods_brief":"四川蒲江 红心猕猴桃22个板盒装 精品奇异果 单果80-100g 生鲜新鲜水果"}},{"_index":"goods","_id":"492","_score":10.55945,"_source":{"id":492,"category_id":130366,"brand_id":770,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果","click_num":467,"sold_num":157,"fav_num":411,"market_price":178,"shop_price":178,"goods_brief":"【京东生鲜速运】新西兰进口佳沛金果22只礼盒单果135-145g新鲜奇异果猕猴桃水果"}},{"_index":"goods","_id":"441","_score":8.206867,"_source":{"id":441,"category_id":130366,"brand_id":628,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":71,"sold_num":123,"fav_num":239,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"452","_score":8.206867,"_source":{"id":452,"category_id":130366,"brand_id":658,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)","click_num":58,"sold_num":292,"fav_num":301,"market_price":19.9,"shop_price":19.9,"goods_brief":"【顺丰速发第2件9.9元】四川蒲江红心猕猴桃15颗单果约70-90g奇异果孕妇新鲜水果当季弥猴桃 15个装（单约70g-90g)"}},{"_index":"goods","_id":"481","_score":4.22369,"_source":{"id":481,"category_id":135475,"brand_id":984,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）","click_num":306,"sold_num":309,"fav_num":812,"market_price":19.9,"shop_price":19.9,"goods_brief":"【现货黄桃大果】新鲜黄桃桃子应季新鲜水果当季黄金油桃5斤装 水蜜桃甜桃蟠桃黄桃水果整箱礼盒装送礼 4颗普通装（单果200-250g，约2斤左右）"}},{"_index":"goods","_id":"427","_score":4.02015,"_source":{"id":427,"category_id":135475,"brand_id":1056,"on_sale":true,"ship_free":true,"is_new":false,"is_hot":false,"name":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜","click_num":773,"sold_num":212,"fav_num":737,"market_price":29.8,"shop_price":29.8,"goods_brief":"【京东速运】桃小蒙鲜食黄桃 黄肉水蜜桃 蒙阴黄金毛桃4.5斤 新鲜水果桃子 京东生鲜"}}]}}
+
+2025-06-19 00:26:00.420	[34mINFO[0m	db/es.go:30	ELASTIC POST http://192.168.5.52:9200/goods/_search [status:200, request:0.024s]
+2025-06-19 00:26:00.435	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:136
+[12.999ms] [rows:1] SELECT count(*) FROM `goods` WHERE `goods`.`deleted_at` IS NULL
+2025-06-19 00:26:00.444	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[2.009ms] [rows:9] SELECT * FROM `brands` WHERE `brands`.`id` IN (1056,628,622,658,614,760,984,770,936) AND `brands`.`deleted_at` IS NULL
+2025-06-19 00:26:00.447	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[1.848ms] [rows:3] SELECT * FROM `category` WHERE `category`.`id` IN (135475,130366,135492) AND `category`.`deleted_at` IS NULL
+2025-06-19 00:26:00.448	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
+[12.093ms] [rows:10] SELECT * FROM `goods` WHERE `goods`.`deleted_at` IS NULL AND id in (451,470,494,467,482,492,441,452,481,427)

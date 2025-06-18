@@ -39,6 +39,15 @@
       "mode": "auto",
       "cwd": "${workspaceFolder}",
       "program": "${workspaceFolder}/app/user/client/client.go",
-    }
+    },
+    {
+      "name": "goods server",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/cmd/goods/goods.go",
+      "args": ["-c", "${workspaceFolder}/configs/goods/srv.yaml"],
+    },
   ]
 }

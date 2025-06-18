@@ -1,0 +1,7 @@
+2025-06-18 15:08:14.982	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 15:08:14.982	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-18 15:16:42.362	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-18 15:16:42.371	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-18 15:16:42.372	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-18 15:16:46.730	[34mINFO[0m	app/app.go:102	start server
+2025-06-18 15:16:46.730	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017

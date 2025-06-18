@@ -11,7 +11,7 @@ var _ proto.GoodsServer = (*goodServer)(nil)
 
 type goodServer struct {
 	proto.UnimplementedGoodsServer
-	srv service.GoodsSvc
+	srv service.ServiceFactory
 }
 
 // BannerList implements proto.GoodsServer.
@@ -134,6 +134,6 @@ func (g *goodServer) UpdateGoods(context.Context, *proto.CreateGoodsInfo) (*empt
 	panic("unimplemented")
 }
 
-func NewGoodServer(srv service.GoodsSvc) *goodServer {
+func NewGoodServer(srv service.ServiceFactory) *goodServer {
 	return &goodServer{srv: srv}
 }

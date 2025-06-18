@@ -40,15 +40,16 @@ var _ GoodsSvc = (*goodsService)(nil)
 type goodsService struct {
 	// 工厂
 	dataFactory data.DataFactory
+	searchFactory search.SearchFactory
 	// data         data.GoodsStore
 	// categoryData data.CategoryStore
-	searchData   search.GoodsStore
+	// searchData   search.GoodsStore
 	// brandData    data.BrandsStore
 }
 
-func NewGoodsService(dataFactory data.DataFactory, searchData search.GoodsStore) GoodsSvc {
+func newGoodsService(dataFactory data.DataFactory, searchFactory search.SearchFactory) GoodsSvc {
 	return &goodsService{
-		searchData:   searchData,
+		searchFactory: searchFactory,
 		dataFactory: dataFactory,
 	}
 }
@@ -136,7 +137,7 @@ func (g *goodsService) Create(ctx context.Context, goods *dto.GoodsDTO) error {
 		ShopPrice:   goods.ShopPrice,
 		GoodsBrief:  goods.GoodsBrief,
 	}
-	err = g.searchData.Create(ctx, &goodsSearch) // 这个接口如果超时了
+	err = g.searchFactory.Goods().Create(ctx, &goodsSearch) // 这个接口如果超时了
 	if err != nil {
 		txn.Rollback()
 		return err
@@ -187,7 +188,7 @@ func (g *goodsService) List(ctx context.Context, opts metav1.ListMeta, req *prot
 		searchReq.CategoryIDs = slice.Map(ids, func(idx int, src uint64) any { return src })
 	}
 
-	goodsList, err := g.searchData.Search(ctx, &searchReq)
+	goodsList, err := g.searchFactory.Goods().Search(ctx, &searchReq)
 	if err != nil {
 		log.Errorf("searchData.Search err: %v", err)
 		return nil, err

@@ -30,16 +30,15 @@ func NewGoodsRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
 		log.Fatal(err.Error())
 	}
 
-	esClient, err := es.GetSearchFactoryOr(cfg.Es)
+	searchFactory, err := es.GetSearchFactoryOr(cfg.Es)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
 	// ioc 框架 wire，ioc-golang（处于早期，有坑）
 	// 基于工厂方法
-	searchData := es.NewGoods(esClient)
-	svc := svcv1.NewGoodsService(dataFactory ,searchData)
-	gctrl := controller.NewGoodServer(svc)
+	svcFactory := svcv1.NewServiceFactory(dataFactory ,searchFactory)
+	gctrl := controller.NewGoodServer(svcFactory)
 
 	rpcAddr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
 	grpcServer := rpcserver.NewServer(rpcserver.WithAddress(rpcAddr))	

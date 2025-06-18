@@ -127,8 +127,14 @@ func (g *goods) Update(ctx context.Context, goods *do.GoodsSearchDO) error {
 	return nil
 }
 
-func NewGoods(esClient *elastic.Client) *goods {
+// func NewGoods(esClient *elastic.Client) *goods {
+// 	return &goods{
+// 		esClient: esClient,
+// 	}
+// }
+
+func newGoods(dataSearch *dataSearch) *goods {
 	return &goods{
-		esClient: esClient,
+		esClient: dataSearch.esClient,
 	}
 }

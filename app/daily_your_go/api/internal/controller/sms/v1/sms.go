@@ -3,10 +3,11 @@ package sms
 import (
 	"time"
 
+	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/internal/service"
 	"github.com/WeiXinao/daily_your_go/app/daily_your_go/api/internal/service/sms/v1"
 	"github.com/WeiXinao/daily_your_go/app/pkg/code"
-	baseCode "github.com/WeiXinao/daily_your_go/gmicro/code"
 	"github.com/WeiXinao/daily_your_go/app/pkg/translator/ginx"
+	baseCode "github.com/WeiXinao/daily_your_go/gmicro/code"
 	"github.com/WeiXinao/daily_your_go/pkg/common/core"
 	"github.com/WeiXinao/daily_your_go/pkg/errors"
 	"github.com/WeiXinao/daily_your_go/pkg/storage"
@@ -15,13 +16,13 @@ import (
 )
 
 type SmsController struct {
-	srv sms.SmsSrv
+	sf service.ServiceFactory
 	trans ut.Translator
 }
 
-func NewSmsController(srv sms.SmsSrv, trans ut.Translator) *SmsController {
+func NewSmsController(sf service.ServiceFactory, trans ut.Translator) *SmsController {
 	return &SmsController{
-		srv: srv,
+		sf: sf,
 		trans: trans,
 	}
 }
@@ -42,7 +43,7 @@ func (sc *SmsController) SendSms(ctx *gin.Context) {
 	smsCode := sms.GenerateSmsCode(6)
 
 	// 3. 发送验证码
-	err := sc.srv.SendSms(ctx, sendSmsForm.Mobile, "SMS_181850725", "{\"code\":"+smsCode+"}")
+	err := sc.sf.Sms().SendSms(ctx, sendSmsForm.Mobile, "SMS_181850725", "{\"code\":"+smsCode+"}")
 	if err != nil {
 		core.WriteResponse(ctx, errors.WithCode(code.ErrSmsSend, err.Error()), nil)
 		return

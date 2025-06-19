@@ -27,7 +27,7 @@ func (uc *userServer) UpdateUser(ctx *gin.Context) {
 
 	//TODO
 	userID := ctx.GetFloat64(middlewares.KeyUserID)
-	ud, err := uc.svc.Get(ctx, uint64(userID))
+	ud, err := uc.sf.Users().Get(ctx, uint64(userID))
 	if err != nil {
 		core.WriteResponse(ctx, err, nil)
 		return
@@ -45,7 +45,7 @@ func (uc *userServer) UpdateUser(ctx *gin.Context) {
 	}
 	ud.Birthday = timePkg.Time{Time: t}
 	ud.Gender = form.Gender
-	err = uc.svc.Update(ctx, ud)
+	err = uc.sf.Users().Update(ctx, ud)
 	if err != nil {
 		core.WriteResponse(ctx, err, nil)
 		return

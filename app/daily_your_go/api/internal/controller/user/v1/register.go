@@ -19,7 +19,7 @@ func (us *userServer) Register(ctx *gin.Context) {
 		return
 	}
 
-	ud, err := us.svc.Register(ctx, regForm.Mobile, regForm.Password, regForm.Code)
+	ud, err := us.sf.Users().Register(ctx, regForm.Mobile, regForm.Password, regForm.Code)
 	if err != nil {
 		core.WriteResponse(ctx, err, nil)
 		return

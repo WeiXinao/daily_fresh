@@ -27,19 +27,20 @@ type UserSrv interface {
 var _ UserSrv = (*UserService)(nil)
 
 type UserService struct {
-	ud data.UserData
+	// ud data.UserData
+	data data.DataFactory
 
 	jwtOpts *options.JwtOptions
 }
 
 // CheckPassword implements UserSrv.
 func (u *UserService) CheckPassword(ctx context.Context, pwd string, encryptedPwd string) (bool, error) {
-	return u.ud.CheckPassword(ctx, pwd, encryptedPwd)
+	return u.data.User().CheckPassword(ctx, pwd, encryptedPwd)
 }
 
 // Get implements UserSrv.
 func (u *UserService) Get(ctx context.Context, id uint64) (*UserDTO, error) {
-	user, err := u.ud.Get(ctx, id)
+	user, err := u.data.User().Get(ctx, id)
 	if err != nil {
 		return nil, err	
 	}
@@ -53,7 +54,7 @@ func (u *UserService) GetByMobile(ctx context.Context, mobile string) (*UserDTO,
 
 // MobileLogin implements UserSrv.
 func (u *UserService) MobileLogin(ctx context.Context, mobile string, pwd string) (*UserDTO, error) {
-	user, err := u.ud.GetByMobile(ctx, mobile)
+	user, err := u.data.User().GetByMobile(ctx, mobile)
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +107,7 @@ func (u *UserService) Register(ctx context.Context, mobile string, pwd, codes st
 		Mobile:   mobile,
 		Password: pwd,
 	}
-	err = u.ud.Create(ctx, user)
+	err = u.data.User().Create(ctx, user)
 	if err != nil {
 		log.Errorf("user register failed: %v", err)
 		return nil, err
@@ -137,7 +138,7 @@ func (u *UserService) Register(ctx context.Context, mobile string, pwd, codes st
 
 // Update implements UserSrv.
 func (u *UserService) Update(ctx context.Context, userDTO *UserDTO) error {
-	return u.ud.Update(ctx, &data.User{
+	return u.data.User().Update(ctx, &data.User{
 		ID: userDTO.ID,
 		NickName: userDTO.NickName,
 		Password: userDTO.Password,
@@ -154,9 +155,9 @@ type UserDTO struct {
 	ExpiresAt int64  `json:"expires_at"`
 }
 
-func NewUserService(ud data.UserData, jwtOpts *options.JwtOptions) *UserService {
+func NewUserService(data data.DataFactory, jwtOpts *options.JwtOptions) *UserService {
 	return &UserService{
-		ud:      ud,
+		data:      data,
 		jwtOpts: jwtOpts,
 	}
 }

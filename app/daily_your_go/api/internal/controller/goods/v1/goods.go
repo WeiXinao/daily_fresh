@@ -12,12 +12,12 @@ import (
 	ut "github.com/go-playground/universal-translator"
 )
 
-type GoodsController struct {
+type goodsController struct {
 	srv service.ServiceFactory
 	ut ut.Translator
 }
 
-func (g *GoodsController) List(ctx *gin.Context) {
+func (g *goodsController) List(ctx *gin.Context) {
 	log.Info("goods list  function called")
 
 	var r request.GoodsFilter
@@ -72,4 +72,11 @@ func (g *GoodsController) List(ctx *gin.Context) {
 			}
 		}),
 	})
+}
+
+func NewGoodsController(srv service.ServiceFactory, ut ut.Translator) *goodsController {
+	return &goodsController{
+		srv: srv,
+		ut: ut,
+	}
 }

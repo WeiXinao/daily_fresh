@@ -37,7 +37,7 @@ func (us *userServer) Login(ctx *gin.Context) {
 		return
 	}
 
-	userDTO, err := us.svc.MobileLogin(ctx, form.Mobile, form.Password)
+	userDTO, err := us.sf.Users().MobileLogin(ctx, form.Mobile, form.Password)
 	if err != nil {
 		core.WriteResponse(ctx, errors.WithCode(code.ErrLoginFailed, "登录失败"), nil)	
 		return	

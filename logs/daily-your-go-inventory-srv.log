@@ -1,0 +1,2 @@
+2025-06-19 19:18:21.940	[34mINFO[0m	app/app.go:102	start server
+2025-06-19 19:18:21.940	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8018

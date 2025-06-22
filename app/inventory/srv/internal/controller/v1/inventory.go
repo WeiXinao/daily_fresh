@@ -56,7 +56,7 @@ func (is *inventoryServer) Sell(ctx context.Context, info *invpb.SellInfo) (*emp
 		return nil, err
 	}
 	//time.Sleep(5 * time.Second)
-	//return nil, status.Errorf(codes.Aborted, " err.Error()")
+	// return nil, status.Errorf(codes.Aborted, "")
 	return &emptypb.Empty{}, nil
 }
 

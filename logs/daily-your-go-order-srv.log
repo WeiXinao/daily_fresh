@@ -1,0 +1,15 @@
+2025-06-22 16:36:48.066	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 16:36:48.067	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8019
+2025-06-22 17:04:19.398	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-22 17:04:19.424	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-22 17:04:19.431	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-22 17:04:24.535	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"d872fe54-4f44-11f0-8854-98fa9b935ca7","name":"daily-your-go-goods-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8017"]}]
+2025-06-22 17:04:24.537	[34mINFO[0m	discovery/resolver.go:81	[resolver] update instances: [{"id":"f2f8505e-4f44-11f0-be24-98fa9b935ca7","name":"daily-your-go-inventory-srv","version":"","metadata":null,"endpoints":["grpc://192.168.5.52:8018"]}]
+2025-06-22 17:04:24.548	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 17:04:24.548	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8019
+2025-06-22 17:07:01.899	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/order/srv/internel/data/v1/db/shop_cart.go:106
+[38.526ms] [rows:0] SELECT * FROM `shoppingcart` WHERE user = 1 AND checked = true AND `shoppingcart`.`deleted_at` IS NULL
+2025-06-22 17:07:01.902	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/order/srv/internel/data/v1/db/shop_cart.go:106
+[1.406ms] [rows:1] SELECT count(*) FROM `shoppingcart` WHERE user = 1 AND checked = true AND `shoppingcart`.`deleted_at` IS NULL
+2025-06-22 17:07:01.902	[31mERROR[0m	v1/order.go:138	购物车中没有商品，无法下单
+2025-06-22 17:07:01.902	[31mERROR[0m	v1/order.go:98	新建订单失败: An internal server error occurred

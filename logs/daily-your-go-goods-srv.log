@@ -337,3 +337,91 @@ X-Elastic-Product: Elasticsearch
 [1.848ms] [rows:3] SELECT * FROM `category` WHERE `category`.`id` IN (135475,130366,135492) AND `category`.`deleted_at` IS NULL
 2025-06-19 00:26:00.448	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:138
 [12.093ms] [rows:10] SELECT * FROM `goods` WHERE `goods`.`deleted_at` IS NULL AND id in (451,470,494,467,482,492,441,452,481,427)
+2025-06-20 17:37:03.404	[31mFATAL[0m	srv/rpc.go:35	failed to get es client
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsRPCServer
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/rpc.go:35
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsApp
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:43
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewApp.run.func2
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:60
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).runCommand
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:276
+github.com/spf13/cobra.(*Command).execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1071
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).Run
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:231
+main.main
+	/root/repos/github.com/WeiXinao/daily_your_go/cmd/goods/goods.go:15
+runtime.main
+	/root/.g/go/src/runtime/proc.go:272
+2025-06-20 17:37:35.143	[31mFATAL[0m	srv/rpc.go:35	failed to get es client
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsRPCServer
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/rpc.go:35
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsApp
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:43
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewApp.run.func2
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:60
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).runCommand
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:276
+github.com/spf13/cobra.(*Command).execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1071
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).Run
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:231
+main.main
+	/root/repos/github.com/WeiXinao/daily_your_go/cmd/goods/goods.go:15
+runtime.main
+	/root/.g/go/src/runtime/proc.go:272
+2025-06-20 17:38:17.246	[34mINFO[0m	app/app.go:102	start server
+2025-06-20 17:38:17.246	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 16:39:02.170	[31mFATAL[0m	srv/rpc.go:35	failed to get es client
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsRPCServer
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/rpc.go:35
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsApp
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:43
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewApp.run.func2
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:60
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).runCommand
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:276
+github.com/spf13/cobra.(*Command).execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1071
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).Run
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:231
+main.main
+	/root/repos/github.com/WeiXinao/daily_your_go/cmd/goods/goods.go:15
+runtime.main
+	/root/.g/go/src/runtime/proc.go:272
+2025-06-22 16:40:04.464	[31mFATAL[0m	srv/rpc.go:35	failed to get es client
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsRPCServer
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/rpc.go:35
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewGoodsApp
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:43
+github.com/WeiXinao/daily_your_go/app/goods/srv.NewApp.run.func2
+	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/app.go:60
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).runCommand
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:276
+github.com/spf13/cobra.(*Command).execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	/root/go/pkg/mod/github.com/spf13/cobra@v1.9.1/command.go:1071
+github.com/WeiXinao/daily_your_go/pkg/app.(*App).Run
+	/root/repos/github.com/WeiXinao/daily_your_go/pkg/app/app.go:231
+main.main
+	/root/repos/github.com/WeiXinao/daily_your_go/cmd/goods/goods.go:15
+runtime.main
+	/root/.g/go/src/runtime/proc.go:272
+2025-06-22 16:42:35.628	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 16:42:35.629	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017

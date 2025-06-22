@@ -24,7 +24,7 @@ type service struct {
 
 // InventoryService implements ServiceFactory.
 func (s *service) Inventory() InventoryService {
-	panic("unimplemented")
+	return newInventoryService(s.data, s.redsync)
 }
 
 func NewService(df data.DataFactory, redisOptions *options.RedisOptions) ServiceFactory {

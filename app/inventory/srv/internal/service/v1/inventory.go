@@ -92,7 +92,7 @@ func (i *inventoryService) Reback(ctx context.Context, ordersn string, detail []
 		return err
 	}
 
-	if sellDetail.Status != 2 {
+	if sellDetail.Status == 2 {
 		log.Infof("订单%s库存记录已经归还，忽略", ordersn)
 		if _, err = mutex.Unlock(); err != nil {
 			log.Errorf("订单%s释放锁出现异常", ordersn)

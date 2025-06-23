@@ -26,8 +26,17 @@ func (g *goodServer) BannerList(context.Context, *emptypb.Empty) (*proto.BannerL
 }
 
 // BatchGetGoods implements proto.GoodsServer.
-func (g *goodServer) BatchGetGoods(context.Context, *proto.BatchGoodsIdInfo) (*proto.GoodsListResponse, error) {
-	panic("unimplemented")
+func (g *goodServer) BatchGetGoods(ctx context.Context, req *proto.BatchGoodsIdInfo) (*proto.GoodsListResponse, error) {
+	goods, err := g.srv.Goods().BatchGet(ctx, slice.Map(req.GetId(), func(idx int, src int32) uint64 { return uint64(src) }))
+	if err != nil {
+		return nil, err
+	}
+	return &proto.GoodsListResponse{
+		Total: int32(len(goods)),
+		Data: slice.Map(goods, func(idx int, src *dto.GoodsDTO) *proto.GoodsInfoResponse {
+			return ModelToResponse(src)
+		}),
+	}, nil
 }
 
 // BrandList implements proto.GoodsServer.

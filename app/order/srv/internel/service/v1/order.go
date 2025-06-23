@@ -59,12 +59,18 @@ func (o *orderService) Create(ctx context.Context, order *dto.OrderInfoDTO) erro
 	ids := slice.Map(order.OrderGoods, func(idx int, src *do.OrderGoodsDO) int32 {
 		return src.Goods
 	})
+
 	goods, err := o.data.Goods().BatchGetGoods(ctx, &gpb.BatchGoodsIdInfo{
 		Id: 	ids,
 	})
 	if err != nil {
-		log.Errorf("批量获取商品信息失败，gooodsIds: %v, err: %w", ids, err)
+		log.Errorf("批量获取商品信息失败，goodsIds: %v, err: %v", ids, err)
 		return errors.FromGrpcError(err)
+	}
+
+	if len(goods.Data) != len(ids) {
+		log.Errorf("批量获取商品信息失败，goodsIds: %v, 返回值：%v，err: %v", ids, goods.Data, err)
+		return errors.WithCode(code.ErrGoodsNotFound, "商品不存在或者部分不存在")
 	}
 
 	id2Goods := slice.ToMap(goods.Data, func(element *gpb.GoodsInfoResponse) int32 {
@@ -93,7 +99,7 @@ func (o *orderService) Create(ctx context.Context, order *dto.OrderInfoDTO) erro
 	err = o.data.Orders().Create(ctx, txn, &order.OrderInfoDO)
 	if err != nil {
 		txn.Rollback()
-		log.Errorf("创建订单失败, err: %w", err)
+		log.Errorf("创建订单失败, err: %v", err)
 		return err
 	}
 
@@ -158,17 +164,31 @@ func (o *orderService) Submit(ctx context.Context, order *dto.OrderInfoDTO) erro
 			}
 		}),
 	}
-	var (
+	orderReq := &opb.OrderRequest{
+		UserId:     order.User,
+		Address:    order.Address,
+		Name:       order.SignerName,
+		Mobile:     order.SingerMobile,
+		Post:       order.Post,
+		OrderSn:    order.OrderSn,
+		OrderItems: slice.Map(order.OrderGoods, func(idx int, src *do.OrderGoodsDO) *opb.OrderItemReponse {
+			return &opb.OrderItemReponse{
+				GoodsId: src.Goods,
+				Nums: src.Nums,
+			}
+		}),
+	}
+	const (
 		invRpcUrl = "discovery:///daily-your-go-inventory-srv"
 		orderRpcUrl = "discovery:///daily-your-go-order-srv"
 	)
 	saga := dtmgrpc.NewSagaGrpc(o.dtmOpts.GrpcServer, order.OrderSn).
 		Add(invRpcUrl+ipb.Inventory_Sell_FullMethodName, invRpcUrl+ipb.Inventory_Reback_FullMethodName, req).
-		Add(orderRpcUrl+opb.Order_CreateOrder_FullMethodName, orderRpcUrl+opb.Order_CreateOrderCom_FullMethodName, req)
+		Add(orderRpcUrl+opb.Order_CreateOrder_FullMethodName, orderRpcUrl+opb.Order_CreateOrderCom_FullMethodName, orderReq)
 	saga.WaitResult = true
 	err = saga.Submit()
 	if err != nil {
-		return errors.WithCode(code.ErrSubmitOrder, "提交订单失败")
+		return errors.WithCode(code.ErrSubmitOrder, err.Error())
 	}
 	// 通过 OrderSn查询一下，当前转态如果一直 Submit 那么你就一直不要给前端返回，
 	// 如果是 failed 那么你提示给前端说下单失败，重新下单

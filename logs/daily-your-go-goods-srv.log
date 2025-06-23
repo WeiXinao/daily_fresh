@@ -425,3 +425,77 @@ runtime.main
 	/root/.g/go/src/runtime/proc.go:272
 2025-06-22 16:42:35.628	[34mINFO[0m	app/app.go:102	start server
 2025-06-22 16:42:35.629	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 18:01:07.865	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-22 18:01:07.885	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-22 18:01:07.893	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-22 18:01:11.184	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 18:01:11.184	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 21:27:05.005	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-22 21:27:05.022	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-22 21:27:05.027	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-22 21:27:10.648	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 21:27:10.649	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 21:29:41.023	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-22 21:29:41.027	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-22 21:29:41.028	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-22 21:29:44.631	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 21:29:44.631	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 21:30:30.989	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[73.163ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:30.990	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[73.509ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:30.993	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[76.347ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[6.849ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 136982 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[122.512ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 421 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[4.034ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 220867 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[123.074ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 422 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[7.756ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 130366 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:30.997	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[123.044ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 423 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:30:41.729	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.514ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:41.730	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.892ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:41.731	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.635ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 220867 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:41.731	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[11.343ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 422 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:30:41.732	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[2.722ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:30:41.732	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.841ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 136982 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:41.732	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[11.807ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 421 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:30:41.734	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.423ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 130366 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:30:41.734	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[13.104ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 423 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:36:33.812	[34mINFO[0m	app/app.go:150	start deregister service
+2025-06-22 21:36:33.818	[34mINFO[0m	app/app.go:161	start cancel context
+2025-06-22 21:36:33.820	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-06-22 21:36:38.164	[34mINFO[0m	app/app.go:102	start server
+2025-06-22 21:36:38.164	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8017
+2025-06-22 21:46:19.897	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.812ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:46:19.898	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[2.293ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:46:19.900	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[2.167ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 220867 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:46:19.900	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[12.622ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 422 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:46:19.901	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.869ms] [rows:1] SELECT * FROM `brands` WHERE `brands`.`id` = 614 AND `brands`.`deleted_at` IS NULL
+2025-06-22 21:46:19.902	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[3.318ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 136982 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:46:19.902	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[14.607ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 421 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1
+2025-06-22 21:46:19.903	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[1.722ms] [rows:1] SELECT * FROM `category` WHERE `category`.`id` = 130366 AND `category`.`deleted_at` IS NULL
+2025-06-22 21:46:19.903	[34mINFO[0m	gormx/gmicro_logger.go:101	/root/repos/github.com/WeiXinao/daily_your_go/app/goods/srv/internal/data/v1/db/goods.go:117
+[15.938ms] [rows:1] SELECT * FROM `goods` WHERE `goods`.`id` = 423 AND `goods`.`deleted_at` IS NULL ORDER BY `goods`.`id` LIMIT 1

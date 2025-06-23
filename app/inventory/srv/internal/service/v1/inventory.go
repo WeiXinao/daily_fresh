@@ -163,12 +163,12 @@ func (i *inventoryService) Sell(ctx context.Context, ordersn string, details []d
 	for _, d := range sellDetail.Detail {
 		mutex := i.redsync.NewMutex(fmt.Sprintf("%s:%d", inventoryLockPrefix ,d.Goods))
 		if err := mutex.Lock(); err != nil {
-			log.Errorf("订单%s获取锁失败", ordersn)
+			log.Errorf("订单%s获取锁失败, err: %v", ordersn, err)
 		}
 
 		inv, err := i.data.Inventorys().Get(ctx, uint64(d.Goods))
 		if err != nil {
-			log.Errorf("订单%s获取库存失败", ordersn)
+			log.Errorf("订单%s获取库存失败, err: %v", ordersn, err)
 			return err
 		}
 		
@@ -183,14 +183,14 @@ func (i *inventoryService) Sell(ctx context.Context, ordersn string, details []d
 		err = i.data.Inventorys().Reduce(ctx, txn, uint64(d.Goods), int(d.Num))
 		if err != nil {
 			txn.Rollback()
-			log.Errorf("订单%s扣减库存失败", ordersn)
+			log.Errorf("订单%s扣减库存失败, err: %v", ordersn, err)
 			return err
 		}
 
 		// 释放锁
 		if _, err = mutex.Unlock(); err != nil {
 			txn.Rollback()
-			log.Errorf("订单%s释放锁出现异常", ordersn)
+			log.Errorf("订单%s释放锁出现异常, err: %v", ordersn, err)
 		}
 	}
 

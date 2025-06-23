@@ -84,7 +84,7 @@ func connGoodsRpcServer(ctx context.Context, timeOut time.Duration,
 	if err != nil {
 		return nil, err
 	}
-	defer conn.Close()
+	// defer conn.Close()
 
 	return goodsClient, nil
 }
@@ -115,7 +115,7 @@ func connInventoryRpcServer(ctx context.Context, timeOut time.Duration,
 	if err != nil {
 		return nil, err
 	}
-	defer conn.Close()
+	// defer conn.Close()
 
 	return invClient, nil
 }

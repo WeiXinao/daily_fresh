@@ -92,6 +92,7 @@ func (o *OrderServer) SubmitOrder(ctx context.Context, req *opb.OrderRequest) (*
 			SignerName: req.GetName(),
 			SingerMobile: req.GetMobile(),
 			Post: req.GetPost(),
+			OrderSn: req.GetOrderSn(),
 		},
 	})
 	if err != nil {

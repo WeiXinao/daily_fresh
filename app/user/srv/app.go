@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/consul/api"
 )
 
-var ProviderSet = wire.NewSet(NewRegistrar, NewUserRPCServer, NewUserApp)
+var ProviderSet = wire.NewSet(NewNacosDatasource, NewRegistrar, NewUserRPCServer, NewUserApp)
 
 // controller（参数校验） -> service（具体的业务逻辑） -> data（数据库的接口）
 func NewApp(name string) *app.App {
@@ -57,7 +57,7 @@ func NewUserApp(
 
 func run(cfg *config.Config) app.RunFunc {
 	return func(basename string) error {
-		userApp, err := initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry)
+		userApp, err := initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry, cfg.Nacos)
 		if err != nil {
 			return err
 		}

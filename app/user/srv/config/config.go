@@ -15,6 +15,7 @@ type Config struct {
 	Registry *options.RegisteryOptions `json:"registry" mapstructure:"registry"`
 	Telemtry *options.TelemtryOptions  `json:"telemetry" mapstructure:"telemetry"`
 	MySQL    *options.MysqlOptions     `json:"mysql" mapstructure:"mysql"`
+	Nacos    *options.NacosOptions     `json:"nacos" mapstructure:"nacos"`
 }
 
 func New() *Config {
@@ -24,6 +25,7 @@ func New() *Config {
 		Registry: options.NewRegistryOptions(),
 		Telemtry: options.NewTelemtryOptions(),
 		MySQL:    options.NewMySQLOptions(),
+		Nacos:    options.NewNacosOptions(),
 	}
 }
 
@@ -34,6 +36,7 @@ func (c *Config) Flags() (fss flag.NamedFlagSets) {
 	c.Registry.AddFlags(fss.FlagSet("registry"))
 	c.Telemtry.AddFlags(fss.FlagSet("telemetry"))
 	c.MySQL.AddFlags(fss.FlagSet("mysql"))
+	c.Nacos.AddFlags(fss.FlagSet("nacos"))
 	return fss
 }
 
@@ -45,5 +48,6 @@ func (c *Config) Validate() []error {
 	errs = append(errs, c.Registry.Validate()...)
 	errs = append(errs, c.Telemtry.Validate()...)
 	errs = append(errs, c.MySQL.Validate()...)
+	errs = append(errs, c.Nacos.Validate()...)
 	return errs
 }

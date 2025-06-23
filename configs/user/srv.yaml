@@ -15,6 +15,7 @@ server:
   enable-health-check: true
   enable-profiling: true
   enable-metrics: true
+  enable-limit: true
   host: "192.168.5.52"
   port: 8079
   http-port: 8080
@@ -35,4 +36,12 @@ mysql:
   max-open-connections: 100 # MySQL 最大连接数，默认 100
   max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
   log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
-
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   

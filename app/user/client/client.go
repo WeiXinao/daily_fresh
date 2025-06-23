@@ -42,11 +42,11 @@ func main() {
 	uc := v1.NewUserClient(conn)
 
 	for {
-		ulr, err := uc.GetUserList(context.Background(), &v1.PageInfo{})
+		_, err := uc.GetUserList(context.Background(), &v1.PageInfo{})
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(ulr)
-		time.Sleep(time.Second * 5)
+		fmt.Println("success")
+		time.Sleep(time.Millisecond * 2)
 	}
 }

@@ -19,6 +19,7 @@ func initApp(
 	telemetryOpts *options.TelemtryOptions,
 	serverOpts *options.ServerOptions,
 	registryOpts *options.RegisteryOptions,
+	nacosOpts *options.NacosOptions,
 ) (*gapp.App, error) {
 	panic(wire.Build(
 		ProviderSet,

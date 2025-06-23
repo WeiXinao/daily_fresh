@@ -21,6 +21,7 @@ require (
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/go-redsync/redsync/v4 v4.13.0
 	github.com/google/uuid v1.6.0
+	github.com/google/wire v0.6.0
 	github.com/gosuri/uitable v0.0.4
 	github.com/h2non/filetype v1.1.3
 	github.com/hashicorp/consul/api v1.32.1

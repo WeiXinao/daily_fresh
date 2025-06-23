@@ -2,36 +2,26 @@ package srv
 
 import (
 	"fmt"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+
 	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/controller/user"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db"
-	svcv1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/service/v1"
+	"github.com/WeiXinao/daily_your_go/app/pkg/options"
 	"github.com/WeiXinao/daily_your_go/gmicro/core/trace"
 	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 )
 
-func NewUserRPCServer(cfg *config.Config) (*rpcserver.Server, error) {
-	// 初始化 opentelemetry 的 exporter
+func NewUserRPCServer(
+	telemetryOpts *options.TelemtryOptions,
+	serverOpts *options.ServerOptions,
+	usrv upb.UserServer,
+) (*rpcserver.Server, error) {
 	trace.InitAgent(trace.Options{
-		Name: cfg.Telemtry.Name,
-		Endpoint: cfg.Telemtry.Endpoint,
-		Batcher: cfg.Telemtry.Batcher,
-		Sampler: cfg.Telemtry.Sampler,
+		Name: telemetryOpts.Name,
+		Endpoint: telemetryOpts.Endpoint,
+		Batcher: telemetryOpts.Batcher,
+		Sampler: telemetryOpts.Sampler,
 	})
 
-	// 有点繁琐 wire, ioc-golang
-	gdb, err := db.GetDBFactoryOr(cfg.MySQL)
-	if err!= nil {
-		log.Fatal(err.Error())
-	}
-	data := db.NewUsers(gdb)
-	svc := svcv1.NewUserService(data)
-	usrv := user.NewUserServer(svc)
-	
-
-	rpcAddr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
+	rpcAddr := fmt.Sprintf("%s:%d", serverOpts.Host, serverOpts.Port)
 	urpcServer := rpcserver.NewServer(rpcserver.WithAddress(rpcAddr))	
 
 	upb.RegisterUserServer(urpcServer.Server, usrv)

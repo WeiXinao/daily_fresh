@@ -1,4 +1,4 @@
-package v1
+package service
 
 // func TestUserList(t *testing.T) {
 // 	userSrv := NewUserService(mock.NewUsers())

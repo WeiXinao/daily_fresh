@@ -1951,4 +1951,9 @@ runtime.main
 2025-06-11 02:47:41.323	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 502 ()
 2025-06-11 02:47:43.382	[31mERROR[0m	consul/client.go:264	[Consul] re registry service failed!, err=Unexpected response code: 502 ()
 2025-06-11 02:47:51.331	[31mERROR[0m	consul/client.go:257	[Consul] update ttl heartbeat to consul failed! err=Unexpected response code: 502 ()
-                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                        2025-06-23 16:21:56.152	[34mINFO[0m	app/app.go:102	start server
+2025-06-23 16:21:56.154	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-06-23 16:21:58.204	[31mERROR[0m	app/app.go:115	register service error: Unexpected response code: 502 ()
+2025-06-23 16:21:58.204	[31mERROR[0m	srv/app.go:64	run user app error: Unexpected response code: 502 ()
+2025-06-23 16:22:47.734	[34mINFO[0m	app/app.go:102	start server
+2025-06-23 16:22:47.734	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079

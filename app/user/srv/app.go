@@ -1,16 +1,19 @@
 package srv
 
 import (
-
 	"github.com/WeiXinao/daily_your_go/app/pkg/options"
 	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
 	gapp "github.com/WeiXinao/daily_your_go/gmicro/app"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry"
 	"github.com/WeiXinao/daily_your_go/gmicro/registry/consul"
+	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
 	"github.com/WeiXinao/daily_your_go/pkg/app"
 	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/google/wire"
 	"github.com/hashicorp/consul/api"
 )
+
+var ProviderSet = wire.NewSet(NewRegistrar, NewUserRPCServer, NewUserApp)
 
 // controller（参数校验） -> service（具体的业务逻辑） -> data（数据库的接口）
 func NewApp(name string) *app.App {
@@ -35,22 +38,18 @@ func NewRegistrar(registry *options.RegisteryOptions) registry.Registrar {
 	return r
 }
 
-func NewUserApp(cfg *config.Config) (*gapp.App, error) {
+func NewUserApp(
+	logOpts *log.Options,
+	registry registry.Registrar,
+	serverOpts *options.ServerOptions,
+	rpcServer *rpcserver.Server,
+) (*gapp.App, error) {
 	// 初始化 log
-	log.Init(cfg.Log)
+	log.Init(logOpts)
 	defer log.Flush()
 
-	// 实例化服务
-	rpcServer, err := NewUserRPCServer(cfg)
-	if err != nil {
-		panic(err)
-	}
-
-	// 服务注册
-	registry := NewRegistrar(cfg.Registry)
-
 	return gapp.New(
-		gapp.WithName(cfg.Server.Name),
+		gapp.WithName(serverOpts.Name),
 		gapp.WithRPCServer(rpcServer),
 		gapp.WithRegistrar(registry),
 	), nil
@@ -58,13 +57,13 @@ func NewUserApp(cfg *config.Config) (*gapp.App, error) {
 
 func run(cfg *config.Config) app.RunFunc {
 	return func(basename string) error {
-		userApp, err := NewUserApp(cfg)
+		userApp, err := initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry)
 		if err != nil {
 			return err
 		}
 
 		// 启动
-		if err = userApp.Run(); err != nil {
+		if err := userApp.Run(); err != nil {
 			log.Errorf("run user app error: %s", err)
 			return err
 		}

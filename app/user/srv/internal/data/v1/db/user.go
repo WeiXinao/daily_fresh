@@ -126,6 +126,6 @@ func (u *users) List(ctx context.Context, orderBy []string, opts metav1.ListMeta
 	return ret, nil
 }
 
-func NewUsers(db *gorm.DB) *users {
+func NewUsers(db *gorm.DB) udv1.UserStore {
 	return &users{db: db}
 }

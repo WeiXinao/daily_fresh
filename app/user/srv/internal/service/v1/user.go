@@ -1,4 +1,4 @@
-package v1
+package service
 
 import (
 	"context"
@@ -99,7 +99,7 @@ func (u *userService) List(ctx context.Context, orderBy []string, opts metav1.Li
 	return &userDTOList, nil
 }
 
-func NewUserService(us v1.UserStore) *userService {
+func NewUserService(us v1.UserStore) UserSrv {
 	return &userService{
 		userStore: us,
 	}

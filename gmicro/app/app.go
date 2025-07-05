@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"maps"
 	"net/url"
 	"os"
 	"os/signal"
@@ -172,6 +173,12 @@ func (a *App) buildInstance() (*registry.ServiceInstance, error) {
 		endpoints = append(endpoints, e.String())
 	}
 
+	metadata := make(map[string]string, len(a.opts.metadata))
+	maps.Copy(metadata, a.opts.metadata)
+
+	// 默认使用 id 作为 hashKey
+	metadata["hashKey"] = a.opts.id
+
 	// 从 rpcserver，restserver 去主动获取这些信息
 	if a.opts.rpcServer != nil {
 		u := &url.URL{
@@ -185,5 +192,6 @@ func (a *App) buildInstance() (*registry.ServiceInstance, error) {
 		ID:        a.opts.id,
 		Name:      a.opts.name,
 		Endpoints: endpoints,
+		Metadata: metadata,
 	}, nil
 }

@@ -16,6 +16,7 @@ type options struct {
 	id        string
 	name      string
 	endpoints []*url.URL
+	metadata map[string]string
 
 	sigs []os.Signal
 
@@ -63,6 +64,12 @@ func WithID(id string) Option {
 func WithName(name string) Option {
 	return func(o *options) {
 		o.name = name
+	}
+}
+
+func WithMetadata(key, value string) Option {
+	return func(o *options) {
+		o.metadata[key] = value
 	}
 }
 

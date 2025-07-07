@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"

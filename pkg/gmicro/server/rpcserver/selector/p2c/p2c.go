@@ -7,8 +7,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	selector2 "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector/node/ewma"
+	selector2 "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector/node/ewma"
 )
 
 const (

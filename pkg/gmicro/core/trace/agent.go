@@ -3,7 +3,7 @@ package trace
 import (
 	"sync"
 
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/exporters/zipkin"

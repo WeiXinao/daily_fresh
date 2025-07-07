@@ -3,7 +3,7 @@ package auth
 import (
 	ginjwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver/middlewares"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/middlewares"
 )
 
 // AuthzAudience defines the value of jwt audience field.

@@ -13,7 +13,7 @@ import (
 	gcodes "google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
-	trace2 "github.com/WeiXinao/daily_your_go/gmicro/core/trace"
+	trace2 "github.com/WeiXinao/daily_fresh/pkg/gmicro/core/trace"
 )
 
 const (

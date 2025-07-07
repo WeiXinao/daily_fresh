@@ -3,7 +3,7 @@ package selector
 import (
 	"context"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 )
 
 // ErrNoAvailable is no available node.

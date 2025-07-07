@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

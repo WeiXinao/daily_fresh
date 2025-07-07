@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync/atomic"
 
-	selector2 "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector/node/direct"
+	selector2 "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector/node/direct"
 )
 
 const (

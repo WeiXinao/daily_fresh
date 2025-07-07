@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"slices"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 )
 
 var _ errors.Coder = (*ErrCode)(nil)

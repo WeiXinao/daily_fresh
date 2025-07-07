@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/utils"

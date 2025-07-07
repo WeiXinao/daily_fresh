@@ -3,7 +3,7 @@ package options
 import (
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/spf13/pflag"
 
 	"github.com/asaskevich/govalidator"

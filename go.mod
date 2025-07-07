@@ -1,4 +1,4 @@
-module github.com/WeiXinao/daily_your_go
+module github.com/WeiXinao/daily_fresh
 
 go 1.23.9
 

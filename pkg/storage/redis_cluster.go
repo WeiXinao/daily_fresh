@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/log"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/redis/go-redis/extra/redisotel/v9"
 	redis "github.com/redis/go-redis/v9"
 	uuid "github.com/satori/go.uuid"

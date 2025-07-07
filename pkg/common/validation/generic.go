@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/validation/field"
+	"github.com/WeiXinao/daily_fresh/pkg/common/validation/field"
 )
 
 const (

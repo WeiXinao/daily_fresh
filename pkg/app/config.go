@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/homedir"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/homedir"
 	"github.com/gosuri/uitable"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"

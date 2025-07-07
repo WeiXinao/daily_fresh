@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/validation/field"
+	"github.com/WeiXinao/daily_fresh/pkg/common/validation/field"
 )
 
 func TestIsDNS1123Label(t *testing.T) {

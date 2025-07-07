@@ -9,7 +9,7 @@ import (
 
 	"github.com/spf13/pflag"
 
-	cliflag "github.com/WeiXinao/daily_your_go/pkg/common/cli/flag"
+	cliflag "github.com/WeiXinao/daily_fresh/pkg/common/cli/flag"
 )
 
 func TestAddGlobalFlags(t *testing.T) {

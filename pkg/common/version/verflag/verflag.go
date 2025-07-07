@@ -9,7 +9,7 @@ import (
 
 	flag "github.com/spf13/pflag"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/version"
+	"github.com/WeiXinao/daily_fresh/pkg/common/version"
 )
 
 type versionValue int

@@ -26,8 +26,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/clock"
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/runtime"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/clock"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/runtime"
 )
 
 func TestUntil(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/json"
+	"github.com/WeiXinao/daily_fresh/pkg/common/json"
 )
 
 type JSONRawMessage []byte

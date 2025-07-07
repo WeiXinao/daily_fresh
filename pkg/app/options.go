@@ -1,7 +1,7 @@
 package app
 
 import (
-	cliflag "github.com/WeiXinao/daily_your_go/pkg/common/cli/flag"
+	cliflag "github.com/WeiXinao/daily_fresh/pkg/common/cli/flag"
 )
 
 // CliOptions abstracts configuration options for reading parameters from the

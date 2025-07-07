@@ -3,7 +3,7 @@ package runtime
 import (
 	"fmt"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/json"
+	"github.com/WeiXinao/daily_fresh/pkg/common/json"
 )
 
 // NegotiateError is returned when a ClientNegotiator is unable to locate

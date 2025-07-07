@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/olivere/elastic/v7"
 )
 

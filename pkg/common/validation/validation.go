@@ -10,7 +10,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/go-playground/validator/v10/translations/en"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/validation/field"
+	"github.com/WeiXinao/daily_fresh/pkg/common/validation/field"
 )
 
 const (

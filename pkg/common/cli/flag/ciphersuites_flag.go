@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"fmt"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/sets"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/sets"
 )
 
 // ciphers maps strings into tls package cipher constants in

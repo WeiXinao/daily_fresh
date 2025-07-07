@@ -24,8 +24,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/clock"
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/runtime"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/clock"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/runtime"
 )
 
 // For any test of the style:

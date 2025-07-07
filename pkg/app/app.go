@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"os"
 
-	cliflag "github.com/WeiXinao/daily_your_go/pkg/common/cli/flag"
-	"github.com/WeiXinao/daily_your_go/pkg/common/cli/globalflag"
-	"github.com/WeiXinao/daily_your_go/pkg/common/term"
-	"github.com/WeiXinao/daily_your_go/pkg/common/version"
-	"github.com/WeiXinao/daily_your_go/pkg/common/version/verflag"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	cliflag "github.com/WeiXinao/daily_fresh/pkg/common/cli/flag"
+	"github.com/WeiXinao/daily_fresh/pkg/common/cli/globalflag"
+	"github.com/WeiXinao/daily_fresh/pkg/common/term"
+	"github.com/WeiXinao/daily_fresh/pkg/common/version"
+	"github.com/WeiXinao/daily_fresh/pkg/common/version/verflag"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 )
 
 var (

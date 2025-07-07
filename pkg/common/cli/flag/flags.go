@@ -4,7 +4,7 @@ import (
 	goflag "flag"
 	"strings"
 
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/spf13/pflag"
 )
 

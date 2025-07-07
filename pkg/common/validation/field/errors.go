@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	utilerrors "github.com/WeiXinao/daily_your_go/pkg/errors"
+	utilerrors "github.com/WeiXinao/daily_fresh/pkg/errors"
 
-	"github.com/WeiXinao/daily_your_go/pkg/common/util/sets"
+	"github.com/WeiXinao/daily_fresh/pkg/common/util/sets"
 )
 
 // Error is an implementation of the 'error' interface, which represents a

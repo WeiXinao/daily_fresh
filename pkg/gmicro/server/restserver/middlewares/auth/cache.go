@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/gmicro/code"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver/middlewares"
-	"github.com/WeiXinao/daily_your_go/pkg/common/core"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/code"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/middlewares"
+	"github.com/WeiXinao/daily_fresh/pkg/common/core"
 
 	jwt "github.com/dgrijalva/jwt-go/v4"
 	"github.com/gin-gonic/gin"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 )
 
 // Defined errors.

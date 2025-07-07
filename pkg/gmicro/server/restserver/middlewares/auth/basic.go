@@ -2,14 +2,14 @@ package auth
 
 import (
 	"encoding/base64"
-	"github.com/WeiXinao/daily_your_go/pkg/common/core"
+	"github.com/WeiXinao/daily_fresh/pkg/common/core"
 	"strings"
 
-	"github.com/WeiXinao/daily_your_go/gmicro/code"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver/middlewares"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/code"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/middlewares"
 
 	"github.com/gin-gonic/gin"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 )
 
 // BasicStrategy defines Basic authentication strategy.

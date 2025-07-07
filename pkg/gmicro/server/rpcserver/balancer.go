@@ -1,8 +1,8 @@
 package rpcserver
 
 import (
-	"github.com/WeiXinao/daily_your_go/gmicro/registry"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"
 	"google.golang.org/grpc/metadata"

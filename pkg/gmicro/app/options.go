@@ -5,9 +5,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/gmicro/registry"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver"
 )
 
 type Option func(o *options)

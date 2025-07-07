@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	metric "github.com/WeiXinao/daily_your_go/gmicro/core/metrics"
+	metric "github.com/WeiXinao/daily_fresh/pkg/gmicro/core/metrics"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 )

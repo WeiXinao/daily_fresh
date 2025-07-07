@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
 	"google.golang.org/grpc/resolver"
 )
 

@@ -4,9 +4,9 @@ import (
 	"context"
 	"sync"
 
-	selector2 "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector/node/direct"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	selector2 "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector/node/direct"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 )
 
 const (

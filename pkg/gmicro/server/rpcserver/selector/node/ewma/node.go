@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/go-kratos/kratos/v2/errors"
-	selector2 "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
+	selector2 "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
 )
 
 const (

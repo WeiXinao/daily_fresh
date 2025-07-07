@@ -3,7 +3,7 @@ package selector
 import (
 	"strconv"
 
-	"github.com/WeiXinao/daily_your_go/gmicro/registry"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
 )
 
 // DefaultNode is selector node

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+option go_package = "./;proto";
+
+service HelloService {
+  rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
+    option (google.api.http) = {
+      get: "/user/sayHello/{name}"
+      body: "*"
+    };
+  };
+
+  rpc SayBye(SayHelloRequest) returns (SayHelloResponse);
+}
+
+message SayHelloRequest {
+  string name = 1; // @gotags: binding:"required" uri:"name"
+}
+
+message SayHelloResponse {
+  string greet = 1;
+}

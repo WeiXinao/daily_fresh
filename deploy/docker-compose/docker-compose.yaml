@@ -1,0 +1,280 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mymysql8
+    privileged: true
+    ports:
+      - "3307:3306"
+    volumes:
+      - /root/mysql/log:/var/log/mysql
+      - /root/mysql/data:/var/lib/mysql
+      - /root/mysql/conf:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+  redis:
+    image: redis:7.4.0
+    container_name: myredis7
+    privileged: true
+    ports:
+      - "6379:6379"
+    volumes:
+      - /root/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - /root/redis/data:/data
+    command: redis-server /usr/local/etc/redis/redis.conf
+  consul:
+    container_name: consul
+    image: consul:latest
+    ports:
+      - 8500:8500
+      - 8300:8300
+      - 8301:8301
+      - 8302:8302
+      - 8600:8600
+      - 8600:8600/udp
+    command: ["consul" ,"agent", "-dev", "-client","0.0.0.0"]
+  nacos:
+    container_name: nacos-standalone
+    image: nacos/nacos-server:v2.2.0
+    environment:
+      - MODE=standalone
+      - JVM_XMS=512m
+      - JVM_MAX=512m
+      - JVM_XMN=256m
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=123456
+    privileged: true
+    volumes:
+        - /root/nacos/data:/home/nacos/data
+        - /root/nacos/logs:/home/nacos/logs
+        - /root/nacos/conf:/root/nacos/conf
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9849:9849
+    depends_on:
+      - mysql
+  rmqnamesrv:
+    image: foxiswho/rocketmq:server
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - /root/rocketmq/logs:/opt/logs
+      - /root/rocketmq/store:/opt/store
+  rmqbroker:
+    image: foxiswho/rocketmq:broker
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - /root/rocketmq/logs:/opt/logs
+      - /root/rocketmq/store:/opt/store
+      - /root/rocketmq/conf/broker.conf:/etc/rocketmq/broker.conf
+    environment:
+        NAMESRV_ADDR: "rmqnamesrv:9876"
+        JAVA_OPTS: " -Duser.home=/opt"
+        JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn256m"
+    command: mqbroker -c /etc/rocketmq/broker.conf
+    depends_on:
+      - rmqnamesrv
+  rmqconsole:
+    image: styletang/rocketmq-console-ng
+    container_name: rmqconsole
+    ports:
+      - 8080:8080
+    environment:
+        JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    depends_on:
+      - rmqnamesrv
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:1.41
+    environment:
+      - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+      - SPAN_STORAGE_TYPE=badger
+      - BADGER_EPHEMERAL=${BADGER_EPHEMERAL}
+      - BADGER_DIRECTORY_VALUE=/badger/data
+      - BADGER_DIRECTORY_KEY=/badger/key
+    privileged: true
+    volumes:
+      - ${JAEGER_DIR}:/badger
+    ports:
+      - 5775:5775/udp
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 5778:5778
+      - 16686:16686
+      - 14268:14268
+      - 14269:14269
+      - 9411:9411
+  # cerebro:
+  #   image: lmenezes/cerebro:0.8.3
+  #   container_name: cerebro
+  #   ports:
+  #     - "9000:9000"
+  #   command:
+  #     - -Dhosts.0.host=http://es:9200
+  es:
+    container_name: es
+    image: elasticsearch:8.6.0
+    volumes:
+      - ${ES_DIR}/data:/usr/share/elasticsearch/data
+      - ${ES_DIR}/logs:/usr/share/elasticsearch/logs
+      - ${ES_DIR}/plugins:/usr/share/elasticsearch/plugins
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - node.name=es
+      - cluster.name=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+    privileged: true
+  kibana:
+    image: kibana:8.6.0
+    container_name: kibana
+    depends_on:
+      - es
+    environment:
+      SERVER_NAME: kibana
+      SERVER_HOST: "0.0.0.0"
+      ELASTICSEARCH_HOSTS: http://es:9200
+    ports:
+      - 5601:5601
+  logstash:
+    image: logstash:8.6.0
+    container_name: logstash
+    volumes:
+      - ${LOGSTASH_DIR}/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ${LOGSTASH_DIR}/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ${LOGSTASH_DIR}/log/:/home/public/
+    ports:
+      - '5044:5044'
+      - '50000:50000/tcp'
+      - '50000:50000/udp'
+      - '9600:9600'
+    environment:
+      LS_JAVA_OPTS: -Xms1024m -Xmx1024m
+      TZ: Asia/Shanghai
+      MONITORING_ENABLED: false
+    depends_on:
+      - es
+  # mongodb:
+  #   image: mongo:6.0
+  #   container_name: mymongo
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: 123456
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - /root/mongo/data:/data/db 
+  
+  kong-database:
+    image: postgres:15-bullseye
+    privileged: true
+    container_name: kong-database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - POSTGRES_PASSWORD=kong
+    volumes:
+      - "/root/kong-postgre-data:/var/lib/postgresql/data"
+
+  # kong-migrations:
+  #   image: kong
+  #   privileged: true
+  #   environment:
+  #     - KONG_DATABASE=postgres
+  #     - KONG_PG_HOST=kong-database
+  #     - KONG_PG_PASSWORD=kong
+  #     - KONG_CASSANDRA_CONTACT_POINTS=kong-database
+  #   command: kong migrations -v bootstrap
+  #   restart: on-failure
+  #   links:
+  #     - kong-database:kong-database
+  #   depends_on:
+  #     - kong-database
+
+  kong:
+    image: kong
+    privileged: true
+    container_name: kong
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=192.168.5.52
+      - KONG_PG_USER=kong
+      - KONG_PG_PASSWORD=kong
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - KONG_PROXY_LISTEN=0.0.0.0:8000, 0.0.0.0:8443 ssl
+      - KONG_DNS_RESOLVER=192.168.5.52:8600
+    restart: on-failure
+    ports:
+      - 8000:8000
+      - 8443:8443
+      - 8001:8001
+      - 8444:8444
+    links:
+      - kong-database:kong-database
+    depends_on:
+      # - kong-migrations
+      - consul
+      
+  konga:
+    image: pantsel/konga
+    ports:
+      - 1337:1337
+    links:
+      - kong:kong
+    container_name: konga
+    environment:
+      - NODE_ENV=production
+
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf 
+  #     - /root/nginx/conf/conf.d:/etc/nginx/conf.d 
+  #     - /root/nginx/log:/var/log/nginx 
+  #     - /root/nginx/html:/usr/share/nginx/html 
+  prometheus-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    ports:
+      - "9100:9100" 
+  prometheus:
+    image: "prom/prometheus:v2.47.2"
+    volumes:
+      - ../prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - prometheus-exporter
+  grafana:
+    image: "grafana/grafana:10.2.0"
+    container_name: "grafana"
+    ports:
+      - "3000:3000"
+    volumes:
+      - /root/grafana:/var/lib/grafana

@@ -3,9 +3,9 @@ package user
 import (
 	"context"
 
-	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	upbv1 "github.com/WeiXinao/daily_fresh/api/user/v1"
+	metav1 "github.com/WeiXinao/daily_fresh/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 )
 
 /*

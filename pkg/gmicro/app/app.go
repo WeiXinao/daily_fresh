@@ -23,7 +23,10 @@ type App struct {
 	lk sync.RWMutex
 
 	instance *registry.ServiceInstance
+	bgCtxWithCancel context.Context
 	cancel func()
+	shutdownChan chan struct{}
+	finishChan chan struct{}
 }
 
 func New(opts ...Option) *App {
@@ -41,7 +44,10 @@ func New(opts ...Option) *App {
 		opt(&o)
 	}
 
-	return &App{opts: o}
+	return &App{
+		opts: o,
+		finishChan: make(chan struct{}, 1),
+	}
 }
 
 // 启动整个微服务
@@ -120,6 +126,7 @@ func (a *App) Run() error {
 
 	// 监听退出信号
 	quit := make(chan os.Signal, 1)
+	a.shutdownChan = make(chan struct{})
 	signal.Notify(quit, a.opts.sigs...)
 	eg.Go(func() error {
 		for {
@@ -128,12 +135,16 @@ func (a *App) Run() error {
 				return ctx.Err()
 			case <-quit:
 				return a.Stop()
+			case <-a.shutdownChan:
+				return a.Stop()
 			}
 		}
 	})
-	if err := eg.Wait(); err != nil {
+ 	err = eg.Wait(); 
+	if err != nil {
 		return err
 	}
+	a.finishChan<-struct{}{}
 
 	return nil
 }
@@ -158,11 +169,17 @@ func (a *App) Stop() error {
 		}
 	}
 
-	if a.cancel!= nil {
+	if a.cancel != nil {
 		log.Info("start cancel context")
 		a.cancel()
 	}
 
+	return nil
+}
+
+func (a *App) Shutdown() error {
+	close(a.shutdownChan)
+	<-a.finishChan
 	return nil
 }
 

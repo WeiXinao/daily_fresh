@@ -3,10 +3,10 @@ package srv
 import (
 	"fmt"
 
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	"github.com/WeiXinao/daily_your_go/app/pkg/options"
-	"github.com/WeiXinao/daily_your_go/gmicro/core/trace"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
+	upb "github.com/WeiXinao/daily_fresh/api/user/v1"
+	"github.com/WeiXinao/daily_fresh/app/pkg/options"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/core/trace"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver"
 	"github.com/alibaba/sentinel-golang/ext/datasource"
 	"github.com/alibaba/sentinel-golang/pkg/adapters/grpc"
 	"github.com/alibaba/sentinel-golang/pkg/datasource/nacos"

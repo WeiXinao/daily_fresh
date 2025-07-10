@@ -105,12 +105,12 @@ func (c *Command) runCommand(cmd *cobra.Command, args []string) {
 }
 
 // AddCommand adds sub command to the application.
-func (a *App) AddCommand(cmd *Command) {
+func (a *App[T]) AddCommand(cmd *Command) {
 	a.commands = append(a.commands, cmd)
 }
 
 // AddCommands adds multiple sub commands to the application.
-func (a *App) AddCommands(cmds ...*Command) {
+func (a *App[T]) AddCommands(cmds ...*Command) {
 	a.commands = append(a.commands, cmds...)
 }
 

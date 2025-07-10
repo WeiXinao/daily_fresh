@@ -1,0 +1,1659 @@
+2025-07-09 21:27:34.374	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 21:27:34.374	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 21:27:34.471	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 21:27:34.474	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 21:27:34.474	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 21:42:00.443	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 21:42:00.443	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 21:42:18.006	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 21:42:18.009	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 21:42:18.009	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 21:42:24.348	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 21:42:24.348	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 21:43:03.580	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 21:43:03.580	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 21:43:16.859	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 21:43:16.859	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 21:43:16.861	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 21:43:16.861	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 21:43:16.861	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 21:43:16.862	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</tmp/go-build478181933/b001/exe/log>   cacheDir:</tmp/go-build478181933/b001/exe/cache>
+2025-07-09 21:46:18.974	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 21:46:18.974	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 21:47:04.607	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 21:47:04.608	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 21:47:04.612	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 21:47:04.612	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 21:47:04.612	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:08:53.224	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:08:53.224	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:09:27.003	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:09:27.004	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:09:27.008	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:09:27.008	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:09:27.008	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:11:30.885	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:11:30.886	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:12:00.865	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:12:00.866	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:12:00.870	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:12:00.871	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:12:00.871	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:13:41.697	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:13:41.697	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:13:49.633	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:14:02.671	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:14:15.922	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:14:20.831	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:14:23.748	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:15:19.808	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:15:19.808	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:16:49.018	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:17:05.949	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:20:43.554	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:21:10.202	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:21:19.450	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:21:57.891	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:21:57.892	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:22:06.482	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:22:19.855	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:22:27.474	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:22:29.705	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:22:51.772	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:24:17.638	[34mINFO[0m	app/app.go:103	start server
+2025-07-09 22:24:17.638	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:24:17.641	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:24:24.938	[34mINFO[0m	app/app.go:151	start deregister service
+2025-07-09 22:24:25.012	[34mINFO[0m	app/app.go:162	start cancel context
+2025-07-09 22:24:41.627	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:25:12.084	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:33:04.401	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 22:33:04.401	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:33:22.377	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:33:42.396	[34mINFO[0m	app/app.go:153	start deregister service
+2025-07-09 22:33:50.566	[34mINFO[0m	app/app.go:164	start cancel context
+2025-07-09 22:33:53.560	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:33:55.826	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:34:29.863	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 22:34:29.863	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:34:51.061	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:35:01.488	[34mINFO[0m	app/app.go:153	start deregister service
+2025-07-09 22:35:06.581	[34mINFO[0m	app/app.go:164	start cancel context
+2025-07-09 22:35:07.499	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:35:42.431	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:36:15.765	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 22:36:15.765	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:36:21.044	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:36:23.691	[34mINFO[0m	app/app.go:153	start deregister service
+2025-07-09 22:36:23.693	[34mINFO[0m	app/app.go:164	start cancel context
+2025-07-09 22:36:23.694	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:36:23.694	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:36:37.930	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 22:36:37.930	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 22:36:44.990	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 22:36:54.703	[34mINFO[0m	app/app.go:153	start deregister service
+2025-07-09 22:37:05.194	[34mINFO[0m	app/app.go:164	start cancel context
+2025-07-09 22:37:16.811	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 22:38:06.637	[31mERROR[0m	server/app.go:39	run user app error: context canceled
+2025-07-09 22:58:49.761	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 22:58:49.761	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:04:15.385	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:04:15.385	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:04:45.999	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:04:46.000	[34mINFO[0m	app/app.go:161	start deregister service
+2025-07-09 23:04:46.003	[34mINFO[0m	app/app.go:172	start cancel context
+2025-07-09 23:04:46.003	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:06:21.999	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:06:21.999	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:06:32.167	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:06:36.035	[34mINFO[0m	app/app.go:161	start deregister service
+2025-07-09 23:06:36.056	[34mINFO[0m	app/app.go:172	start cancel context
+2025-07-09 23:06:36.096	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:07:23.960	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:07:23.961	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:07:29.492	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:08:01.473	[34mINFO[0m	app/app.go:161	start deregister service
+2025-07-09 23:08:01.476	[34mINFO[0m	app/app.go:172	start cancel context
+2025-07-09 23:08:01.477	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:09:23.382	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:09:23.382	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:09:29.878	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:10:25.828	[34mINFO[0m	app/app.go:161	start deregister service
+2025-07-09 23:10:44.159	[31mERROR[0m	app/app.go:166	deregister service error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/b25d4392-5cd6-11f0-8ac5-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:10:44.160	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:10:44.160	[31mERROR[0m	server/app.go:39	run user app error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/b25d4392-5cd6-11f0-8ac5-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:11:37.016	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:11:37.016	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:11:41.596	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:11:47.474	[34mINFO[0m	app/app.go:161	start deregister service
+2025-07-09 23:11:47.586	[34mINFO[0m	app/app.go:172	start cancel context
+2025-07-09 23:11:47.608	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:13:27.665	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:13:27.666	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:15:12.420	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:15:12.420	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:15:15.711	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:16:05.347	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-09 23:16:05.353	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-09 23:16:05.353	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:17:27.511	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:17:27.511	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:17:36.344	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:17:47.663	[34mINFO[0m	app/app.go:160	start deregister service
+2025-07-09 23:17:51.365	[34mINFO[0m	app/app.go:171	start cancel context
+2025-07-09 23:17:51.366	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:18:41.090	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:18:41.090	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:18:46.230	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:18:46.231	[34mINFO[0m	app/app.go:160	start deregister service
+2025-07-09 23:19:27.924	[31mERROR[0m	app/app.go:165	deregister service error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/fec8e85e-5cd7-11f0-9bec-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:19:27.924	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:19:28.774	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/log>   cacheDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/cache>
+2025-07-09 23:19:28.777	[31mERROR[0m	server/app.go:39	run user app error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/fec8e85e-5cd7-11f0-9bec-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:20:28.852	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:20:28.853	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:20:28.858	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:22:24.665	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:22:24.666	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:22:33.296	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:22:33.297	[34mINFO[0m	app/app.go:160	start deregister service
+2025-07-09 23:23:15.909	[31mERROR[0m	app/app.go:165	deregister service error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/840bd41c-5cd8-11f0-8c77-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:23:20.714	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:23:20.723	[31mERROR[0m	server/app.go:39	run user app error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/840bd41c-5cd8-11f0-8c77-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:23:23.083	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/log>   cacheDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/cache>
+2025-07-09 23:25:06.921	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:25:06.921	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:25:18.353	[34mINFO[0m	app/app.go:108	start server
+2025-07-09 23:25:18.353	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:25:25.511	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:25:25.511	[34mINFO[0m	app/app.go:160	start deregister service
+2025-07-09 23:25:25.512	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</tmp/go-build1943542477/b001/exe/log>   cacheDir:</tmp/go-build1943542477/b001/exe/cache>
+2025-07-09 23:25:25.514	[34mINFO[0m	app/app.go:171	start cancel context
+2025-07-09 23:25:25.514	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:27:47.098	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 23:27:47.098	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:29:01.714	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 23:29:01.714	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:29:07.111	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:29:07.112	[34mINFO[0m	app/app.go:157	start deregister service
+2025-07-09 23:29:12.414	[34mINFO[0m	app/app.go:168	start cancel context
+2025-07-09 23:29:12.448	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:33:40.067	[34mINFO[0m	app/app.go:105	start server
+2025-07-09 23:33:40.067	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:33:48.414	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:33:48.415	[34mINFO[0m	app/app.go:157	start deregister service
+2025-07-09 23:34:04.616	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/log>   cacheDir:</root/repos/github.com/WeiXinao/daily_fresh/cmd/user/cache>
+2025-07-09 23:34:04.679	[31mERROR[0m	app/app.go:162	deregister service error: Put "http://192.168.5.52:8500/v1/agent/service/deregister/169df923-5cda-11f0-bde8-98fa9b935ca7": context deadline exceeded
+2025-07-09 23:41:35.871	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:41:35.871	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:42:10.369	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:42:10.371	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-09 23:42:10.378	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-09 23:42:10.379	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:43:03.605	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:43:03.605	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:43:09.419	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:43:15.761	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-09 23:43:15.868	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-09 23:43:15.892	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:43:59.802	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:43:59.802	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:44:06.055	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8082
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:44:06.055	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-09 23:44:06.059	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-09 23:44:06.059	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-09 23:44:37.209	[34mINFO[0m	app/app.go:109	start server
+2025-07-09 23:44:37.210	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-09 23:44:43.030	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-09 23:45:20.956	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-09 23:45:23.749	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-09 23:45:23.749	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-10 10:52:33.519	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 10:52:33.520	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 13:35:27.707	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 13:35:27.708	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 13:35:59.016	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8081
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-10 13:35:59.017	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-10 13:35:59.023	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-10 13:35:59.024	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-10 13:35:59.025	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</tmp/go-build4259934683/b001/exe/log>   cacheDir:</tmp/go-build4259934683/b001/exe/cache>
+2025-07-10 13:35:59.039	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 13:35:59.039	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 13:37:40.892	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-10 13:37:40.895	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-10 13:37:40.895	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-10 13:37:44.983	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 13:37:44.984	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 13:37:51.178	[34mINFO[0m	configurator/configurator.go:150	ConfigCenter loads changed configuration, key [user-srv], data [log:
+  name: "daily-fresh-user-srv" # logger 名称。
+  development: true # 是否开启开发模式。，开发模式下会打印调试信息，默认 false。
+  level: "debug" # 日志级别，优先级从低到高依次为：debug，info，warn，error，dpanic，panic，fatal。
+  format: "console" # 支持的日志输出格式，目前支持 console 和 json 两种。console 其实就是 text 格式。
+  enable-color: true # 是否开启颜色输出，true：是，false：否
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否在 panic 及以上级别禁止打印堆栈信息
+  output-paths: logs/daily-fresh-user-srv.log,stdout # 支持输出到多个输出，逗号分开。支持输出到标准输出（stdout）和文件
+  error-output-paths: logs/daily-fresh-user-srv.error.log # zap 内部（非业务）错误日志输出路径，多个输出，逗号分开
+registry:
+  address: "192.168.5.52:8500"
+  scheme: "http"
+server:
+  enable-health-check: true
+  enable-profiling: true
+  enable-metrics: true
+  enable-limit: true
+  host: "192.168.5.52"
+  port: 8079
+  http-port: 8080
+  name: "daily-fresh-user-srv" 
+telemetry:
+  name: "daily-fresh-user-srv"
+  Endpoint: "http://192.168.5.52:14268/api/traces"
+  Sampler: 1.0
+  Batcher: "jaeger"
+# MySQL 数据库相关配置
+mysql:
+  host: "192.168.5.52" # MySQL 机器 IP，默认 127.0.0.1
+  port: "3307" # MySQL 端口，默认 3306
+  username: "root" # MySQL 用户名（建议授权最小权限集），默认 ""
+  password: "123456" # MySQL 密码，默认 ""
+  database: "mxshop_user_srv" # iam 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level， 1：slient, 2: error 3: warn 4: info
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "public"
+  user: "nacos"
+  password: "nacos"
+  dataid: "flow"
+  group: "sentinel-go"
+   ]
+2025-07-10 13:37:51.179	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-10 13:37:51.181	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-10 13:37:51.182	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-10 13:37:51.183	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</tmp/go-build1797109616/b001/exe/log>   cacheDir:</tmp/go-build1797109616/b001/exe/cache>
+2025-07-10 13:37:51.193	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 13:37:51.193	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079

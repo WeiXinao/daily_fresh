@@ -1,9 +1,13 @@
 package app
 
 import (
+	"bytes"
 	"fmt"
 	"os"
+	"reflect"
 
+	"github.com/WeiXinao/daily_fresh/pkg/app/configurator"
+	"github.com/WeiXinao/daily_fresh/pkg/app/configurator/subscriber"
 	cliflag "github.com/WeiXinao/daily_fresh/pkg/common/cli/flag"
 	"github.com/WeiXinao/daily_fresh/pkg/common/cli/globalflag"
 	"github.com/WeiXinao/daily_fresh/pkg/common/term"
@@ -13,6 +17,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"golang.org/x/sync/errgroup"
 
 	"github.com/WeiXinao/daily_fresh/pkg/log"
 )
@@ -60,28 +65,31 @@ Use "%s --help" for more information about a command.{{end}}
 
 // App is the main structure of a cli application.
 // It is recommended that an app be created with the app.NewApp() function.
-type App struct {
-	basename    string
-	name        string
-	description string
-	options     CliOptions
-	runFunc     RunFunc
-	silence     bool
-	noVersion   bool
-	noConfig    bool
-	commands    []*Command
-	args        cobra.PositionalArgs
-	cmd         *cobra.Command
+type App[T CliOptions] struct {
+	basename           string
+	name               string
+	description        string
+	options            T
+	runFunc            RunFunc
+	stopFunc           StopFunc
+	silence            bool
+	noVersion          bool
+	noConfig           bool
+	subscriberInitFunc func(T) (subscriber.Subscriber, error)
+	cfgr               configurator.Configurator[T]
+	commands           []*Command
+	args               cobra.PositionalArgs
+	cmd                *cobra.Command
 }
 
 // Option defines optional parameters for initializing the application
 // structure.
-type Option func(*App)
+type Option[T CliOptions] func(*App[T])
 
 // WithOptions to open the application's function to read from the command line
 // or read parameters from the configuration file.
-func WithOptions(opt CliOptions) Option {
-	return func(a *App) {
+func WithOptions[T CliOptions](opt T) Option[T] {
+	return func(a *App[T]) {
 		a.options = opt
 	}
 }
@@ -89,16 +97,25 @@ func WithOptions(opt CliOptions) Option {
 // RunFunc defines the application's startup callback function.
 type RunFunc func(basename string) error
 
+// StopFunc defines the application's shutdown callback function.
+type StopFunc func() error
+
 // WithRunFunc is used to set the application startup callback function option.
-func WithRunFunc(run RunFunc) Option {
-	return func(a *App) {
+func WithRunFunc[T CliOptions](run RunFunc) Option[T] {
+	return func(a *App[T]) {
 		a.runFunc = run
 	}
 }
 
+func WithStopFunc[T CliOptions](stop StopFunc) Option[T] {
+	return func(a *App[T]) {
+		a.stopFunc = stop
+	}
+}
+
 // WithDescription is used to set the description of the application.
-func WithDescription(desc string) Option {
-	return func(a *App) {
+func WithDescription[T CliOptions](desc string) Option[T] {
+	return func(a *App[T]) {
 		a.description = desc
 	}
 }
@@ -106,36 +123,36 @@ func WithDescription(desc string) Option {
 // WithSilence sets the application to silent mode, in which the program startup
 // information, configuration information, and version information are not
 // printed in the console.
-func WithSilence() Option {
-	return func(a *App) {
+func WithSilence[T CliOptions]() Option[T] {
+	return func(a *App[T]) {
 		a.silence = true
 	}
 }
 
 // WithNoVersion set the application does not provide version flag.
-func WithNoVersion() Option {
-	return func(a *App) {
+func WithNoVersion[T CliOptions]() Option[T] {
+	return func(a *App[T]) {
 		a.noVersion = true
 	}
 }
 
 // WithNoConfig set the application does not provide config flag.
-func WithNoConfig() Option {
-	return func(a *App) {
+func WithNoConfig[T CliOptions]() Option[T] {
+	return func(a *App[T]) {
 		a.noConfig = true
 	}
 }
 
 // WithValidArgs set the validation function to valid non-flag arguments.
-func WithValidArgs(args cobra.PositionalArgs) Option {
-	return func(a *App) {
+func WithValidArgs[T CliOptions](args cobra.PositionalArgs) Option[T] {
+	return func(a *App[T]) {
 		a.args = args
 	}
 }
 
 // WithDefaultValidArgs set default validation function to valid non-flag arguments.
-func WithDefaultValidArgs() Option {
-	return func(a *App) {
+func WithDefaultValidArgs[T CliOptions]() Option[T] {
+	return func(a *App[T]) {
 		a.args = func(cmd *cobra.Command, args []string) error {
 			for _, arg := range args {
 				if len(arg) > 0 {
@@ -148,10 +165,16 @@ func WithDefaultValidArgs() Option {
 	}
 }
 
+func WithSubscribeInitFunc[T CliOptions](f func(cfg T) (subscriber.Subscriber, error)) Option[T] {
+	return func(a *App[T]) {
+		a.subscriberInitFunc = f
+	}
+}
+
 // NewApp creates a new application instance based on the given application name,
 // binary name, and other options.
-func NewApp(name string, basename string, opts ...Option) *App {
-	a := &App{
+func NewApp[T CliOptions](name string, basename string, opts ...Option[T]) *App[T] {
+	a := &App[T]{
 		name:     name,
 		basename: basename,
 	}
@@ -165,7 +188,7 @@ func NewApp(name string, basename string, opts ...Option) *App {
 	return a
 }
 
-func (a *App) buildCommand() {
+func (a *App[T]) buildCommand() {
 	cmd := cobra.Command{
 		Use:   FormatBaseName(a.basename),
 		Short: a.name,
@@ -192,7 +215,7 @@ func (a *App) buildCommand() {
 	}
 
 	var namedFlagSets cliflag.NamedFlagSets
-	if a.options != nil {
+	if !reflect.ValueOf(a.options).IsZero() {
 		namedFlagSets = a.options.Flags()
 		fs := cmd.Flags()
 		for _, f := range namedFlagSets.FlagSets {
@@ -226,8 +249,47 @@ func (a *App) buildCommand() {
 	a.cmd = &cmd
 }
 
+func (a *App[T]) setUpConfigurator() error {
+	var err error
+	if a.subscriberInitFunc == nil {
+		return nil
+	}
+	subscriber, err := a.subscriberInitFunc(a.options)
+	if err != nil {
+		return err
+	}
+
+	a.cfgr, err = configurator.NewConfigCenter[T](configurator.Config{
+		Type: "yaml",
+		Log:  true,
+	}, subscriber)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *App[T]) refreshConfig() error {
+	cfg, err := a.cfgr.GetConfigString()
+	if err != nil {
+		return err
+	}
+
+	viper.SetConfigType("yaml")
+	viper.ReadConfig(bytes.NewBufferString(cfg))
+	if err := viper.Unmarshal(a.options); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (a *App[T]) addConfigListener(f func (key string, raw string, data T)) {
+	a.cfgr.AddListener(f)
+}
+
 // Run is used to launch the application.
-func (a *App) Run() {
+func (a *App[T]) Run() {
 	if err := a.cmd.Execute(); err != nil {
 		fmt.Printf("%v %v\n", color.RedString("Error:"), err)
 		os.Exit(1)
@@ -235,11 +297,11 @@ func (a *App) Run() {
 }
 
 // Command returns cobra command instance inside the application.
-func (a *App) Command() *cobra.Command {
+func (a *App[T]) Command() *cobra.Command {
 	return a.cmd
 }
 
-func (a *App) runCommand(cmd *cobra.Command, args []string) error {
+func (a *App[T]) runCommand(cmd *cobra.Command, args []string) error {
 	printWorkingDir()
 	cliflag.PrintFlags(cmd.Flags())
 	if !a.noVersion {
@@ -257,6 +319,17 @@ func (a *App) runCommand(cmd *cobra.Command, args []string) error {
 		}
 	}
 
+	err := a.setUpConfigurator()
+	if err != nil {
+		return nil
+	}
+	
+	err = a.refreshConfig()
+	if err != nil {
+		return err
+	}
+
+
 	if !a.silence {
 		log.Infof("%v Starting %s ...", progressMessage, a.name)
 		if !a.noVersion {
@@ -266,21 +339,45 @@ func (a *App) runCommand(cmd *cobra.Command, args []string) error {
 			log.Infof("%v Config file used: `%s`", progressMessage, viper.ConfigFileUsed())
 		}
 	}
-	if a.options != nil {
+	if !reflect.ValueOf(a.options).IsZero() {
 		if err := a.applyOptionRules(); err != nil {
 			return err
 		}
 	}
-	// run application
-	if a.runFunc != nil {
-		return a.runFunc(a.basename)
-	}
 
-	return nil
+	eg := errgroup.Group{}
+
+	a.addConfigListener(func(key, raw string, data T) {
+		eg.Go(func() error {
+			if a.stopFunc != nil {
+				a.stopFunc()
+			}
+
+			err := a.refreshConfig(); 
+			if err != nil {
+				return err
+			}
+
+			if a.runFunc != nil {
+				return a.runFunc(a.basename)
+			}
+			return nil
+		})
+	})
+
+	eg.Go(func() error {
+		// run application
+		if a.runFunc != nil {
+			return a.runFunc(a.basename)
+		}
+		return nil
+	})
+
+	return eg.Wait()
 }
 
-func (a *App) applyOptionRules() error {
-	if completeableOptions, ok := a.options.(CompleteableOptions); ok {
+func (a *App[T]) applyOptionRules() error {
+	if completeableOptions, ok := any(a.options).(CompleteableOptions); ok {
 		if err := completeableOptions.Complete(); err != nil {
 			return err
 		}
@@ -290,7 +387,7 @@ func (a *App) applyOptionRules() error {
 		return errors.NewAggregate(errs)
 	}
 
-	if printableOptions, ok := a.options.(PrintableOptions); ok && !a.silence {
+	if printableOptions, ok := any(a.options).(PrintableOptions); ok && !a.silence {
 		log.Infof("%v Config: `%s`", progressMessage, printableOptions.String())
 	}
 

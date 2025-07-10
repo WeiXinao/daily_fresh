@@ -1,9 +1,9 @@
 package user
 
 import (
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	upbv1 "github.com/WeiXinao/daily_your_go/api/user/v1"
-	srvv1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/service/v1"
+	upb "github.com/WeiXinao/daily_fresh/api/user/v1"
+	upbv1 "github.com/WeiXinao/daily_fresh/api/user/v1"
+	srvv1 "github.com/WeiXinao/daily_fresh/app/user/server/internal/service/v1"
 	"github.com/google/wire"
 )
 

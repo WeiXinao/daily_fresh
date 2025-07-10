@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	v1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/service/v1"
-	"github.com/WeiXinao/daily_your_go/gmicro/code"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	upb "github.com/WeiXinao/daily_fresh/api/user/v1"
+	v1 "github.com/WeiXinao/daily_fresh/app/user/server/internal/service/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/code"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/jinzhu/copier"
 	"google.golang.org/protobuf/types/known/emptypb"
 )

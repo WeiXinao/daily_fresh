@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	upb "github.com/WeiXinao/daily_fresh/api/user/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 )
 
 // GetUserById implements v1.UserServer.

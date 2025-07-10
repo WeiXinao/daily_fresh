@@ -12,7 +12,7 @@
       "mode": "auto",
       "cwd": "${workspaceFolder}",
       "program": "${workspaceFolder}/cmd/user/user.go",
-      "args": ["-c", "${workspaceFolder}/configs/user/srv.yaml"],
+      "args": ["-c", "${workspaceFolder}/configs/user/dev.yaml"],
     },
     {
       "name": "admin server",

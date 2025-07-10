@@ -7,12 +7,12 @@
 package srv
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/pkg/options"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/controller/user"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1/db"
-	"github.com/WeiXinao/daily_your_go/app/user/srv/internal/service/v1"
-	"github.com/WeiXinao/daily_your_go/gmicro/app"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/app/pkg/options"
+	"github.com/WeiXinao/daily_fresh/app/user/server/internal/controller/user"
+	"github.com/WeiXinao/daily_fresh/app/user/server/internal/data/v1/db"
+	"github.com/WeiXinao/daily_fresh/app/user/server/internal/service/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/app"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 )
 
 // Injectors from wire.go:

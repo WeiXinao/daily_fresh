@@ -5,7 +5,7 @@ import (
 	"crypto/sha512"
 	"strings"
 
-	upb "github.com/WeiXinao/daily_your_go/api/user/v1"
+	upb "github.com/WeiXinao/daily_fresh/api/user/v1"
 	"github.com/anaskhan96/go-password-encoder"
 )
 

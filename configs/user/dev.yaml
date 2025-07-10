@@ -1,0 +1,6 @@
+nacos:
+  host: "192.168.5.52"
+  port: 8848
+  namespace: "a0f41de9-7675-4088-80af-b037e86b7c3f"
+  dataid: "user-srv"
+  group: "dev"

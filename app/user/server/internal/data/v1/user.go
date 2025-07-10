@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/app/pkg/gormx"
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_fresh/app/pkg/gormx"
+	metav1 "github.com/WeiXinao/daily_fresh/pkg/common/meta/v1"
 )
 
 /*

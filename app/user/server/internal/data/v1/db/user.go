@@ -5,11 +5,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/WeiXinao/daily_your_go/app/pkg/code"
-	udv1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1"
-	baseCode "github.com/WeiXinao/daily_your_go/gmicro/code"
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/app/pkg/code"
+	udv1 "github.com/WeiXinao/daily_fresh/app/user/server/internal/data/v1"
+	baseCode "github.com/WeiXinao/daily_fresh/pkg/gmicro/code"
+	metav1 "github.com/WeiXinao/daily_fresh/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"gorm.io/gorm"
 )
 

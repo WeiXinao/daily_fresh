@@ -5,10 +5,10 @@ import (
 	"crypto/sha512"
 	"fmt"
 
-	"github.com/WeiXinao/daily_your_go/app/pkg/code"
-	v1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1"
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
-	"github.com/WeiXinao/daily_your_go/pkg/errors"
+	"github.com/WeiXinao/daily_fresh/app/pkg/code"
+	v1 "github.com/WeiXinao/daily_fresh/app/user/server/internal/data/v1"
+	metav1 "github.com/WeiXinao/daily_fresh/pkg/common/meta/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/anaskhan96/go-password-encoder"
 )
 

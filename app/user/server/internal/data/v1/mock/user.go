@@ -3,8 +3,8 @@ package mock
 import (
 	"context"
 
-	metav1 "github.com/WeiXinao/daily_your_go/pkg/common/meta/v1"
-	udv1 "github.com/WeiXinao/daily_your_go/app/user/srv/internal/data/v1"
+	metav1 "github.com/WeiXinao/daily_fresh/pkg/common/meta/v1"
+	udv1 "github.com/WeiXinao/daily_fresh/app/user/server/internal/data/v1"
 )
 
 type users struct {

@@ -1,0 +1,72 @@
+2025-07-12 19:24:23.071	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-07-12 19:24:23.071	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-07-12 19:24:23.071	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-07-12 19:24:23.071	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-07-12 19:24:23.081	[34mINFO[0m	app/app.go:109	start server
+2025-07-12 19:24:23.081	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-07-12 19:24:23.082	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-07-12 19:24:23.083	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-07-12 19:24:23.083	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8050
+2025-07-12 19:24:33.160	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-12 19:24:33.163	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-12 19:24:33.163	[34mINFO[0m	restserver/server.go:166	rest server is stopping
+2025-07-12 19:24:33.163	[34mINFO[0m	restserver/server.go:171	rest server stopped
+2025-07-12 19:25:44.983	[34mINFO[0m	restserver/server.go:97	install middleware: cors
+2025-07-12 19:25:44.983	[34mINFO[0m	restserver/server.go:97	install middleware: logger
+2025-07-12 19:25:44.983	[34mINFO[0m	restserver/server.go:97	install middleware: recovery
+2025-07-12 19:25:44.983	[34mINFO[0m	restserver/server.go:97	install middleware: context
+2025-07-12 19:25:44.989	[34mINFO[0m	app/app.go:109	start server
+2025-07-12 19:25:44.989	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/             --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func1 (5 handlers)
+
+2025-07-12 19:25:44.989	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/cmdline      --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func2 (5 handlers)
+
+2025-07-12 19:25:44.989	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/profile      --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func3 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	POST   /debug/pprof/symbol       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func4 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/symbol       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func5 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/trace        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapF.func6 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/allocs       --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func7 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/block        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func8 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/goroutine    --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func9 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/heap         --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func10 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/mutex        --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func11 (5 handlers)
+
+2025-07-12 19:25:44.990	[34mINFO[0m	restserver/server.go:118	GET    /debug/pprof/threadcreate --> github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof.RouteRegister.WrapH.func12 (5 handlers)
+
+2025-07-12 19:25:44.991	[34mINFO[0m	restserver/server.go:118	GET    /metrics                  --> github.com/penglongli/gin-metrics/ginmetrics.(*Monitor).Use.func1 (7 handlers)
+
+2025-07-12 19:25:44.991	[34mINFO[0m	restserver/server.go:156	rest server is running on port: 8050
+2025-07-12 21:26:44.260	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-12 21:26:44.268	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-12 21:26:44.269	[34mINFO[0m	restserver/server.go:166	rest server is stopping
+2025-07-12 21:26:44.272	[34mINFO[0m	restserver/server.go:171	rest server stopped

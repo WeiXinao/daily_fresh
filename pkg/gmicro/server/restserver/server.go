@@ -7,10 +7,10 @@ import (
 	"slices"
 	"time"
 
+	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/middlewares"
 	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/pprof"
 	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver/validation"
-	"github.com/WeiXinao/daily_fresh/pkg/errors"
 	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/gin-gonic/gin"
 	ut "github.com/go-playground/universal-translator"
@@ -34,6 +34,8 @@ type Server struct {
 
 	// 端口号，默认值 8080
 	port int
+	// 地址，默认值：':8080'
+	address string
 
 	// 开发模式，默认值 debug
 	mode string
@@ -78,10 +80,12 @@ func NewServer(opts ...ServerOption) *Server {
 			7 * 24 * time.Hour,
 			7 * 24 * time.Hour,
 		},
-		transName: "zh",
-		Engine: gin.New(),
+		transName:   "zh",
+		Engine:      gin.New(),
 		serviceName: "gmicro",
 	}
+
+	s.address = fmt.Sprintf(":%d", s.port)
 
 	for _, opt := range opts {
 		opt(s)
@@ -132,9 +136,9 @@ func (s *Server) Start(ctx context.Context) error {
 		pprof.Register(s.Engine)
 	}
 
-	address := fmt.Sprintf(":%d", s.port)
+	// address := fmt.Sprintf(":%d", s.port)
 	// 因为 tracing 的 middleware 要使用 addr 故在此use
-	s.Use(middlewares.TracingHandler(address))	
+	s.Use(middlewares.TracingHandler(s.address))
 
 	if s.enableMetrics {
 		m := ginmetrics.GetMonitor()
@@ -149,7 +153,7 @@ func (s *Server) Start(ctx context.Context) error {
 
 	_ = s.SetTrustedProxies(nil)
 	s.server = &http.Server{
-		Addr: address,
+		Addr:    s.address,
 		Handler: s.Engine,
 	}
 
@@ -174,4 +178,8 @@ func (s *Server) Stop(ctx context.Context) error {
 
 func (s *Server) Translator() ut.Translator {
 	return s.trans
+}
+
+func (s *Server) Address() string {
+	return s.address
 }

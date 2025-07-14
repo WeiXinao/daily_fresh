@@ -319,16 +319,38 @@ func (a *App[T]) runCommand(cmd *cobra.Command, args []string) error {
 		}
 	}
 
-	err := a.setUpConfigurator()
-	if err != nil {
-		return nil
-	}
-	
-	err = a.refreshConfig()
-	if err != nil {
-		return err
-	}
+	eg := errgroup.Group{}
 
+	if a.cfgr != nil && a.subscriberInitFunc != nil {
+		err := a.setUpConfigurator()
+		if err != nil {
+			return nil
+		}
+		
+		err = a.refreshConfig()
+		if err != nil {
+			return err
+		}
+
+
+		a.addConfigListener(func(key, raw string, data T) {
+			eg.Go(func() error {
+				if a.stopFunc != nil {
+					a.stopFunc()
+				}
+
+				err := a.refreshConfig(); 
+				if err != nil {
+					return err
+				}
+
+				if a.runFunc != nil {
+					return a.runFunc(a.basename)
+				}
+				return nil
+			})
+		})
+	}
 
 	if !a.silence {
 		log.Infof("%v Starting %s ...", progressMessage, a.name)
@@ -344,26 +366,6 @@ func (a *App[T]) runCommand(cmd *cobra.Command, args []string) error {
 			return err
 		}
 	}
-
-	eg := errgroup.Group{}
-
-	a.addConfigListener(func(key, raw string, data T) {
-		eg.Go(func() error {
-			if a.stopFunc != nil {
-				a.stopFunc()
-			}
-
-			err := a.refreshConfig(); 
-			if err != nil {
-				return err
-			}
-
-			if a.runFunc != nil {
-				return a.runFunc(a.basename)
-			}
-			return nil
-		})
-	})
 
 	eg.Go(func() error {
 		// run application

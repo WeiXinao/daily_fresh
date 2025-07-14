@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	v1 "github.com/WeiXinao/daily_your_go/api/goods/v1"
-	"github.com/WeiXinao/daily_your_go/gmicro/registry/consul"
-	rpc "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver"
-	_ "github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/resolver/direct"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/rpcserver/selector/random"
+	v1 "github.com/WeiXinao/daily_fresh/api/goods/v1"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry/consul"
+	rpc "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver"
+	_ "github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/resolver/direct"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/rpcserver/selector/random"
 	"github.com/hashicorp/consul/api"
 )
 

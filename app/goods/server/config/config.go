@@ -1,11 +1,11 @@
 package config
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/pkg/options"
-	"github.com/WeiXinao/daily_your_go/pkg/app"
-	"github.com/WeiXinao/daily_your_go/pkg/common/cli/flag"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
-)
+	"github.com/WeiXinao/daily_fresh/app/pkg/options"
+	"github.com/WeiXinao/daily_fresh/pkg/app"
+	"github.com/WeiXinao/daily_fresh/pkg/common/cli/flag"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
+)                             
 
 var _ app.CliOptions = (*Config)(nil)
 

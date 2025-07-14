@@ -205,6 +205,14 @@ func (a *App) buildInstance() (*registry.ServiceInstance, error) {
 		endpoints = append(endpoints, u.String())
 	}
 
+	if a.opts.restServer != nil {
+		u := &url.URL{
+			Scheme: "http",
+			Path: a.opts.restServer.Address(),
+		}
+		endpoints = append(endpoints, u.String())
+	}
+
 	return &registry.ServiceInstance{
 		ID:        a.opts.id,
 		Name:      a.opts.name,

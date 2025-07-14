@@ -1,9 +1,8 @@
 package admin
 
 import (
-
-	"github.com/WeiXinao/daily_your_go/app/user/srv/config"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver"
+	"github.com/WeiXinao/daily_fresh/app/bff/admin/config"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver"
 )
 
 func NewUserHTTPServer(cfg *config.Config) (*restserver.Server, error) {

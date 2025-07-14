@@ -4,7 +4,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/WeiXinao/daily_your_go/app/daily_your_go/admin"
+	"github.com/WeiXinao/daily_fresh/app/bff/admin"
 )
 
 func main() {

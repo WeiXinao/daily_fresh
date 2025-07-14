@@ -1,25 +1,24 @@
 package admin
 
 import (
-
+	"github.com/WeiXinao/daily_fresh/app/bff/admin/config"
 	"github.com/WeiXinao/daily_fresh/app/pkg/options"
-	"github.com/WeiXinao/daily_fresh/app/user/srv/config"
-	gapp "github.com/WeiXinao/daily_fresh/gmicro/app"
+	"github.com/WeiXinao/daily_fresh/pkg/app"
+	gapp "github.com/WeiXinao/daily_fresh/pkg/gmicro/app"
 	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
 	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry/consul"
-	"github.com/WeiXinao/daily_fresh/pkg/app"
 	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/hashicorp/consul/api"
 )
 
 // controller（参数校验） -> service（具体的业务逻辑） -> data（数据库的接口）
-func NewApp(name string) *app.App {
+func NewApp(name string) *app.App[*config.Config] {
 	cfg := config.New()
 	return app.NewApp(
 		name,	
 		"daily_your_go",
 		app.WithOptions(cfg),
-		app.WithRunFunc(run(cfg)),
+		app.WithRunFunc[*config.Config](run(cfg)),
 	)
 }
 

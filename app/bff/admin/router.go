@@ -1,8 +1,8 @@
 package admin
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/daily_your_go/admin/controller"
-	"github.com/WeiXinao/daily_your_go/gmicro/server/restserver"
+	"github.com/WeiXinao/daily_fresh/app/bff/admin/controller"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/server/restserver"
 )
 
 func initRouter(g *restserver.Server) {

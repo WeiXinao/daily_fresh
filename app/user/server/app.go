@@ -21,55 +21,44 @@ var ProviderSet = wire.NewSet(NewNacosDatasource, NewRegistrar, NewUserRPCServer
 // controller（参数校验） -> service（具体的业务逻辑） -> data（数据库的接口）
 func NewApp(name string) *app.App[*config.Config] {
 	cfg := config.New()
-	var (
-		userApp *gapp.App
-		err error	
-	)
+
+	runFunc, userApp := run(cfg)
 	return app.NewApp(
 		name,	
-		"daily_your_go",
+		"daily_fresh",
 		app.WithOptions(cfg),
-		app.WithRunFunc[*config.Config](func(basename string) error {
-			userApp, err = initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry, cfg.Nacos)
-			if err != nil {
-				return err
-			}
-			// 启动
-			if err := userApp.Run(); err != nil {
-				log.Errorf("run user app error: %s", err)
-				return err
-			}
-			return nil
-		}),
+		app.WithRunFunc[*config.Config](runFunc),
 		app.WithStopFunc[*config.Config](func() error {
 			return userApp.Shutdown()
 		}),
-		app.WithSubscribeInitFunc(func(cfg *config.Config) (subscriber.Subscriber, error) {
-			nacos := cfg.Nacos
-			sc := []constant.ServerConfig{
-				{
-					IpAddr: nacos.Host,
-					Port: uint64(nacos.Port),
-				},
-			}
-			cc := constant.ClientConfig{
-				NamespaceId:         nacos.Namespace, // 如果需要支持多namespace，我们可以创建多个client,它们有不同的NamespaceId。当namespace是public时，此处填空字符串。
-				TimeoutMs:           5000,
-				NotLoadCacheAtStart: true,
-				LogDir:              "tmp/nacos/log",
-				CacheDir:            "tmp/nacos/cache",
-				LogLevel:            "debug",
-			}
-			configClient, err := clients.CreateConfigClient(map[string]interface{}{
-				"serverConfigs": sc,
-				"clientConfig":  cc,
-			})
-			if err != nil {
-				return nil, err
-			}
-			return subscriber.NewNacosSubscriber(configClient, nacos.Group, nacos.DataId), nil
-		}),
+		app.WithSubscribeInitFunc(NewSubscriber),
 	)
+}
+
+func NewSubscriber(cfg *config.Config) (subscriber.Subscriber, error) {
+	nacos := cfg.Nacos
+	sc := []constant.ServerConfig{
+		{
+			IpAddr: nacos.Host,
+			Port: uint64(nacos.Port),
+		},
+	}
+	cc := constant.ClientConfig{
+		NamespaceId:         nacos.Namespace, // 如果需要支持多namespace，我们可以创建多个client,它们有不同的NamespaceId。当namespace是public时，此处填空字符串。
+		TimeoutMs:           5000,
+		NotLoadCacheAtStart: true,
+		LogDir:              "tmp/nacos/log",
+		CacheDir:            "tmp/nacos/cache",
+		LogLevel:            "debug",
+	}
+	configClient, err := clients.CreateConfigClient(map[string]interface{}{
+		"serverConfigs": sc,
+		"clientConfig":  cc,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return subscriber.NewNacosSubscriber(configClient, nacos.Group, nacos.DataId), nil
 }
 
 func NewRegistrar(registry *options.RegisteryOptions) registry.Registrar {
@@ -101,9 +90,11 @@ func NewUserApp(
 	), nil
 }
 
-func run(cfg *config.Config) app.RunFunc {
+func run(cfg *config.Config) (app.RunFunc, *gapp.App) {
+	var userApp *gapp.App
 	return func(basename string) error {
-		userApp, err := initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry, cfg.Nacos)
+		var err error
+		userApp, err = initApp(cfg.Log, cfg.MySQL, cfg.Telemtry, cfg.Server, cfg.Registry, cfg.Nacos)
 		if err != nil {
 			return err
 		}
@@ -112,7 +103,6 @@ func run(cfg *config.Config) app.RunFunc {
 			log.Errorf("run user app error: %s", err)
 			return err
 		}
-
 		return nil
-	}
+	}, userApp
 }

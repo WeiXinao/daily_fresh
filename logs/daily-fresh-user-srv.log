@@ -1657,3 +1657,11 @@ nacos:
 2025-07-10 13:37:51.183	[34mINFO[0m	clients/client_factory.go:89	[INFO] logDir:</tmp/go-build1797109616/b001/exe/log>   cacheDir:</tmp/go-build1797109616/b001/exe/cache>
 2025-07-10 13:37:51.193	[34mINFO[0m	app/app.go:109	start server
 2025-07-10 13:37:51.193	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 14:37:43.539	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-10 14:37:43.542	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-10 14:37:43.542	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped
+2025-07-10 14:51:03.589	[34mINFO[0m	app/app.go:109	start server
+2025-07-10 14:51:03.589	[34mINFO[0m	rpcserver/server.go:177	[grpc] server listening on: 192.168.5.52:8079
+2025-07-10 15:01:38.586	[34mINFO[0m	app/app.go:162	start deregister service
+2025-07-10 15:01:38.589	[34mINFO[0m	app/app.go:173	start cancel context
+2025-07-10 15:01:38.589	[34mINFO[0m	rpcserver/server.go:186	[grpc] server stopped

@@ -1,13 +1,13 @@
 package srv
 
 import (
-	"github.com/WeiXinao/daily_your_go/app/pkg/options"
-	"github.com/WeiXinao/daily_your_go/app/goods/srv/config"
-	gapp "github.com/WeiXinao/daily_your_go/gmicro/app"
-	"github.com/WeiXinao/daily_your_go/gmicro/registry"
-	"github.com/WeiXinao/daily_your_go/gmicro/registry/consul"
-	"github.com/WeiXinao/daily_your_go/pkg/app"
-	"github.com/WeiXinao/daily_your_go/pkg/log"
+	"github.com/WeiXinao/daily_fresh/app/pkg/options"
+	"github.com/WeiXinao/daily_fresh/app/goods/srv/config"
+	gapp "github.com/WeiXinao/daily_fresh/pkg/gmicro/app"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry"
+	"github.com/WeiXinao/daily_fresh/pkg/gmicro/registry/consul"
+	"github.com/WeiXinao/daily_fresh/pkg/app"
+	"github.com/WeiXinao/daily_fresh/pkg/log"
 	"github.com/hashicorp/consul/api"
 )
 

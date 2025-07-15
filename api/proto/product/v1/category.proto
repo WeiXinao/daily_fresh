@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package product.v1;
+
+option go_package = "product/v1;productv1";
+
+service CategoryService {
+	rpc ListByTree(ListByTreeRequest) returns (ListByTreeResponse);
+}
+
+message ListByTreeRequest {}
+
+message ListByTreeResponse {
+	repeated CategoryResponse category_tree = 1;
+}
+
+message CategoryResponse {
+	int64 id           = 1;
+	int64 created_at     = 2;
+	int64 updated_at     = 3;
+	string name          = 4;
+	int64 parent_cid     = 5;
+	int32 cat_level       = 6;
+	int32 show_status    = 7;
+	int32 sort           = 8;
+	string icon          = 9;
+	string product_uint   = 10;
+	int32 product_count     = 11;
+	repeated CategoryResponse children = 12;
+}
